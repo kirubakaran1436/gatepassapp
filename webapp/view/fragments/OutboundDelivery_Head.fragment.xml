@@ -1,0 +1,30 @@
+
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<TableSelectDialog id="Outbound_Delivery_dialog" noDataText="No Items Found" title="Select Items" search=".OnOutBoDelFragSearch" confirm=".OnOutBoDelFragSelect"
+		contentWidth="50%" cancel=".OnOutBoDelFragSelect" items="{YY1_OUTBOUND_DELIVERY_HEAD_CDS>/YY1_Outbound_Delivery_Head}">
+		<ColumnListItem id="_IDGenColumnListItem01" vAlign="Middle">
+			<cells>
+				<Text id="Outbound_Delivery01" text="{YY1_OUTBOUND_DELIVERY_HEAD_CDS>OutboundDelivery}"/>
+				<Text id="Outbound_Delivery02" text="{YY1_OUTBOUND_DELIVERY_HEAD_CDS>ShipToParty}"/>
+				<Text id="Outbound_Delivery09" text="{YY1_OUTBOUND_DELIVERY_HEAD_CDS>CustomerName}"/>
+			</cells>
+		</ColumnListItem>
+		<columns>
+			<Column id="Outbound_Delivery03" >
+				<header>
+					<Text id="Outbound_Delivery04" text="Outbound Delivery No"/>
+				</header>
+			</Column>
+			<Column id="Outbound_Deliver05" >
+				<header>
+					<Text id="Outbound_Delivery06" text="Ship To Party"/>
+				</header>
+			</Column>
+			<Column id="Outbound_Deliver07" >
+				<header>
+					<Text id="Outbound_Delivery08" text="Ship TO Party Name"/>
+				</header>
+			</Column>
+		</columns>
+	</TableSelectDialog>
+</core:FragmentDefinition>

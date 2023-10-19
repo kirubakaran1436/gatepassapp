@@ -1,0 +1,346 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:fb="sap.ui.comp.filterbar"
+ xmlns:svm="sap.ui.comp.smartvariants" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:k="sap.ui.table" xmlns:vm="sap.ui.fl.variants"
+ controllerName="gatepass.controller.outword.Subcontracting_Vendor.Edit_Subcontracting_Vendor" height="100%">
+    <Page id="idRetPage" titleAlignment="Center"  title="Change Outward Subcontracting Goods Issue">
+
+
+      <VBox id="_IDGenVBox1" class="sapUiSmallMargin">
+		<f:SimpleForm class="simform" id="idSimpleFormReturable" editable="true" layout="ColumnLayout" columnsM="2" columnsL="3" columnsXL="4">
+			<f:content>
+
+
+	           <!-- ____________________________________________________ -->
+
+               <Label id="Idretchal" text="Subcontracting/Vendor No"/>
+				<Input id="idSubContractVendor" placeholder="ID" valueHelpRequest="OnSubContractVendorNoFrag" valueHelpOnly="true"  showValueHelp="true" />
+                <!-- ____________________________________________________ -->
+				
+			
+
+                <Label id="idGateRet"  text="Gate Pass Type"/>
+                <ComboBox  editable="false" placeholder="Select GatePass Type" change="select_i_o" id="GatePass_Type_H"
+				items="">
+				<core:Item id="idret1" key="1" text="RGP" />
+				<core:Item id="idret2" key="2" text="NRGP" />
+			</ComboBox>	
+            
+            <!-- ____________________________________________________ -->
+
+               <Label id="idlbluuid" text="SAP UUID"/>
+				<Input id="SAP_UUID_H" visible="false" placeholder="SAP_UUID" value=""/>
+            			
+				<!-- ____________________________________________________ -->
+
+                <Label id="idretplant"     text="Plant"/>
+				<Input  id="plant_H" editable="false"  placeholder="Plant" value="" valueHelpOnly="true"  showValueHelp="false"/>
+				<!-- ____________________________________________________ -->			
+
+                <Label id="idretmat"   text="Material Document"/>
+				<Input  id="mat_doc_H"  editable="false" required="true" placeholder="Material Document" valueHelpOnly="true" valueHelpRequest="OnMaterialDocFragOpen" showValueHelp="true" />
+				<!-- ____________________________________________________ -->			
+
+               
+				<!-- ____________________________________________________ -->		
+                  <Label id="idmatdoc"  text="Material Doc. Year   "/>
+				<!-- <Input   id="idmatdocyear" placeholder="Material Doc. Year  " valueHelpOnly="false" showValueHelp="false" value="" valueHelpRequest=""/> -->
+				
+                	<DatePicker
+					id="DP11"
+					valueFormat="yyyy" displayFormat="yyyy"  />
+					
+                
+                <!-- ____________________________________________________ -->
+
+                 <Label id="idven"  text= "Vendor"/>
+				<Input id="idretvend" editable="false"  change="OnMatDesChange" placeholder="Vendor" value=""/>
+
+				<!-- ____________________________________________________ -->
+                <Label id="idvech"  text= "No of Packages"/>
+				<Input id="idretnoofpackg" editable="false"  placeholder="No of Packages" value=""/>  
+
+               
+	<!-- ____________________________________________________ -->
+
+               
+                 <Label id="idcustname"  text= "Vendor Name"/>
+				<Input id="idretcustname" editable="false"  placeholder="Vendor Name" value=""/>  
+
+	<!-- ____________________________________________________ -->
+
+               
+                 <Label id="idve"  text= "Vehicle No"/>
+				<Input id="idretvehicleno"  editable="false"  placeholder="Vehicle No" value=""/>  
+	<!-- ____________________________________________________ -->
+
+
+           <Label id="idbin"  text="Bins (Yes/No)"/>
+				<!-- <Input id="_IDGenInput8" placeholder="Bins Yes/No" value=""/> -->
+                <ComboBox  id="idbinyes" editable="false" placeholder="Select Bins Yes/No" change="On_Bin_Select"
+				items="">
+				<core:Item id="idBin1"  key="1" text="Yes" />
+				<core:Item id="idBin2"  key="2" text="No" />
+			</ComboBox>
+            
+                
+	<!-- ____________________________________________________ -->
+
+                <Label id="idretnobin"  text="No of Bins"/>
+				<Input enabled="false" editable="false" maxLength="3" liveChange="On_Bin_Enter" id="No_Of_Bins" placeholder="No of Bins" value=""/>
+
+
+
+    	<!-- ____________________________________________________ -->
+                 <Label id="idrettransport"  text="Transporter"/>
+				<Input id="idrettranport"  editable="false" placeholder="Transporter" value=""/>
+<!-- ____________________________________________________ -->
+
+       <Label id="idretcustdoc"  text="Bin Challan No"/>
+				<Input id="idretcustdocno"   editable="false" maxLength="10" placeholder="Bin Challan No" value=""/>
+
+			</f:content>
+			
+		</f:SimpleForm>
+
+		<OverflowToolbar id="_IDGenOverflowToolbar3"  >		
+		<ToolbarSpacer id="_IDGenToolbarSpacerretcom"  />
+		<!-- <Button press="On_Go_Button" text="go" type="Accept" id="Go_Button" ariaDescribedBy="defaultButtonDescription genericButtonDescription"  ></Button> -->
+		<ToolbarSpacer id="_IDGenToolbarSpacerRet" />
+	</OverflowToolbar>
+		
+	</VBox>
+
+    <VBox id="_IDGenVBox2" class="sapUiSmallMargin">
+
+        	<k:Table id="Edit_Subcontracting_Vendor" visible="true" sort="onSort"  enableColumnReordering="false" rows="{path:'JModel>/data'}">
+            <k:extension>
+                <OverflowToolbar id="_IDGenOverflowToolbar2"   style="Clear">
+                    <Title id="title" text="Subcontracting Vendor Item"/>
+                    <ToolbarSeparator id="_IDGenToolbarSeparator1" />
+                    <ToolbarSpacer id="_IDGenToolbarSpacer43" />
+                    <ToolbarSpacer id="_IDGenToolbarSpacer55" />
+                 <Button id="idbtn1" icon="sap-icon://action-settings" press="openPersoDialog"/>
+                <Button id="Final_Delete_Button" enabled="false" icon="sap-icon://delete" type="Default" tooltip="Delete Row" press="OnTableRowRemove"/>
+                </OverflowToolbar>
+            </k:extension>
+            <k:columns>
+
+
+              <k:Column id="delind" sortProperty="DeletionIndicator" width="3.1rem">
+                    <Label id = "idlab" text=""/>
+                    <k:template>
+                        <Button id="DeleteIndicator" enabled="false" visible="{= ${JModel>Status} === 'deleted' }" icon="sap-icon://delete" type="Reject" tooltip="Deleted"/>
+                        <!-- <Button id="DeleteIndicato1r" enabled="false" visible="false" icon="sap-icon://refresh" type="Reject" tooltip="Deleted"></Button> -->
+                    </k:template>
+                </k:Column>
+
+              
+
+                  <k:Column id="idretcolmatdo"   sortProperty="Material Document Item" width="11rem">
+                    <Label id="idlblmat"    text="Doc Item" />
+                    <k:template>
+                        <Input id="idretqan"  enabled="false"  change="material doc item" value="{JModel>Material_Document_Item}"/>
+                    </k:template>
+                </k:Column>
+
+
+                <k:Column id="idtabretmat"   sortProperty="Material Number" width="11rem">
+                    <Label id="idtabretmatlbal"   text="Material Number" />
+                    <k:template>
+                        <Input id="idtabmatdocno"  enabled="false"  value="{JModel>Material_Document_Number}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column id="idtabcolgate"   sortProperty="Gate Entry Type" width="11rem">
+                    <Label id="idtabretmatlbl"   text="Gate Entry Type" />
+                    <k:template>
+                        <Input id="idtabgateentry" enabled="false" value="{JModel>Gate_Entry_Type}"/>
+                    </k:template>
+                </k:Column>
+
+                
+
+                <k:Column id="idretcol"   sortProperty=" Year" width="8rem">
+                    <Label id="idretlabmatdoc"    text=" Year" />
+                    <k:template>
+                        <Input id="idretmatdocyear"   enabled="false" change="Sales  Return Item" value="{JModel>Material_Document_Year}"/>
+                    </k:template>
+                </k:Column>
+
+
+                 <k:Column id="IdCol2" sortProperty="UOM" width="11rem">
+                    <Label id="idLbeom" text="UOM" />
+                    <k:template>
+                        <Input enabled="false"  id="idEom" change="Item" value="{JModel>UOM}"/>
+                    </k:template>
+                </k:Column>
+
+                 <k:Column id="idretcolqan"   sortProperty="Quantity" width="11rem">
+                    <Label id="idlabqan"    text="Quantity" />
+                    <k:template>
+                        <Input id="idretqantit" enabled="false"   change="Quantity" value="{JModel>Quantity}"/>
+                    </k:template>
+                </k:Column>
+                  
+
+
+                 <!-- <k:Column id="idretcolgtent"   sortProperty="Gate Entry Received" width="11rem">
+                    <Label id="idretlblgtent"    text="Gate Entry Received" />
+                    <k:template>
+                        <Input id="idretgatent"   change="Gate Entry Received" value="{}"/>
+                    </k:template>
+                </k:Column> -->
+                 
+
+                 <k:Column id="idcolrec"   sortProperty="Received Quantity" width="11rem">
+                    <Label id="idlblrec"    text="Received Quantity" />
+                    <k:template>
+                        <Input id="idretrec"  enabled="false"  change="Received Quantity" value="{parts:[{path:'JModel>Material_Document_Item'},{path:'JModel>Material_Document_Number'}, {path:'JModel>Quantity'}, {path:'JModel>Received_Quantity'}, {path:'JModel>Quantity_To_Post'}], formatter:'.OnReceivedQty'}"/>
+                    </k:template>
+                </k:Column>
+
+
+                <k:Column id="idcolpen"   sortProperty="Pending Quantity" width="11rem">
+                    <Label id="idlblpen"    text="Pending Quantity" />
+                    <k:template>
+                        <Input id="idretpenqan"  editable="false" change="Pending Quantity" value="{parts:[{path:'JModel>Material_Document_Item'},{path:'JModel>Material_Document_Number'}, {path:'JModel>Quantity'}, {path:'JModel>Received_Quantity'}, {path:'JModel>Quantity_To_Post'}], formatter:'.OnPendingQty'}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column id="idcolqanpost"  sortProperty="Quantity to Post" width="11rem">
+                    <Label id="idlblqanpo"    text="Quantity to Post" />
+                    <k:template>
+                        <Input id="idretqanpost"      enabled="{parts:[{path:'JModel>Material_Document_Item'},{path:'Material_Document_Number'},{path:'JModel>Quantity'}, {path:'JModel>Received_Quantity'}, {path:'JModel>Quantity_To_Post'},{path:'JModel>Status'}], formatter:'.OnGatePostEntryED'}" change="OnGateQtyToPostEnter" value="{JModel>Quantity_To_Post}"/>
+                    </k:template>
+                </k:Column>
+
+
+                <k:Column id="idcolplan"   sortProperty="Plant" width="11rem">
+                    <Label id="idlblplan"    text="Plant" />
+                    <k:template>
+                        <Input id="idretplan" enabled="false"  change="Plant" value="{JModel>Plant}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column id="idcolnam"   sortProperty="Name1" width="11rem">
+                    <Label id="idlblnam"    text="Name1" />
+                    <k:template>
+                        <Input id="idretname1"  enabled="false" change="Name1" value="{JModel>Plant_Name}"/>
+                    </k:template>
+                </k:Column>
+
+                    <k:Column id="idcolcust"   sortProperty="Customer" width="11rem">
+                    <Label id="idlblcust"    text="Customer" />
+                    <k:template>
+                        <Input id="idretcust"  enabled="false"  change="Customer" value="{JModel>Vendor_Code}"/>
+                    </k:template>
+                </k:Column>
+
+
+                <k:Column id="idcolcustname"   sortProperty="Customer Name" width="11rem">
+                    <Label id="idlblcustnam"    text="Customer Name" />
+                    <k:template>
+                        <Input id="idretcustnam"  enabled="false"   change="Customer Name" value="{JModel>Vendor_Name}"/>
+                    </k:template>
+                </k:Column>
+
+
+                <k:Column id="idcolcustdoc"   sortProperty="Bin Challan No" width="11rem">
+                    <Label id="idlblcustdoc"    text="Bin Challan No" />
+                    <k:template>
+                        <Input id="idretcustd"  enabled="false"  change="Customer Doc No." value="{path:'', formatter:'.OnCustomerDocFetch'}"/>
+                    </k:template>
+                </k:Column>
+
+                
+
+                 <k:Column id="idcolmat"   sortProperty="Material" width="11rem">
+                    <Label id="idlblmat1"   text="Material" />
+                    <k:template>
+                        <Input id="idretmatv"  enabled="false"  change="Material" value="{JModel>Material_Code}"/>
+                    </k:template>
+                </k:Column>
+
+                 <k:Column id="idcolmatdes"   sortProperty="Material description" width="11rem">
+                    <Label id="idlblmatdes"   text="Material description" />
+                    <k:template>
+                        <Input id="idretmatdes" enabled="false"  change="Material description" value="{JModel>Material_Description}"/>
+                    </k:template>
+                </k:Column>
+                 
+
+
+                    <k:Column id="idcolnoofpac"   sortProperty="No of Packages" width="11rem">
+                    <Label id="idlblnoof"   text="No of Packages" />
+                    <k:template>
+                        <Input id="idretnoofpack"  enabled="false"  change="No of Packages" value="{path:'', formatter:'.OnNoOfPackageFetch'}"/>
+                    </k:template>
+                </k:Column>
+
+                    <k:Column id="idcolvehic"   sortProperty="Vehicle No" width="11rem">
+                    <Label id="idlblveh"   text="Vehicle No" />
+                    <k:template>
+                        <Input id="idretvehno" enabled="false"   change="Vehicle No" value="{path:'', formatter:'.OnVehicleNoFetch'}"/>
+                    </k:template>
+                </k:Column>
+               
+               <k:Column id="idcolnoofbin"   sortProperty="No of Bins" width="11rem">
+                    <Label id="idlblnoofbin"   text="No of Bins" />
+                    <k:template>
+                        <Input id="idretnoofbin"  enabled="false"  change="No of Bins" value="{path:'', formatter:'.OnNoOfBinsFetch'}"/>
+                    </k:template>
+                </k:Column>
+
+
+                <k:Column id="idcolbin"   sortProperty="Bins Yes/No" width="11rem">
+                    <Label id="idlblnoofbins"   text="Bins Yes/No" />
+                    <k:template>
+                        <Input id="idretbinyes" enabled="false"   change="Bins Yes/No" value="{path:'', formatter:'.OnBinsFetch'}"/>
+                    </k:template>
+                </k:Column>
+
+      
+
+              <!-- <k:Column id="idcoluser"   sortProperty="User name" width="11rem">
+                    <Label id="idlbluser"   text="User name" />
+                    <k:template>
+                        <Input id="idretusernam"   change="User name" value=""/>
+                    </k:template>
+                </k:Column> -->
+
+
+                <k:Column id="idcoltransp"   sortProperty="Transporter" width="11rem">
+                    <Label id="idlbltrans"   text="Transporter" />
+                    <k:template>
+                        <Input id="idrettranspot"  enabled="false"  change="Transporter" value="{path:'', formatter:'.oNTransportFetch'}"/>
+                    </k:template>
+                </k:Column>
+
+                  <k:Column visible="true" id="SAP_UUID123" width=".5rem">
+                    <Label visible="false" id="SAPUUIDLqweqwe" text="SAP UUID"/>
+                    <k:template>
+                        <Input visible="false" id="SAPUUID_I" enabled="false" value="{JModel>SAP_UUID}"/>
+                    </k:template>
+                </k:Column>
+
+                             
+            </k:columns>
+            
+        </k:Table>
+
+    </VBox>
+   <footer>
+            <Toolbar id="otbFooter">
+
+                <Button icon="sap-icon://alert" text="{= ${message>/}.length }" visible="false" type="Emphasized" press="onMessagePopoverPress"/>
+                <Button id="DeleteIndicId" visible="false" text="This Entire Document has been deleted" type="Reject" enabled="false" icon="sap-icon://message-error"/>
+                <ToolbarSpacer/>
+
+                <Button id="Final_Update_Button" enabled="false" type="Accept" tooltip="Update Document" text="Update" press="OnUpdate"/>
+                <Button id="Final_DeleteEntireDocument_Button" enabled="false" tooltip="Delete Entire Document" type="Default" text="Delete Entire Document" press="OnDeleteEntireDocument"/>
+                <Button id="UnFinal_DeleteEntireDocument_Button" visible="false" enabled="true" tooltip="UnDelete Entire Document" type="Default" text="Retrive" press="OnUnDeleteEntireDocument"/>
+                <Button id="Final_Cancel_Button" enabled="true" visible="false" type="Default" tooltip="Reset Document Edit" text="Cancel" press="OnCancel"/>
+                <Button id="Final_Back_Button" enabled="true" type="Default" tooltip="Go Back" text="Back" press="OnBack"/>
+            </Toolbar>
+        </footer>
+    </Page>
+</mvc:View>

@@ -1,0 +1,31 @@
+
+
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<TableSelectDialog id="GenPurDocNo_dialog" noDataText="No Items Found" title="Select Items" search=".OnGenPurDocNoSearch" confirm=".OnGenPurDocNoSelect"
+		contentWidth="50%" cancel=".OnGenPurDocNoSelect" items="{path:'YY1_GENERAL_PURCHASE_CDS>/YY1_GENERAL_PURCHASE',sorter:[{path:'Id',descending:true}]}">
+		<ColumnListItem id="_IDGenColumnListItem1_GenPurDocNo" vAlign="Middle">
+			<cells>
+				<Text text="{YY1_GENERAL_PURCHASE_CDS>Id}"/>
+				<Text text="{YY1_GENERAL_PURCHASE_CDS>SAP_CreatedDateTime}"/>
+				<Text visible="false" text="{YY1_GENERAL_PURCHASE_CDS>SAP_UUID}"/>
+			</cells>
+		</ColumnListItem>
+		<columns>
+			<Column >
+				<header>
+					<Text text="General Purchase Document No"/>
+				</header>
+			</Column>
+			<Column >
+				<header>
+					<Text text="Created At"/>
+				</header>
+			</Column>
+			<Column visible="false" >
+				<header>
+					<Text text="SAP UUID"/>
+				</header>
+			</Column>
+		</columns>
+	</TableSelectDialog>
+</core:FragmentDefinition>

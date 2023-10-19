@@ -1,0 +1,26 @@
+
+
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<TableSelectDialog id="INRtnCln_dialog" noDataText="No Items Found" title="Select Items" search=".OnGataPassNoSearch" confirm=".OnGataPassNoSelect"
+		contentWidth="50%" cancel=".OnGataPassNoSelect" items="{YY1_IN_RETURNABLE_CLN_CDS>/YY1_IN_RETURNABLE_CLN}">
+		<ColumnListItem id="_IDGenColumnListItem1" vAlign="Middle">
+			<cells>
+				<Text text="{YY1_IN_RETURNABLE_CLN_CDS>Id}"/>
+				<Text text="{YY1_IN_RETURNABLE_CLN_CDS>SAP_CreatedDateTime}"/>
+			</cells>
+		</ColumnListItem>
+		<columns>
+			<Column >
+				<header>
+					<Text text="Returnable Challan No"/>
+				</header>
+			</Column>
+			
+			<Column  >
+				<header>
+					<Text text="Document Date"/>
+				</header>
+			</Column>
+		</columns>
+	</TableSelectDialog>
+</core:FragmentDefinition>

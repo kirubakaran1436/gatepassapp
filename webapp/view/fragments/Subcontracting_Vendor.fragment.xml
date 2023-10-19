@@ -1,0 +1,30 @@
+
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<TableSelectDialog id="Subcontracting_Vendor_dialog" noDataText="No Items Found" title="Select Items" search=".OnSubcontVendorNoSearch" confirm=".OnSubContVendorNoSelect"
+		contentWidth="50%" cancel=".OnSubContVendorNoSelect" items="{path:'YY1_SUBCONTRACTING_VENDOR_CDS>/YY1_SUBCONTRACTING_VENDOR',sorter:[{path:'Id',descending:true}]}">
+		<ColumnListItem id="_IDGenColumnListItem1_SubContractDocNo" vAlign="Middle">
+			<cells>
+				<Text text="{YY1_SUBCONTRACTING_VENDOR_CDS>Id}"/>
+				<Text text="{YY1_SUBCONTRACTING_VENDOR_CDS>SAP_CreatedDateTime}"/>
+				<Text visible="false" text="{YY1_SUBCONTRACTING_VENDOR_CDS>SAP_UUID}"/>
+			</cells>
+		</ColumnListItem>
+		<columns>
+			<Column >
+				<header>
+					<Text text="Subcontact Vendor No"/>
+				</header>
+			</Column>
+			<Column >
+				<header>
+					<Text text="Created By"/>
+				</header>
+			</Column>
+			<Column visible="false" >
+				<header>
+					<Text text="SAP UUID"/>
+				</header>
+			</Column>
+		</columns>
+	</TableSelectDialog>
+</core:FragmentDefinition>

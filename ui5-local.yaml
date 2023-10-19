@@ -1,0 +1,106 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "2.6"
+metadata:
+  name: gatepass
+type: application
+framework:
+  name: SAPUI5
+  version: 1.116.0
+  libraries:
+    - name: sap.m
+    - name: sap.ui.core
+    - name: sap.f
+    - name: sap.suite.ui.generic.template
+    - name: sap.ui.comp
+    - name: sap.ui.generic.app
+    - name: sap.ui.table
+    - name: sap.ushell
+    - name: themelib_sap_horizon
+server:
+  customMiddleware:
+    - name: fiori-tools-appreload
+      afterMiddleware: compression
+      configuration:
+        port: 35729
+        path: webapp
+        delay: 300
+    - name: fiori-tools-proxy
+      afterMiddleware: compression
+      configuration:
+        ignoreCertError: false # If set to true, certificate errors will be ignored. E.g. self-signed certificates will be accepted
+        backend:
+          - path:
+            url:
+            client:
+          - path: /sap/opu/odata/sap/YY1_GATEPASSHEADERDATA_CDS/
+            url: https://my401677-api.s4hana.cloud.sap
+            destination: DEV_Tenent_401677_BA
+          - path: /sap/opu/odata/sap/YY1_PURCHASE_DOC_HEADER_CDS/
+            url: https://my401677-api.s4hana.cloud.sap
+            destination: DEV_Tenent_401677_BA
+          - path: /sap/opu/odata/sap/YY1_PURCHASE_DOC_ITEMS_CDS/
+            url: https://my401677-api.s4hana.cloud.sap
+            destination: DEV_Tenent_401677_BA
+          - path: /sap/opu/odata/sap/YY1_PLANT_CDS/
+            url: https://my401677-api.s4hana.cloud.sap
+            destination: DEV_Tenent_401677_BA
+          - path: /sap/opu/odata/sap/YY1_PRODUCT_CDS/
+            url: https://my401677-api.s4hana.cloud.sap
+            destination: DEV_Tenent_401677_BA
+          - path: /sap/opu/odata/sap/YY1_SUPPLIER_CDS/
+            url: https://my401677-api.s4hana.cloud.sap
+            destination: DEV_Tenent_401677_BA
+          - path: /sap/opu/odata/sap/YY1_GENERAL_PURCHASE_CDS/
+            url: https://my401677-api.s4hana.cloud.sap
+            destination: DEV_Tenent_401677_BA
+          - path: /sap/opu/odata/sap/YY1_SALES_ORDER_HEAD_CDS/
+            url: https://my401677-api.s4hana.cloud.sap
+            destination: DEV_Tenent_401677_BA
+          - path: /sap/opu/odata/sap/YY1_SALES_ORDER_ITEM_CDS/
+            url: https://my401677-api.s4hana.cloud.sap
+            destination: DEV_Tenent_401677_BA
+          - path: /sap/opu/odata/sap/YY1_CASH_PURCHASE_CDS/
+            url: https://my401677-api.s4hana.cloud.sap
+            destination: DEV_Tenent_401677_BA
+          - path: /sap/opu/odata/sap/YY1_SALES_RETURN_CDS/
+            url: https://my401677-api.s4hana.cloud.sap
+            destination: DEV_Tenent_401677_BA
+          - path: /sap/opu/odata/sap/YY1_OUTBOUND_DELIVERY_HEAD_CDS/
+            url: https://my401677-api.s4hana.cloud.sap
+            destination: DEV_Tenent_401677_BA
+          - path: /sap/opu/odata/sap/YY1_OUTBOUND_DELIVERY_ITEM_CDS/
+            url: https://my401677-api.s4hana.cloud.sap
+            destination: DEV_Tenent_401677_BA
+          - path: /sap/opu/odata/sap/YY1_SUBCONTRACTING_VENDOR_CDS/
+            url: https://my401677-api.s4hana.cloud.sap
+            destination: DEV_Tenent_401677_BA
+          - path: /sap/opu/odata/sap/YY1_SALES_STO_CDS
+            url: https://my401677-api.s4hana.cloud.sap
+            destination: DEV_Tenent_401677_BA
+          - path: /sap/opu/odata/sap/YY1_IN_RETURNABLE_CLN_CDS/
+            url: https://my401677-api.s4hana.cloud.sap
+            destination: DEV_Tenent_401677_BA
+          - path: /sap/opu/odata/sap/YY1_VENDOR_RETURN_OW_CDS/
+            url: https://my401677-api.s4hana.cloud.sap
+            destination: DEV_Tenent_401677_BA
+          - path: /sap/opu/odata/sap/YY1_OW_RETURNABLE_CLN_ITEM_CDS/
+            url: https://my401677-api.s4hana.cloud.sap
+            destination: DEV_Tenent_401677_BA
+          - path: /sap/opu/odata/sap/YY1_OW_RETURNABLE_CHALLAN__CDS/
+            url: https://my401677-api.s4hana.cloud.sap
+            destination: DEV_Tenent_401677_BA
+          - path: /sap/opu/odata/sap/YY1_RETURN_ORDER_HEAD_CDS/
+            url: https://my401677-api.s4hana.cloud.sap
+            destination: DEV_Tenent_401677_BA
+          - path: /sap/opu/odata/sap/YY1_RETURN_ORDER_ITEM_CDS/
+            url: https://my401677-api.s4hana.cloud.sap
+            destination: DEV_Tenent_401677_BA
+          - path: /sap/opu/odata/sap/YY1_INWORD_STO_CDS/
+            url: https://my401677-api.s4hana.cloud.sap
+            destination: DEV_Tenent_401677_BA
+    - name: fiori-tools-preview
+      afterMiddleware: fiori-tools-appreload
+      configuration:
+        component: gatepass
+        ui5Theme: sap_horizon

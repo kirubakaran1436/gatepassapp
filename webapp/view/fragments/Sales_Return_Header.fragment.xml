@@ -1,0 +1,31 @@
+
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<TableSelectDialog id="SoDocHead_dialog" noDataText="No Sales Return Document Found" title="Select Sales Document" search=".OnSoDocHeadSearch" confirm=".OnSoDoHeadSelect"
+		contentWidth="50%" cancel=".OnSoDoHeadSelect" items="{YY1_RETURN_ORDER_HEAD_CDS>/YY1_Return_Order_Head}">
+		<ColumnListItem id="_IDGenColumnListItem1" vAlign="Middle">
+			<cells>
+				<Text id="SalesOrder1" text="{YY1_RETURN_ORDER_HEAD_CDS>CustomerReturn}"/>
+				<Text id="SoldToParty1" text="{YY1_RETURN_ORDER_HEAD_CDS>SoldToParty}"/>
+				<Text id="CustomerName1" text="{YY1_RETURN_ORDER_HEAD_CDS>BusinessPartnerName1}"/>
+			</cells>
+		</ColumnListItem>
+		<columns>
+			<Column id="SalesOrder2" >
+				<header>
+					<Text id="SalesOrder3" text="Sales Order"/>
+				</header>
+			</Column>
+			<Column id="SoldToParty2" >
+				<header>
+					<Text id="SoldToParty3" text="Customer Code"/>
+				</header>
+			</Column>
+			<Column id="CustomerName2" >
+				<header>
+					<Text id="CustomerName3" text="Customer Name"/>
+				</header>
+			</Column>
+		</columns>
+	</TableSelectDialog>
+</core:FragmentDefinition>
+

@@ -1,0 +1,92 @@
+
+
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<TableSelectDialog id="PoDocHead_dialog" noDataText="No Purchase Document Found" title="Select Purchase Document" search=".OnPoDocHeadSearch" confirm=".OnPoDcoHeadSelect"
+		contentWidth="50%" cancel=".OnPoDcoHeadSelect" items="{YY1_PURCHASE_DOC_HEADER_CDS>/YY1_Purchase_Doc_Header}">
+		<ColumnListItem id="_IDGenColumnListItem1" vAlign="Middle">
+			<cells>
+				<Text id="_IDGenText1" text="{YY1_PURCHASE_DOC_HEADER_CDS>PurchaseOrder}"/>
+				<Text id="_IDGenText2" text="{YY1_PURCHASE_DOC_HEADER_CDS>Supplier}"/>
+				<Text id="_IDGenText3" text="{YY1_PURCHASE_DOC_HEADER_CDS>SupplierName}"/>
+				<Text id="_IDGenText4" text="{YY1_PURCHASE_DOC_HEADER_CDS>Supplier}"/>
+			</cells>
+		</ColumnListItem>
+		<columns>
+			<Column id="_IDGenColumn1" >
+				<header>
+					<Text id="_IDGenText31" text="Purchase Order"/>
+				</header>
+			</Column>
+			<Column id="_IDGenColumn2" >
+				<header>
+					<Text id="_IDGenText5" text="Vendor Code"/>
+				</header>
+			</Column>
+			<Column id="_IDGenColumn3" >
+				<header>
+					<Text id="_IDGenText41" text="Vendor Name"/>
+				</header>
+			</Column>
+			<Column id="_IDGenColumn4" >
+				<header>
+					<Text id="_IDGenText6" text="Plant"/>
+				</header>
+			</Column>
+		</columns>
+	</TableSelectDialog>
+</core:FragmentDefinition>
+
+
+<!-- 
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<TableSelectDialog id="_IDGenTableSelectDialog1"
+		noDataText="No Products Found" contentWidth="40%"
+		title="Select Product"
+		search="._handleValueHelpSearch"
+		searchPlaceholder="Search Products"
+		confirm="._handleValueHelpClose"
+		cancel="._handleValueHelpClose"
+		showClearButton="true"
+		items="{YY1_PURCHASE_DOC_HEADER_CDS>/YY1_Purchase_Doc_Header}">
+		<ColumnListItem id="_IDGenColumnListItem1" selected="{selected}">
+			<cells>
+				<ObjectIdentifier id="_IDGenObjectIdentifier1" text="{YY1_PURCHASE_DOC_HEADER_CDS>PurchaseOrder}" />
+				<Text id="_IDGenText1" visible="true"  text="{YY1_PURCHASE_DOC_HEADER_CDS>Supplier}" />
+				<Text id="_IDGenText2" visible="false" text="{YY1_PURCHASE_DOC_HEADER_CDS>SupplierName}" />
+				<Text id="_IDGenText3" visible="true"  text="{YY1_PURCHASE_DOC_HEADER_CDS>PurchaseOrder}" />
+				
+			</cells>
+		</ColumnListItem>
+		<columns>
+			<Column id="_IDGenColumn1" >
+				<header>
+					<Text id="_IDGenText4" text="Product Document" />
+				</header>
+			</Column>
+		
+			<Column id="_IDGenColumn2" >
+				<header>
+					<Text id="_IDGenText5" text="Vendor" />
+				</header>
+			</Column>
+		
+			<Column visible="false" id="_IDGenColumn3" >
+				<header>
+					<Text id="_IDGenText6" text="Vendor Name" />
+				</header>
+			</Column>
+		
+			<Column id="_IDGenColumn4" >
+				<header>
+					<Text id="_IDGenText7" text="Plant" />
+				</header>
+			</Column>
+		
+			
+			
+		</columns>
+	</TableSelectDialog>
+</core:FragmentDefinition> -->
+

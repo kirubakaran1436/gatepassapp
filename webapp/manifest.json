@@ -1,0 +1,815 @@
+{
+    "_version": "1.49.0",
+    "sap.app": {
+        "id": "gatepass",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap/generator-fiori:basic",
+            "version": "1.10.4",
+            "toolsId": "5309c5a7-d54b-4dd4-8521-8e1ba3ec84c6"
+        },
+        "dataSources": {
+            "YY1_GATEPASSHEADERDATA_CDS": {
+                "uri": "/sap/opu/odata/sap/YY1_GATEPASSHEADERDATA_CDS/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/YY1_GATEPASSHEADERDATA_CDS/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "YY1_PURCHASE_DOC_HEADER_CDS": {
+                "uri": "/sap/opu/odata/sap/YY1_PURCHASE_DOC_HEADER_CDS/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/YY1_PURCHASE_DOC_HEADER_CDS/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "YY1_PURCHASE_DOC_ITEMS_CDS": {
+                "uri": "/sap/opu/odata/sap/YY1_PURCHASE_DOC_ITEMS_CDS/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/YY1_PURCHASE_DOC_ITEMS_CDS/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "YY1_PLANT_CDS": {
+                "uri": "/sap/opu/odata/sap/YY1_PLANT_CDS/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/YY1_PLANT_CDS/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "YY1_PRODUCT_CDS": {
+                "uri": "/sap/opu/odata/sap/YY1_PRODUCT_CDS/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/YY1_PRODUCT_CDS/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "YY1_SUPPLIER_CDS": {
+                "uri": "/sap/opu/odata/sap/YY1_SUPPLIER_CDS/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/YY1_SUPPLIER_CDS/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "YY1_GENERAL_PURCHASE_CDS": {
+                "uri": "/sap/opu/odata/sap/YY1_GENERAL_PURCHASE_CDS/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/YY1_GENERAL_PURCHASE_CDS/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "YY1_SALES_ORDER_HEAD_CDS": {
+                "uri": "/sap/opu/odata/sap/YY1_SALES_ORDER_HEAD_CDS/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/YY1_SALES_ORDER_HEAD_CDS/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "YY1_SALES_ORDER_ITEM_CDS": {
+                "uri": "/sap/opu/odata/sap/YY1_SALES_ORDER_ITEM_CDS/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/YY1_SALES_ORDER_ITEM_CDS/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "YY1_CASH_PURCHASE_CDS": {
+                "uri": "/sap/opu/odata/sap/YY1_CASH_PURCHASE_CDS/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/YY1_CASH_PURCHASE_CDS/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "YY1_SALES_RETURN_CDS": {
+                "uri": "/sap/opu/odata/sap/YY1_SALES_RETURN_CDS/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/YY1_SALES_RETURN_CDS/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "YY1_OUTBOUND_DELIVERY_HEAD_CDS": {
+                "uri": "/sap/opu/odata/sap/YY1_OUTBOUND_DELIVERY_HEAD_CDS/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/YY1_OUTBOUND_DELIVERY_HEAD_CDS/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "YY1_OUTBOUND_DELIVERY_ITEM_CDS": {
+                "uri": "/sap/opu/odata/sap/YY1_OUTBOUND_DELIVERY_ITEM_CDS/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/YY1_OUTBOUND_DELIVERY_ITEM_CDS/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "YY1_SUBCONTRACTING_VENDOR_CDS": {
+                "uri": "/sap/opu/odata/sap/YY1_SUBCONTRACTING_VENDOR_CDS/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/YY1_SUBCONTRACTING_VENDOR_CDS/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "YY1_SALES_STO_CDS": {
+                "uri": "/sap/opu/odata/sap/YY1_SALES_STO_CDS",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/YY1_SALES_STO_CDS/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "YY1_RETURN_CHALLAN_OW_CDS": {
+                "uri": "/sap/opu/odata/sap/YY1_RETURN_CHALLAN_OW_CDS/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/YY1_RETURN_CHALLAN_OW_CDS/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "YY1_IN_RETURNABLE_CLN_CDS": {
+                "uri": "/sap/opu/odata/sap/YY1_IN_RETURNABLE_CLN_CDS/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/YY1_IN_RETURNABLE_CLN_CDS/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "YY1_VENDOR_RETURN_OW_CDS": {
+                "uri": "/sap/opu/odata/sap/YY1_VENDOR_RETURN_OW_CDS/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/YY1_VENDOR_RETURN_OW_CDS/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "YY1_OW_RETURNABLE_CLN_ITEM_CDS": {
+                "uri": "/sap/opu/odata/sap/YY1_OW_RETURNABLE_CLN_ITEM_CDS/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/YY1_OW_RETURNABLE_CLN_ITEM_CDS/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "YY1_OW_RETURNABLE_CHALLAN__CDS": {
+                "uri": "/sap/opu/odata/sap/YY1_OW_RETURNABLE_CHALLAN__CDS/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/YY1_OW_RETURNABLE_CHALLAN__CDS/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "YY1_RETURN_ORDER_HEAD_CDS": {
+                "uri": "/sap/opu/odata/sap/YY1_RETURN_ORDER_HEAD_CDS/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/YY1_RETURN_ORDER_HEAD_CDS/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "YY1_RETURN_ORDER_ITEM_CDS": {
+                "uri": "/sap/opu/odata/sap/YY1_RETURN_ORDER_ITEM_CDS/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/YY1_RETURN_ORDER_ITEM_CDS/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "YY1_INWORD_STO_CDS": {
+                "uri": "/sap/opu/odata/sap/YY1_INWORD_STO_CDS/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/YY1_INWORD_STO_CDS/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            }
+        },
+        "crossNavigation": {
+            "inbounds": {
+                "gatepass01-display": {
+                    "semanticObject": "gatepass01",
+                    "action": "display",
+                    "title": "{{flpTitle}}",
+                    "subTitle": "{{flpSubtitle}}",
+                    "signature": {
+                        "parameters": {},
+                        "additionalParameters": "allowed"
+                    }
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": true,
+        "dependencies": {
+            "minUI5Version": "1.116.0",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.f": {},
+                "sap.suite.ui.generic.template": {},
+                "sap.ui.comp": {},
+                "sap.ui.generic.app": {},
+                "sap.ui.table": {},
+                "sap.ushell": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "gatepass.i18n.i18n"
+                }
+            },
+            "": {
+                "preload": true,
+                "dataSource": "YY1_GATEPASSHEADERDATA_CDS",
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "YY1_PURCHASE_DOC_HEADER_CDS": {
+                "dataSource": "YY1_PURCHASE_DOC_HEADER_CDS",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "YY1_PURCHASE_DOC_ITEMS_CDS": {
+                "dataSource": "YY1_PURCHASE_DOC_ITEMS_CDS",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "YY1_PLANT_CDS": {
+                "dataSource": "YY1_PLANT_CDS",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "YY1_PRODUCT_CDS": {
+                "dataSource": "YY1_PRODUCT_CDS",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "YY1_SUPPLIER_CDS": {
+                "dataSource": "YY1_SUPPLIER_CDS",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "YY1_GENERAL_PURCHASE_CDS": {
+                "dataSource": "YY1_GENERAL_PURCHASE_CDS",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "YY1_SALES_ORDER_HEAD_CDS": {
+                "dataSource": "YY1_SALES_ORDER_HEAD_CDS",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "YY1_SALES_ORDER_ITEM_CDS": {
+                "dataSource": "YY1_SALES_ORDER_ITEM_CDS",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "YY1_CASH_PURCHASE_CDS": {
+                "dataSource": "YY1_CASH_PURCHASE_CDS",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "YY1_SALES_RETURN_CDS": {
+                "dataSource": "YY1_SALES_RETURN_CDS",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "YY1_OUTBOUND_DELIVERY_HEAD_CDS": {
+                "dataSource": "YY1_OUTBOUND_DELIVERY_HEAD_CDS",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "YY1_OUTBOUND_DELIVERY_ITEM_CDS": {
+                "dataSource": "YY1_OUTBOUND_DELIVERY_ITEM_CDS",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "YY1_SUBCONTRACTING_VENDOR_CDS": {
+                "dataSource": "YY1_SUBCONTRACTING_VENDOR_CDS",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "YY1_SALES_STO_CDS": {
+                "dataSource": "YY1_SALES_STO_CDS",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "YY1_IN_RETURNABLE_CLN_CDS": {
+                "dataSource": "YY1_IN_RETURNABLE_CLN_CDS",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "YY1_VENDOR_RETURN_OW_CDS": {
+                "dataSource": "YY1_VENDOR_RETURN_OW_CDS",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "YY1_OW_RETURNABLE_CLN_ITEM_CDS": {
+                "dataSource": "YY1_OW_RETURNABLE_CLN_ITEM_CDS",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "YY1_OW_RETURNABLE_CHALLAN__CDS": {
+                "dataSource": "YY1_OW_RETURNABLE_CHALLAN__CDS",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "YY1_RETURN_CHALLAN_OW_CDS": {
+                "dataSource": "YY1_RETURN_CHALLAN_OW_CDS",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "YY1_RETURN_ORDER_HEAD_CDS": {
+                "dataSource": "YY1_RETURN_ORDER_HEAD_CDS",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "YY1_RETURN_ORDER_ITEM_CDS": {
+                "dataSource": "YY1_RETURN_ORDER_ITEM_CDS",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "YY1_INWORD_STO_CDS": {
+                "dataSource": "YY1_INWORD_STO_CDS",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "gatepass.view",
+                "controlAggregation": "pages",
+                "controlId": "app",
+                "clearControlAggregation": false
+            },
+            "routes": [
+                {
+                    "name": "RouteView1",
+                    "pattern": ":?query:",
+                    "target": [
+                        "TargetView1"
+                    ]
+                },
+                {
+                    "name": "View1",
+                    "pattern": "View1",
+                    "target": "View1"
+                },
+                {
+                    "name": "general_purchase",
+                    "pattern": "general_purchase",
+                    "target": "general_purchase"
+                },
+                {
+                    "name": "edit_general_purchase",
+                    "pattern": "edit_general_purchase",
+                    "target": "edit_general_purchase"
+                },
+                {
+                    "name": "display",
+                    "pattern": "display",
+                    "target": "display"
+                },
+                {
+                    "name": "dis_general_purchase",
+                    "pattern": "dis_general_purchase",
+                    "target": "dis_general_purchase"
+                },
+                {
+                    "name": "cash_purchase",
+                    "pattern": "cash_purchase",
+                    "target": "cash_purchase"
+                },
+                {
+                    "name": "edit_cash_purchase",
+                    "pattern": "edit_cash_purchase",
+                    "target": "edit_cash_purchase"
+                },
+                {
+                    "name": "sales_return",
+                    "pattern": "sales_return",
+                    "target": "sales_return"
+                },
+                {
+                    "name": "edit_sales_return",
+                    "pattern": "edit_sales_return",
+                    "target": "edit_sales_return"
+                },
+                {
+                    "name": "returnable_challan",
+                    "pattern": "returnable_challan",
+                    "target": "returnable_challan"
+                },
+                {
+                    "name": "edit_returnable_challan",
+                    "pattern": "edit_returnable_challan",
+                    "target": "edit_returnable_challan"
+                },
+                {
+                    "name": "returnable_challan_ow",
+                    "pattern": "returnable_challan_ow",
+                    "target": "returnable_challan_ow"
+                },
+                {
+                    "name": "edit_returnable_challan_ow",
+                    "pattern": "edit_returnable_challan_ow",
+                    "target": "edit_returnable_challan_ow"
+                },
+                {
+                    "name": "vendor_return",
+                    "pattern": "vendor_return",
+                    "target": "vendor_return"
+                },
+                {
+                    "name": "edit_vendor_return",
+                    "pattern": "edit_vendor_return",
+                    "target": "edit_vendor_return"
+                },
+                {
+                    "name": "inword_sto",
+                    "pattern": "inword_sto",
+                    "target": "inword_sto"
+                },
+                {
+                    "name": "edit_inword_sto",
+                    "pattern": "edit_inword_sto",
+                    "target": "edit_inword_sto"
+                },
+                {
+                    "name": "Sales_STO",
+                    "pattern": "Sales_STO",
+                    "target": "Sales_STO"
+                },
+                {
+                    "name": "Edit_Sales_STO",
+                    "pattern": "Edit_Sales_STO",
+                    "target": "Edit_Sales_STO"
+                },
+                {
+                    "name": "Subcontracting_Vendor",
+                    "pattern": "Subcontracting_Vendor",
+                    "target": "Subcontracting_Vendor"
+                },
+                {
+                    "name": "Edit_Subcontracting_Vendor",
+                    "pattern": "Edit_Subcontracting_Vendor",
+                    "target": "Edit_Subcontracting_Vendor"
+                },
+                {
+                    "name": "header_gatepass_report",
+                    "pattern": "header_gatepass_repor",
+                    "target": "header_gatepass_report"
+                },
+                {
+                    "name": "item_gatepass_report",
+                    "pattern": "item_gatepass_report/{plant}/{gate_pass_type}/{gate_pass_no}/{enter_gate_pass_No}/{from_date}/{to_date}",
+                    "target": "item_gatepass_report"
+                }
+            ],
+            "targets": {
+                "TargetView1": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "View1",
+                    "viewName": "View1"
+                },
+                "View1": {
+                    "viewId": "XML",
+                    "viewName": "View1"
+                },
+                "general_purchase": {
+                    "viewType": "XML",
+                    "viewName": "inword/general_purchase/general_purchase"
+                },
+                "edit_general_purchase": {
+                    "viewType": "XML",
+                    "viewName": "inword/general_purchase/edit_general_purchase"
+                },
+                "display": {
+                    "viewType": "XML",
+                    "viewName": "inword/general_purchase/display"
+                },
+                "dis_general_purchase": {
+                    "viewType": "XML",
+                    "viewName": "inword/general_purchase/dis_general_purchase"
+                },
+                "cash_purchase": {
+                    "viewType": "XML",
+                    "viewName": "inword/cash_purchase/cash_purchase"
+                },
+                "edit_cash_purchase": {
+                    "viewType": "XML",
+                    "viewName": "inword/cash_purchase/edit_cash_purchase"
+                },
+                "sales_return": {
+                    "viewType": "XML",
+                    "viewName": "inword/sales_return/sales_return"
+                },
+                "edit_sales_return": {
+                    "viewType": "XML",
+                    "viewName": "inword/sales_return/edit_sales_return"
+                },
+                "returnable_challan": {
+                    "viewType": "XML",
+                    "viewName": "inword/returnable_challan/returnable_challan"
+                },
+                "edit_returnable_challan": {
+                    "viewType": "XML",
+                    "viewName": "inword/returnable_challan/edit_returnable_challan"
+                },
+                "returnable_challan_ow": {
+                    "viewType": "XML",
+                    "viewName": "outword/returnable_challan/returnable_challan"
+                },
+                "edit_returnable_challan_ow": {
+                    "viewType": "XML",
+                    "viewName": "outword/returnable_challan/edit_returnable_challan"
+                },
+                "Subcontracting_Vendor": {
+                    "viewType": "XML",
+                    "viewName": "outword/Subcontracting_Vendor/Subcontracting_Vendor"
+                },
+                "Edit_Subcontracting_Vendor": {
+                    "viewType": "XML",
+                    "viewName": "outword/Subcontracting_Vendor/Edit_Subcontracting_Vendor"
+                },
+                "inword_sto": {
+                    "viewType": "XML",
+                    "viewName": "inword/inword_sto/inword_sto"
+                },
+                "edit_inword_sto": {
+                    "viewType": "XML",
+                    "viewName": "inword/inword_sto/edit_inword_sto"
+                },
+                "Sales_STO": {
+                    "viewType": "XML",
+                    "viewName": "outword/Sales_STO/Sales_STO"
+                },
+                "Edit_Sales_STO": {
+                    "viewType": "XML",
+                    "viewName": "outword/Sales_STO/Edit_Sales_STO"
+                },
+                "vendor_return": {
+                    "viewType": "XML",
+                    "viewName": "outword/vendor_return/vendor_return"
+                },
+                "edit_vendor_return": {
+                    "viewType": "XML",
+                    "viewName": "outword/vendor_return/edit_vendor_return"
+                },
+                "header_gatepass_report": {
+                    "viewType": "XML",
+                    "viewName": "report/header_gatepass_report"
+                },
+                "item_gatepass_report": {
+                    "viewType": "XML",
+                    "viewName": "report/item_gatepass_report"
+                }
+            }
+        },
+        "rootView": {
+            "viewName": "gatepass.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "App"
+        }
+    },
+    "sap.cloud": {
+        "public": true,
+        "service": "gatepass"
+    }
+}

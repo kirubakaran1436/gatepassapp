@@ -1,0 +1,175 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:fb="sap.ui.comp.filterbar" xmlns:svm="sap.ui.comp.smartvariants" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:k="sap.ui.table" xmlns:vm="sap.ui.fl.variants" controllerName="gatepass.controller.inword.cash_purchase.edit_cash_purchase" height="100%">
+    <Page id="page" titleAlignment="Center" title="Change Cash Purchase">
+
+            <VBox id="_IDGenVBox1" class="sapUiSmallMargin">
+		<f:SimpleForm class="simform" id="SimpleFormChangeColumn_twoGroups234" editable="true" layout="ColumnLayout" columnsM="2" columnsL="3" columnsXL="4">
+			<f:content>
+				
+				<!-- _____________General Purchase Document No_______________ -->			
+
+                <Label id="_IDGenLabel21" text="Cash Purchase Document No"/>
+				<Input id="Cash_Purchase_Document_H" placeholder="Cash Purchase Document No" valueHelpOnly="true" valueHelpRequest="OnCashPurDocNoFrag" showValueHelp="true"/>
+				<!-- ____________________________________________________ -->
+
+                <Label id="_IDGenLabel22" visible="false" text="SAP UUID"/>
+				<Input id="SAP_UUID_H" visible="false" placeholder="SAP_UUID" value=""/>
+
+				<!-- ____________________________________________________ -->	
+
+                <Label id="_IDGenLabel23" text="Plant"/>
+				<Input id="Plant_H" enabled="false" class="InputBackclr" placeholder="Plant" value=""/>
+				<!-- ____________________________________________________ -->			
+
+                <Label id="_IDGenLabel24" text="Vendor"/>
+				<Input id="Vendor_H" enabled="false" class="InputBackclr" placeholder="Vendor" value=""/>
+				<!-- ____________________________________________________ -->			
+
+                <Label id="_IDGenLabel25" text="Partner's Doc No"/>
+				<Input id="Partner_Doc_No_H" enabled="false" class="InputBackclr" placeholder="Partner's Doc No" value=""/>
+				<!-- ____________________________________________________ -->			
+
+                <Label id="_IDGenLabel26" text="No Of Packages"/>
+				<Input id="No_Of_Packages_H" change="OnNoOfPackageEnter" enabled="true" class="InputBackclr" placeholder="No Of Packages" value=""/>
+				<!-- ____________________________________________________ -->			
+
+                <Label id="_IDGenLabel27" text="Vehicle No"/>
+				<Input id="Vehicle_No_H" change="OnVehicleNoEnter" enabled="true" class="InputBackclr" placeholder="Vehicle No" value=""/>
+				<!-- ____________________________________________________ -->			
+
+                <Label id="_IDGenLabel28" text="Person Name"/>
+				<Input id="Person_Name_H" change="OnPersonNameEnter" enabled="true" class="InputBackclr" placeholder="Person Name" value=""/>
+				<!-- ____________________________________________________ -->			
+
+
+			</f:content>
+			
+		</f:SimpleForm>
+		
+	</VBox>
+    <VBox id="_IDGenVBox2" class="sapUiSmallMargin">
+
+        	<k:Table id="cashTable" visible="true" sort="onSort" enableColumnReordering="false" rows="{path:'JModel>/data', sorter: {path: 'JModel>SAP_UUID'}}">
+            <k:extension>
+                <OverflowToolbar id="_IDGenOverflowToolbar2" style="Clear">
+                    <Title id="title" text="Cash Purchase Item"/>
+                    <ToolbarSeparator id="_IDGenToolbarSeparator1"/>
+                    <ToolbarSpacer id="_IDGenToolbarSpacer4"/>
+                    <ToolbarSpacer id="_IDGenToolbarSpacer5"/>
+                    <Button id="_IDGenButton1" icon="sap-icon://action-settings" press="openPersoDialog"/>
+                    <Button id="Final_Delete_Button" enabled="false" icon="sap-icon://delete" type="Default" tooltip="Delete Row" press="OnTableRowRemove"/>
+
+                </OverflowToolbar>
+            </k:extension>
+            <k:columns>
+
+                <k:Column sortProperty="DeletionIndicator" width="3.1rem">
+                    <Label text=""/>
+                    <k:template>
+                        <Button id="DeleteIndicator" enabled="false" visible="{= ${JModel>Status} === 'deleted' }" icon="sap-icon://delete" type="Reject" tooltip="Deleted"/>
+                        <!-- <Button id="DeleteIndicato1r" enabled="false" visible="false" icon="sap-icon://refresh" type="Reject" tooltip="Deleted"></Button> -->
+                    </k:template>
+                </k:Column>
+
+                <k:Column id="_IDGenColumn1" tooltip="Plant" sortProperty="Plant" width="11rem">
+                    <Label id="_IDGenLabel11" text="Plant"/>
+                    <k:template>
+                        <Input id="Plant_I" enabled="false" value="{JModel>Plant}"/>
+                    </k:template>
+                </k:Column>
+
+                 <k:Column id="_IDGenColumn4" tooltip="Material Description" sortProperty="Material Description" width="11rem">
+                    <Label id="_IDGenLabel14"  text="Material Description"/>
+                    <k:template>
+                        <Input id="Material_I"  change="OnProductCheck" enabled="{= ${JModel>Status} !== 'deleted' }" valueHelpRequest="OnProductFragOpen" showValueHelp="true" value="{JModel>Material_Description}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column id="_IDGenColumn6" tooltip="Quantity" sortProperty="Quantity" width="11rem">
+                    <Label id="_IDGenLabel16"   text="Quantity"/>
+                    <k:template>
+                        <Input id="Quantity_I"  enabled="{= ${JModel>Status} !== 'deleted' }" change="OnQuantityCheck" value="{JModel>Quantity}"/>
+                    </k:template>
+                </k:Column>
+
+                 <k:Column id="_IDGenColumn51" tooltip="UOM" sortProperty="UOM" width="11rem">
+                    <Label id="_IDGenLabel151"  text="UOM"/>
+                    <k:template>
+                        <Input id="UOM_I" maxLength="4" enabled="{= ${JModel>Status} !== 'deleted' }" change="OnUOMCheck" value="{JModel>UOM}"/>
+                    </k:template>
+                </k:Column>
+
+                 <k:Column id="_IDGenColumn5" tooltip="Amount" sortProperty="Amount" width="11rem">
+                    <Label id="_IDGenLabel15"  text="Amount"/>
+                    <k:template>
+                        <Input id="Amount_I"  enabled="{= ${JModel>Status} !== 'deleted' }" change="OnAmountCheck" value="{JModel>Amount}"/>
+                    </k:template>
+                </k:Column>
+
+                                <k:Column id="_IDGenColumn2" tooltip="Bill No" sortProperty="Bill No" width="11rem">
+                    <Label id="_IDGenLabel12" text="Bill No"/>
+                    <k:template>
+                        <Input id="BillNo_I" enabled="false" value="{JModel>Bill_No}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column id="_IDGenColumn3" tooltip="Vendor " sortProperty="vendor" width="11rem">
+                    <Label id="_IDGenLabel13" text="Vendor"/>
+                    <k:template>
+                        <Input enabled="false" id="_IDGenInput13" value="{JModel>Vendor_Name}"/>
+                    </k:template>
+                </k:Column>
+
+
+                <k:Column id="_IDGenColumn7" tooltip="No Of Packages" sortProperty="No of Packages" width="11rem">
+                    <Label id="_IDGenLabel17" text="No of Packages"/>
+                    <k:template>
+                        <Input id="_IDGenInput17" enabled="false" value="{JModel>No_Of_Packages}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column id="_IDGenColumn8" tooltip="Vehicle No" sortProperty="Vehicle No" width="11rem">
+                    <Label id="_IDGenLabel18" text="Vehicle No"/>
+                    <k:template>
+                        <Input id="_IDGenInput18" enabled="false" value="{JModel>Vehicle_No}"/>
+                    </k:template>
+                </k:Column>
+
+
+                <k:Column id="_IDGenColumn9" tooltip="Person Name" sortProperty="Person name" width="11rem">
+                    <Label id="_IDGenLabel19" text="Person name"/>
+                    <k:template>
+                        <Input id="_IDGenInput19" enabled="false" value="{JModel>Person_Name}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column id="_IDGenColumn10" tooltip="Internal" sortProperty="" width=".5rem">
+                    <Label id="_IDGenLabel20" text=""/>
+                    <k:template>
+                        <Input id="SAP_UUID_I" value="{JModel>SAP_UUID}" />
+                    </k:template>
+                </k:Column>
+
+                                           
+            </k:columns>
+            
+        </k:Table>
+
+    </VBox>
+    <footer>
+            <Toolbar id="otbFooter">
+
+                <Button id="_IDGenButton2" icon="sap-icon://alert" text="{= ${message>/}.length }" visible="false" type="Emphasized" press="onMessagePopoverPress"/>
+                <Button id="DeleteIndicId" visible="false" text="This Entire Document has been deleted" type="Reject" enabled="false" icon="sap-icon://message-error"/>
+                <ToolbarSpacer id="_IDGenToolbarSpacer6"/>
+
+                <Button id="Final_Update_Button" enabled="false" type="Accept" tooltip="Update Document" text="Update" press="OnUpdate"/>
+                <Button id="Final_DeleteEntireDocument_Button" enabled="false" tooltip="Delete Entire Document" type="Default" text="Delete Entire Document" press="OnDeleteEntireDocument"/>
+                <Button id="UnFinal_DeleteEntireDocument_Button" visible="false" enabled="true" tooltip="UnDelete Entire Document" type="Default" text="Retrive" press="OnUnDeleteEntireDocument"/>
+                <Button visible="false" id="Final_Cancel_Button" enabled="true" type="Default" tooltip="Reset Document Edit" text="Cancel" press="OnCancel"/>
+                <Button id="Final_Back_Button" enabled="true" type="Default" tooltip="Go Back" text="Back" press="OnBack"/>
+                <Button id="_IDGenButton3" text=""/>
+
+            </Toolbar>
+        </footer>
+    </Page>
+</mvc:View>

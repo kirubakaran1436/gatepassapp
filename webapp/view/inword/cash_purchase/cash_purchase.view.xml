@@ -1,0 +1,161 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:fb="sap.ui.comp.filterbar" xmlns:svm="sap.ui.comp.smartvariants" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:k="sap.ui.table" xmlns:vm="sap.ui.fl.variants" controllerName="gatepass.controller.inword.cash_purchase.cash_purchase" height="100%">
+    <Page id="page" titleAlignment="Center" title="Cash Purchase">
+
+      <VBox id="_IDGenVBox1" class="sapUiSmallMargin">
+		<f:SimpleForm class="simform" id="SimpleFormChangeColumn_twoGroups234" editable="true" layout="ColumnLayout" columnsM="2" columnsL="3" columnsXL="4">
+			<f:content>
+				
+                <Label id="Id_Lable" text="Cash Purchase Doc No"/>
+				<Input id="Id" placeholder="Id" enabled="false"/>
+
+				<!-- ____________________________________________________ -->
+				
+                <Label id="_IDGenLabel2" text="Plant"/>
+				<Input id="Plant_H" required="true" placeholder="Plant" valueHelpOnly="true" valueHelpRequest="OnPlantFragOpen" showValueHelp="true"/>
+
+				<!-- ____________________________________________________ -->
+				
+                <Label id="_IDGenLabel3" text="Vendor"/>
+				<Input id="Vendor_H" required="true" placeholder="Vendor" change="OnVendorHeadEnter" valueHelpOnly="false" valueHelpRequest="OnVendorFragOpen" showValueHelp="true"/>
+
+				<!-- ____________________________________________________ -->
+                <Label id="_IDGenLabel10" text="Partner's Doc No."/>
+				<Input id="PartnerDocNo_H" required="true" change="OnPartnerDocNo" placeholder="Partner's Doc No." value=""/>  
+
+                <!-- ____________________________________________________ -->
+
+                        
+                            <Label id="_IDGenLabel6" text="No of Packages"/>
+                            <Input id="NoOfPackage_H" change="OnOverallHeader" placeholder="No of Packages" value=""/>  
+
+                <!-- ____________________________________________________ -->
+
+                        
+                            <Label id="_IDGenLabel7" text="Vehicle No"/>
+                            <Input id="VehicleNo_H" change="OnOverallHeader" placeholder="Vehicle No" value=""/>  
+                <!-- ____________________________________________________ -->
+
+                            <Label id="_IDGenLabel9" text="Person name"/>
+                            <Input id="PersonName_H" change="OnOverallHeader" placeholder="Person name" value=""/>  
+                <!-- ____________________________________________________ -->
+
+			</f:content>
+			
+		</f:SimpleForm>
+		
+	</VBox>
+
+    <VBox id="_IDGenVBox2" class="sapUiSmallMargin">
+
+        	<k:Table id="cashTable" visible="false" sort="onSort" enableColumnReordering="false" rows="{mModel>/Samples}">
+            <k:extension>
+                <OverflowToolbar id="_IDGenOverflowToolbar2" style="Clear">
+                    <Title id="title" text="Cash Purchase Item"/>
+                    <ToolbarSeparator id="_IDGenToolbarSeparator1"/>
+                    <ToolbarSpacer id="_IDGenToolbarSpacer4"/>
+                    <ToolbarSpacer id="_IDGenToolbarSpacer5"/>
+                     <Button id="_IDGenButton1" icon="sap-icon://action-settings" press="openPersoDialog"/>
+                     <Button id="TableAddRowBtn" enabled="false" icon="sap-icon://sys-add" press="OnTableAddRow" tooltip="Add Rows"/>
+                </OverflowToolbar>
+            </k:extension>
+            <k:columns>
+
+                <k:Column id="_IDGenColumn1" tooltip="Plant" sortProperty="Plant" width="11rem">
+                    <Label id="_IDGenLabel11" text="Plant"/>
+                    <k:template>
+                        <Input id="Plant_I" enabled="false" value="{mModel>Plant}"/>
+                    </k:template>
+                </k:Column>
+
+                 <k:Column id="_IDGenColumn4" tooltip="Material Description" sortProperty="Material Description" width="11rem">
+                    <Label id="_IDGenLabel14" text="Material Description"/>
+                    <k:template>
+                        <Input id="Material_I" change="OnProductCheck" enabled="true" valueHelpRequest="OnProductFragOpen" showValueHelp="true" value="{mModel>Material_description}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column id="_IDGenColumn6" tooltip="Quantity" sortProperty="Quantity" width="11rem">
+                    <Label id="_IDGenLabel16"  text="Quantity"/>
+                    <k:template>
+                        <Input id="Quantity_I" type="Number" enabled="true" change="OnQuantityCheck" value="{mModel>Quantity}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column id="_IDGenColumn91" tooltip="Quantity" sortProperty="UOM" width="11rem">
+                    <Label id="_IDGenLabel161"  text="UOM"/>
+                    <k:template>
+                        <Input id="UOM_I" enabled="true" maxLength="4" liveChange="OnUOMCheck" value="{mModel>BaseUnit}"/>
+                    </k:template>
+                </k:Column>
+
+                 <k:Column id="_IDGenColumn5" tooltip="Amount" sortProperty="Amount" width="11rem">
+                    <Label id="_IDGenLabel15" text="Amount"/>
+                    <k:template>
+                        <Input id="Amount_I" type="Number" enabled="true" change="OnAmountCheck" value="{mModel>Amount}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column id="_IDGenColumn2" tooltip="Bill No" sortProperty="Bill No" width="11rem">
+                    <Label id="_IDGenLabel12" text="Bill No"/>
+                    <k:template>
+                        <Input id="BillNo_I" enabled="false" value="{mModel>Bill_No}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column id="_IDGenColumn3" tooltip="Vendor " sortProperty="vendor" width="11rem">
+                    <Label id="_IDGenLabel13" text="Vendor"/>
+                    <k:template>
+                        <Input enabled="false" id="_IDGenInput13" value="{mModel>Vendor}"/>
+                    </k:template>
+                </k:Column>
+
+
+                <k:Column id="_IDGenColumn7" tooltip="No Of Packages" sortProperty="No of Packages" width="11rem">
+                    <Label id="_IDGenLabel17" text="No of Packages"/>
+                    <k:template>
+                        <Input id="_IDGenInput17" enabled="false" value="{mModel>No_of_Packages}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column id="_IDGenColumn8" tooltip="Vehicle No" sortProperty="Vehicle No" width="11rem">
+                    <Label id="_IDGenLabel18" text="Vehicle No"/>
+                    <k:template>
+                        <Input id="_IDGenInput18" enabled="false" value="{mModel>Vehicle_No}"/>
+                    </k:template>
+                </k:Column>
+
+
+                <k:Column id="_IDGenColumn9" tooltip="Person Name" sortProperty="Person name" width="11rem">
+                    <Label id="_IDGenLabel19" text="Person name"/>
+                    <k:template>
+                        <Input id="_IDGenInput19" enabled="false" value="{mModel>Person_name}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column id="_IDGenColumn10" tooltip="Remove Row" sortProperty="Remove" width="5rem">
+                    <Label id="_IDGenLabel20" text="Remove"/>
+                    <k:template>
+                        <Button id="TableRowRemoveId" icon="sap-icon://delete" type="Reject" tooltip="Remove the Row" press="OnTableRowRemove"></Button>
+                    </k:template>
+                </k:Column>
+
+                                           
+            </k:columns>
+            
+        </k:Table>
+
+    </VBox>
+    <footer>
+            <Toolbar id="otbFooter">
+                <Button id="_IDGenButton2" icon="sap-icon://alert" text="{= ${message>/}.length }" visible="false" type="Emphasized" press="onMessagePopoverPress"/>
+                <ToolbarSpacer id="_IDGenToolbarSpacer6"/>
+                <Button id="Final_Save_Button" visible="false" enabled="true" type="Accept" text="Submit" press="OnSubmit"/>
+                <Button id="Final_Cancel_Button" visible="false" enabled="true" type="Reject" text="Cancel" press="OnCancel"/>
+                <Button id="Final_Edit_Button" enabled="true" type="Default" text="Change" press="OnEditPage"/>
+                <Button id="Final_Display_Button" enabled="true" type="Default" text="Display" press="OnDisplay"/>
+                <Button id="Final_Back_Button" enabled="true" type="Default" text="Back" press="OnBack"/>
+                <Button text=""/>
+            </Toolbar>
+        </footer>
+    </Page>
+</mvc:View>

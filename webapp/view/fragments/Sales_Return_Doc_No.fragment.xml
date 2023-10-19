@@ -1,0 +1,31 @@
+
+
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<TableSelectDialog id="GenSaleDocNo_dialog" noDataText="No Items Found" title="Select Items" search=".OnGenSaleDocNoSearch" confirm=".OnGenSaleDocNoSelect"
+		contentWidth="50%" cancel=".OnGenSaleDocNoSelect" items="{path:'YY1_SALES_RETURN_CDS>/YY1_SALES_RETURN',sorter:[{path:'Id',descending:true}]}">
+		<ColumnListItem id="_IDGenColumnListItem1_GenSaleDocNo" vAlign="Middle">
+			<cells>
+				<Text text="{YY1_SALES_RETURN_CDS>Id}"/>
+				<Text text="{YY1_SALES_RETURN_CDS>SAP_CreatedDateTime}"/>
+				<Text visible="false" text="{YY1_SALES_RETURN_CDS>SAP_UUID}"/>
+			</cells>
+		</ColumnListItem>
+		<columns>
+			<Column >
+				<header>
+					<Text text="Sales Return Document No"/>
+				</header>
+			</Column>
+			<Column >
+				<header>
+					<Text text="Created At"/>
+				</header>
+			</Column>
+			<Column visible="false" >
+				<header>
+					<Text text="SAP UUID"/>
+				</header>
+			</Column>
+		</columns>
+	</TableSelectDialog>
+</core:FragmentDefinition>

@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="https://my401677-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my401677-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my401677-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my401677-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="SAP__CodeList"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my401677-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my401677-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my401677-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my401677-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my401677-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my401677-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="YY1_SALES_STO_CDS" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="P_Scbo_UserType" sap:label="User" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="name"/>
+                </Key>
+                <Property Name="name" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="UpperCase" sap:label="User" sap:quickinfo="User Name in User Master Record"/>
+                <Property Name="description" Type="Edm.String" MaxLength="80" sap:label="Description" sap:quickinfo="Description of the Technical User Account"/>
+            </EntityType>
+            <EntityType Name="YY1_ITEM_SALES_STOType" sap:label="Item" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SAP_UUID"/>
+                </Key>
+                <Property Name="SAP_UUID" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
+                <Property Name="SAP_PARENT_UUID" Type="Edm.Guid" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
+                <Property Name="Id" Type="Edm.String" MaxLength="10" sap:display-format="NonNegative" sap:label="Id"/>
+                <Property Name="Delivery_No_Item" Type="Edm.String" MaxLength="20" sap:label="Delivery_No_Item"/>
+                <Property Name="Delivery_No" Type="Edm.String" MaxLength="20" sap:label="Delivery_No"/>
+                <Property Name="Material" Type="Edm.String" MaxLength="20" sap:label="Material"/>
+                <Property Name="Material_Description" Type="Edm.String" MaxLength="40" sap:label="Material_Description"/>
+                <Property Name="Quantity" Type="Edm.String" MaxLength="20" sap:label="Quantity"/>
+                <Property Name="Received_Quantity" Type="Edm.String" MaxLength="20" sap:label="Received_Quantity"/>
+                <Property Name="Pending_Quantity" Type="Edm.String" MaxLength="20" sap:label="Pending_Quantity"/>
+                <Property Name="Quantity_To_Post" Type="Edm.String" MaxLength="20" sap:label="Quantity_To_Post"/>
+                <Property Name="Plant" Type="Edm.String" MaxLength="20" sap:label="Plant"/>
+                <Property Name="Plant_Name" Type="Edm.String" MaxLength="40" sap:label="Plant_Name"/>
+                <Property Name="Customer_Code" Type="Edm.String" MaxLength="20" sap:label="Customer_Code"/>
+                <Property Name="Customer_Name" Type="Edm.String" MaxLength="40" sap:label="Customer_Name"/>
+                <Property Name="No_Of_Packages" Type="Edm.String" MaxLength="20" sap:label="No_Of_Packages"/>
+                <Property Name="Vehicle_No" Type="Edm.String" MaxLength="20" sap:label="Vehicle_No"/>
+                <Property Name="Bins" Type="Edm.String" MaxLength="20" sap:label="Bins"/>
+                <Property Name="No_Of_Bins" Type="Edm.String" MaxLength="20" sap:label="No_Of_Bins"/>
+                <Property Name="Transporter" Type="Edm.String" MaxLength="40" sap:label="Transporter"/>
+                <Property Name="Status" Type="Edm.String" MaxLength="20" sap:label="Status"/>
+                <Property Name="Status01" Type="Edm.String" MaxLength="20" sap:label="Status01"/>
+                <Property Name="Field01" Type="Edm.String" MaxLength="20" sap:label="Field01"/>
+                <Property Name="Field02" Type="Edm.String" MaxLength="20" sap:label="Field02"/>
+                <Property Name="Field03" Type="Edm.String" MaxLength="20" sap:label="Field03"/>
+                <NavigationProperty Name="to_SALES_STO" Relationship="YY1_SALES_STO_CDS.assoc_9909DFA4D8554754286D387B9BD8AC27" FromRole="ToRole_assoc_9909DFA4D8554754286D387B9BD8AC27" ToRole="FromRole_assoc_9909DFA4D8554754286D387B9BD8AC27"/>
+            </EntityType>
+            <EntityType Name="YY1_SALES_STOType" sap:label="Sales_STO" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SAP_UUID"/>
+                </Key>
+                <Property Name="SAP_UUID" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
+                <Property Name="Id" Type="Edm.String" MaxLength="10" sap:display-format="NonNegative" sap:label="Id"/>
+                <Property Name="Gate_Pass_Type" Type="Edm.String" MaxLength="20" sap:label="Gate_Pass_Type"/>
+                <Property Name="Delivery_No" Type="Edm.String" MaxLength="20" sap:label="Delivery_No"/>
+                <Property Name="Plant" Type="Edm.String" MaxLength="20" sap:label="Plant"/>
+                <Property Name="Plant_Name" Type="Edm.String" MaxLength="40" sap:label="Plant_Name"/>
+                <Property Name="Customer_Code" Type="Edm.String" MaxLength="20" sap:label="Customer_Code"/>
+                <Property Name="Customer_Name" Type="Edm.String" MaxLength="40" sap:label="Customer_Name	"/>
+                <Property Name="No_Of_Packages" Type="Edm.String" MaxLength="20" sap:label="No_Of_Packages"/>
+                <Property Name="Vehicle_No" Type="Edm.String" MaxLength="20" sap:label="Vehicle_No	"/>
+                <Property Name="Bins" Type="Edm.String" MaxLength="20" sap:label="Bins"/>
+                <Property Name="No_Of_Bins" Type="Edm.String" MaxLength="20" sap:label="No_Of_Bins	"/>
+                <Property Name="Transporter" Type="Edm.String" MaxLength="40" sap:label="Transporter"/>
+                <Property Name="Status" Type="Edm.String" MaxLength="20" sap:label="Status"/>
+                <Property Name="Status01" Type="Edm.String" MaxLength="20" sap:label="Status01"/>
+                <Property Name="Field01" Type="Edm.String" MaxLength="20" sap:label="Field01"/>
+                <Property Name="Field02" Type="Edm.String" MaxLength="20" sap:label="Field02"/>
+                <Property Name="Field03" Type="Edm.String" MaxLength="20" sap:label="Field03"/>
+                <Property Name="SAP_CreatedDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Created On" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SAP_CreatedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:text="SAP_CreatedByUser_Text" sap:label="Created By" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SAP_CreatedByUser_Text" Type="Edm.String" MaxLength="80" sap:label="Description" sap:quickinfo="Description of the Technical User Account" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SAP_LastChangedDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Last Changed On" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SAP_LastChangedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:text="SAP_LastChangedByUser_Text" sap:label="Last Changed By" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SAP_LastChangedByUser_Text" Type="Edm.String" MaxLength="80" sap:label="Description" sap:quickinfo="Description of the Technical User Account" sap:creatable="false" sap:updatable="false"/>
+                <NavigationProperty Name="to_Item" Relationship="YY1_SALES_STO_CDS.assoc_9909DFA4D8554754286D387B9BD8AC27" FromRole="FromRole_assoc_9909DFA4D8554754286D387B9BD8AC27" ToRole="ToRole_assoc_9909DFA4D8554754286D387B9BD8AC27"/>
+                <NavigationProperty Name="to_SAPSysAdminDataChangeUser" Relationship="YY1_SALES_STO_CDS.assoc_701443B98DDA8366D9D0E9A12D55B64F" FromRole="FromRole_assoc_701443B98DDA8366D9D0E9A12D55B64F" ToRole="ToRole_assoc_701443B98DDA8366D9D0E9A12D55B64F"/>
+                <NavigationProperty Name="to_SAPSysAdminDataCreateUser" Relationship="YY1_SALES_STO_CDS.assoc_B67150E5E11DF9B1DAA92C650E46758F" FromRole="FromRole_assoc_B67150E5E11DF9B1DAA92C650E46758F" ToRole="ToRole_assoc_B67150E5E11DF9B1DAA92C650E46758F"/>
+            </EntityType>
+            <Association Name="assoc_701443B98DDA8366D9D0E9A12D55B64F" sap:content-version="1">
+                <End Type="YY1_SALES_STO_CDS.YY1_SALES_STOType" Multiplicity="1" Role="FromRole_assoc_701443B98DDA8366D9D0E9A12D55B64F"/>
+                <End Type="YY1_SALES_STO_CDS.P_Scbo_UserType" Multiplicity="0..1" Role="ToRole_assoc_701443B98DDA8366D9D0E9A12D55B64F"/>
+            </Association>
+            <Association Name="assoc_B67150E5E11DF9B1DAA92C650E46758F" sap:content-version="1">
+                <End Type="YY1_SALES_STO_CDS.YY1_SALES_STOType" Multiplicity="1" Role="FromRole_assoc_B67150E5E11DF9B1DAA92C650E46758F"/>
+                <End Type="YY1_SALES_STO_CDS.P_Scbo_UserType" Multiplicity="0..1" Role="ToRole_assoc_B67150E5E11DF9B1DAA92C650E46758F"/>
+            </Association>
+            <Association Name="assoc_9909DFA4D8554754286D387B9BD8AC27" sap:content-version="1">
+                <End Type="YY1_SALES_STO_CDS.YY1_SALES_STOType" Multiplicity="1" Role="FromRole_assoc_9909DFA4D8554754286D387B9BD8AC27">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Type="YY1_SALES_STO_CDS.YY1_ITEM_SALES_STOType" Multiplicity="*" Role="ToRole_assoc_9909DFA4D8554754286D387B9BD8AC27"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assoc_9909DFA4D8554754286D387B9BD8AC27">
+                        <PropertyRef Name="SAP_UUID"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assoc_9909DFA4D8554754286D387B9BD8AC27">
+                        <PropertyRef Name="SAP_PARENT_UUID"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="YY1_SALES_STO_CDS_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="P_Scbo_User" EntityType="YY1_SALES_STO_CDS.P_Scbo_UserType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="YY1_ITEM_SALES_STO" EntityType="YY1_SALES_STO_CDS.YY1_ITEM_SALES_STOType" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="YY1_SALES_STO" EntityType="YY1_SALES_STO_CDS.YY1_SALES_STOType" sap:searchable="true" sap:content-version="1"/>
+                <AssociationSet Name="assoc_B67150E5E11DF9B1DAA92C650E46758F" Association="YY1_SALES_STO_CDS.assoc_B67150E5E11DF9B1DAA92C650E46758F" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="YY1_SALES_STO" Role="FromRole_assoc_B67150E5E11DF9B1DAA92C650E46758F"/>
+                    <End EntitySet="P_Scbo_User" Role="ToRole_assoc_B67150E5E11DF9B1DAA92C650E46758F"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_701443B98DDA8366D9D0E9A12D55B64F" Association="YY1_SALES_STO_CDS.assoc_701443B98DDA8366D9D0E9A12D55B64F" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="YY1_SALES_STO" Role="FromRole_assoc_701443B98DDA8366D9D0E9A12D55B64F"/>
+                    <End EntitySet="P_Scbo_User" Role="ToRole_assoc_701443B98DDA8366D9D0E9A12D55B64F"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_9909DFA4D8554754286D387B9BD8AC27" Association="YY1_SALES_STO_CDS.assoc_9909DFA4D8554754286D387B9BD8AC27" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="YY1_SALES_STO" Role="FromRole_assoc_9909DFA4D8554754286D387B9BD8AC27"/>
+                    <End EntitySet="YY1_ITEM_SALES_STO" Role="ToRole_assoc_9909DFA4D8554754286D387B9BD8AC27"/>
+                </AssociationSet>
+                <FunctionImport Name="YY1_SALES_STOSap_upsert" ReturnType="YY1_SALES_STO_CDS.YY1_SALES_STOType" EntitySet="YY1_SALES_STO" m:HttpMethod="POST">
+                    <Parameter Name="Id" Type="Edm.String" Mode="In" MaxLength="10" sap:label="Numeric length 10"/>
+                    <Parameter Name="Gate_Pass_Type" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Text of length 20"/>
+                    <Parameter Name="Delivery_No" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Text of length 20"/>
+                    <Parameter Name="Plant" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Text of length 20"/>
+                    <Parameter Name="Plant_Name" Type="Edm.String" Mode="In" MaxLength="40" sap:label="Text of length 40"/>
+                    <Parameter Name="Customer_Code" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Text of length 20"/>
+                    <Parameter Name="Customer_Name" Type="Edm.String" Mode="In" MaxLength="40" sap:label="Text of length 40"/>
+                    <Parameter Name="No_Of_Packages" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Text of length 20"/>
+                    <Parameter Name="Vehicle_No" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Text of length 20"/>
+                    <Parameter Name="Bins" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Text of length 20"/>
+                    <Parameter Name="No_Of_Bins" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Text of length 20"/>
+                    <Parameter Name="Transporter" Type="Edm.String" Mode="In" MaxLength="40" sap:label="Text of length 40"/>
+                    <Parameter Name="Status" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Text of length 20"/>
+                    <Parameter Name="Status01" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Text of length 20"/>
+                    <Parameter Name="Field01" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Text of length 20"/>
+                    <Parameter Name="Field02" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Text of length 20"/>
+                    <Parameter Name="Field03" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Text of length 20"/>
+                </FunctionImport>
+            </EntityContainer>
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <Annotations Target="YY1_SALES_STO_CDS.YY1_SALES_STO_CDS_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+            </Annotations>
+            <Annotations Target="YY1_SALES_STO_CDS.YY1_SALES_STOType/to_Item" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Composition"/>
+            </Annotations>
+            <Annotations Target="YY1_SALES_STO_CDS.YY1_SALES_STOType/Id" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="YY1_SALES_STO_CDS.YY1_SALES_STO_CDS_Entities/YY1_ITEM_SALES_STO" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_SALES_STO"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="YY1_SALES_STO_CDS.YY1_SALES_STO_CDS_Entities/YY1_SALES_STO" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_Item"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="true"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_SAPSysAdminDataChangeUser"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_SAPSysAdminDataCreateUser"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="YY1_SALES_STO_CDS.YY1_SALES_STOType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SemanticKey">
+                    <Collection>
+                        <PropertyPath>Id</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="https://my401677-api.s4hana.cloud.sap/sap/opu/odata/sap/YY1_SALES_STO_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="https://my401677-api.s4hana.cloud.sap/sap/opu/odata/sap/YY1_SALES_STO_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

@@ -1,0 +1,261 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:fb="sap.ui.comp.filterbar" xmlns:svm="sap.ui.comp.smartvariants" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:k="sap.ui.table" xmlns:vm="sap.ui.fl.variants" controllerName="gatepass.controller.inword.inword_sto.inword_sto" height="100%">
+    <Page id="IDPageSTO" titleAlignment="Center"  title="STO Goods Receipt">
+
+      <VBox id="_IDGenVBox1_Sales_STO" class="sapUiSmallMargin">
+		<f:SimpleForm class="simform" id="IDSimpleForm" editable="true" layout="ColumnLayout" columnsM="2" columnsL="3" columnsXL="4">
+			<f:content>
+
+
+                <Label id="ID01" text="Sales STO Doc No"/>
+				<Input enabled="false" id="IdSTO" placeholder="ID" value="" />
+                <!-- ____________________________________________________ -->
+				
+                <Label id="idlabelgate" text="Gate Pass Type"/>
+                <ComboBox required="true" placeholder="Select GatePass Type" change="select_i_o" id="GatePass_Type_H" items="">
+				<core:Item id="idrgp" key="1" text="RGP"/>
+				<core:Item  id="idnrgp" key="2" text="NRGP"/>
+			    </ComboBox>	
+             
+				<!-- ____________________________________________________ -->
+
+                <Label id="idlabeldel"  text="Delivery No"/>
+				<Input required="true" id="Inbound_Delivery_No_H" placeholder="Select Delivery No" enabled="true"  valueHelpOnly="true" valueHelpRequest="OnOutBoDelFragOpen" showValueHelp="true"  />
+
+				<!-- ____________________________________________________ -->
+         
+               <Label  id="idlabelcut" text="Customer"/>
+				<Input id="Ship_To_Party_H" placeholder="Enter Customer" enabled="true"  valueHelpOnly="true" valueHelpRequest="" showValueHelp="false" />
+
+				<!-- ____________________________________________________ -->
+
+                <Label id="idlabelcustname" text="Customer Name"/>
+				<Input id="Ship_To_Party_Name_H" placeholder="Enter Customer Name" enabled="true"  valueHelpOnly="true" valueHelpRequest="" showValueHelp="false" />
+
+				<!-- ____________________________________________________ -->
+                
+               
+               <Label  id ="idpack" text="No of Packages"/>
+				<Input  id="idpack_sto" liveChange="OnNoOfPackageEnter"  placeholder="Enter No of Packages" enabled="true"  valueHelpOnly="true" valueHelpRequest="" showValueHelp="false" />
+
+				<!-- ____________________________________________________ -->
+
+                <Label id="idvech" text="Vehicle No"/>
+				<Input id="idvech_sto" change="onVechileEnter" placeholder="Enter Vehicle No" enabled="true"  valueHelpOnly="true" valueHelpRequest="" showValueHelp="false" />
+
+				<!-- ____________________________________________________ -->
+
+               
+                <Label  id="idlabelbin" text="Bins (Yes/No)"/>
+                <ComboBox placeholder="Select Bins Yes/No" id="Bin_Select_H_sto"  change="On_Bin_Select" items="">
+				<core:Item id="idyes" key="1" text="Yes"/>
+				<core:Item  id="idno" key="2" text="No"/>
+			</ComboBox>
+
+            		<!-- ____________________________________________________ -->
+
+             <Label id="idlabelnobin" text="No of Bins"/>
+				<Input enabled="false" maxLength="3" liveChange="On_Bin_Enter" id="No_Of_Bins" placeholder="No of Bins" value=""/>
+				<!-- ____________________________________________________ -->	
+       
+                 <Label id="idlabeltrans" text="Transporter"/>
+				<Input  id="idtrans_sto" change="onTransportEnter" placeholder="Enter Transporter" enabled="true"  valueHelpOnly="true" valueHelpRequest="" showValueHelp="false" />
+
+				<!-- ____________________________________________________ -->
+
+
+
+
+		</f:content>
+			</f:SimpleForm>
+
+
+            <OverflowToolbar id="_IDGenOverflowToolbar1">		
+		<ToolbarSpacer id="_IDGenToolbarSpacer1"/>
+		<Button press="On_Go_Button" text="go" type="Accept" id="Go_Button" ariaDescribedBy="defaultButtonDescription genericButtonDescription"/>
+		<ToolbarSpacer id="_IDGenToolbarSpacer2"/>
+	    </OverflowToolbar>
+		
+	</VBox>	
+
+               <!-- __table __________________________________________________ -->
+
+
+ <VBox id="_IDGenVBox2" class="sapUiSmallMargin">
+
+        	<k:Table id="salessto" visible="false"  enableSelectAll="false" sort="onSort" enableColumnReordering="false"  rows="{/YY1_Outbound_Delivery_Item}">
+            <k:extension>
+                <OverflowToolbar id="_IDGenOverflowToolbarsto" style="Clear">
+                    <Title id="title" text="Sales STO Item"/>
+                    <ToolbarSeparator id="_IDGenToolbarSeparator_sto"/>
+                    <ToolbarSpacer id="_IDGenToolbarSpacer4_sto"/>
+                    <ToolbarSpacer id="_IDGenToolbarSpacer5_sto"/>
+                     <Button id="idbtn1" icon="sap-icon://action-settings" press="openPersoDialog"/>
+                     <Button id="Final_Delete_Button" enabled="false" icon="sap-icon://delete" type="Default" tooltip="Delete Row" press="OnTableRowRemove"/>
+
+                     <!-- <Button id="idbtn2" icon="sap-icon://action-settings" press="openPersoDialog"/>
+                     <Button id="idbtn3" enabled="false" icon="sap-icon://sys-add" press="" tooltip="Add Rows"/> -->
+                </OverflowToolbar>
+            </k:extension>
+            <k:columns>
+
+                  <k:Column id="idCol3" sortProperty="Delivery Item" width="11rem">
+                    <Label id="idItem" text="Return Order Item" />
+                    <k:template>
+                        <Input enabled="true" id="iddelItem" change="Item" value="{OutboundDeliveryItem}"/>
+                    </k:template>
+                </k:Column>
+
+                	<!-- ____________________________________________________ -->
+
+              <k:Column id="iddel" tooltip="Return Order No" sortProperty="Delivery No" width="11rem">
+                    <Label  id="idlabdel" text="Return Order No"/>
+                    <k:template>
+                        <Input id="iddely_sto"   enabled="false" value="{OutboundDelivery}"/>
+                    </k:template>
+                </k:Column>
+              <!-- ____________________________________________________ --> 
+
+          
+
+                              <k:Column id="idqan"  tooltip="Quantity" sortProperty="Quantity" width="11rem">
+                    <Label id="idlabqan" text="Quantity"/>
+                    <k:template>
+                        <Input id="idqan_Sto" editable="false" value="{OriginalDeliveryQuantity}"/>
+                    </k:template>
+                </k:Column>
+        <!-- ____________________________________________________ -->  
+
+               <k:Column id="IdCol2" sortProperty="UOM" width="11rem">
+                    <Label id="idLbeom" text="UOM" />
+                    <k:template>
+                        <Input  enabled="false" id="idEom" change="Item" value="{BaseUnit}"/>
+                    </k:template>
+                </k:Column>
+
+                	<!-- ____________________________________________________ -->
+
+                       
+        
+                <k:Column id="idrecCol"  tooltip="Received Quantity " sortProperty="Received Quantity" width="11rem">
+                <Label id="idrec" text="Received Quantity"/>
+                <k:template>
+                <Input id="idqan_rec"  enabled="false" value="{parts:[{path:'OutboundDeliveryItem'}, {path:'OriginalDeliveryQuantity'}], formatter:'.OnReceivedQtyCal'}"/>
+                </k:template>
+                </k:Column>
+                    <!-- ____________________________________________________ -->  
+         
+
+         
+                <k:Column id="idpen"  tooltip="Pending Quantity " sortProperty="Pending Quantity" width="11rem">
+                <Label id="idlabpen" text="Pending Quantity"/>
+                <k:template>
+                <Input id="idqan_Pen" enabled="false" value="{parts:[{path:'OutboundDeliveryItem'}, {path:'OriginalDeliveryQuantity'}], formatter:'.OnPendingQtyCal'}"/>
+                </k:template>
+                </k:Column>
+     
+                       <!-- ____________________________________________________ -->  
+        
+        
+                <k:Column id="idrecCol1"  tooltip="Quantity To Post " sortProperty="Quantity To Post" width="11rem">
+                <Label id="idqanpost" text="Quantity To Post"/>
+                <k:template>
+                <Input id="idqan_post" enabled="true" value=" "  change="Quantity_to_Post_InputyLine"/>
+                </k:template>
+                </k:Column>
+                    <!-- ____________________________________________________ -->  
+
+
+                   <k:Column id="idmat" tooltip="Material" sortProperty="Material" width="11rem">
+                    <Label  id="idlabelmat" text="Material"/>
+                    <k:template>
+                        <Input id="idmat_sto" enabled="false" value="{Material}"/>
+                    </k:template>
+                </k:Column>
+        <!-- ____________________________________________________ -->   
+    
+
+                    <k:Column  id="matdes" tooltip="Material description" sortProperty="Material description" width="11rem">
+                    <Label id="idlabelmatdes" text="Material description"/>
+                    <k:template>
+                        <Input id="idmat_sto_des" enabled="false" value="{ProductName}"/>
+                    </k:template>
+                </k:Column>
+        <!-- ____________________________________________________ --> 
+                                  
+                <k:Column id="idcolplant" tooltip="Plant" sortProperty="Plant" width="11rem">
+                    <Label id ="idlabelplant" text="Plant"/>
+                    <k:template>
+                        <Input id="idplan_Sto"  enabled="false" value="{Plant}"/>
+                    </k:template>
+                </k:Column>
+
+		     <!-- ____________________________________________________ -->
+
+                 <k:Column id ="idname" tooltip="Name1" sortProperty="Name" width="11rem">
+                    <Label id="idlabelname" text="Plant Name"/>
+                    <k:template>
+                        <Input id="idname_sto" enabled="false" value="{PlantName}"/>
+                    </k:template>
+                </k:Column>
+        <!-- ____________________________________________________ -->
+               
+                    <k:Column  id="idcust" tooltip="Customer" sortProperty="Customer" width="11rem">
+                    <Label  id="idlabel" text="Customer"/>
+                    <k:template>
+                        <Input id="idcust_Sto" enabled="false" value="{path:'', formatter:'.OnCustomerNameFetch'}"/>
+                    </k:template>
+                </k:Column>
+        <!-- ____________________________________________________ -->   
+               
+                   <k:Column id="idcustname" tooltip="Customer Name" sortProperty="Customer Name" width="11rem">
+                    <Label  id="idlabelnamecust" text="Customer Name"/>
+                    <k:template>
+                        <Input id="idcust_name_sto" enabled="false" value="{path:'', formatter:'.OnCustomerFetch'}"/>
+                    </k:template>
+                </k:Column>
+         <!-- ____________________________________________________ -->  
+                      
+
+                    <k:Column id="idveh" tooltip="Vehicle No" sortProperty="Vehicle No" width="11rem">
+                    <Label  id="idlabveh" text="Vehicle No"/>
+                    <k:template>
+                        <Input id="idveh_sto" enabled="false" value=""/>
+                    </k:template>
+                </k:Column>
+        <!-- ____________________________________________________ -->   
+ 
+
+ 
+                    <k:Column id="idtra" tooltip="Transporter" sortProperty="Transporter" width="11rem">
+                    <Label  id="idlabtran" text="Transporter"/>
+                    <k:template>
+                        <Input id="idveh_tran" enabled="false" value=""/>
+                    </k:template>
+                </k:Column>
+        <!-- ____________________________________________________ -->  
+               
+                </k:columns>
+            
+                 </k:Table>
+
+                  </VBox>
+	<footer>
+    
+            <Toolbar id="otbFooter">
+
+                <Button id="idbtn" icon="sap-icon://alert" text="{= ${message>/}.length }" visible="false" type="Emphasized" press="onMessagePopoverPress"/>
+
+                <ToolbarSpacer id="idtoo"/>
+
+                <Button id="Final_Save_Button" enabled="true" type="Accept" text="Submit" press="OnSubmit"/>
+                <Button visible="false" id="Final_Cancel_Button" enabled="false" type="Reject" text="Cancel" press="OnCancel"/>
+                <Button id="Final_Edit_Button" enabled="true" type="Default" text="Change" press="OnEditPage"/>
+                <Button id="Final_Display_Button" enabled="true" type="Default" text="Display" press="OnDisplayPage"/>
+                <Button id="Final_Back_Button" enabled="true" type="Default" text="Back" press="OnBack"/>
+    
+
+            </Toolbar>
+        </footer>
+
+    </Page>
+</mvc:View>

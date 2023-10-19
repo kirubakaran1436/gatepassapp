@@ -1,0 +1,31 @@
+
+
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<TableSelectDialog id="Product_dialog" noDataText="No Items Found" title="Select Items" search=".OnProductSearch" confirm=".OnProductSelect"
+		contentWidth="50%" cancel=".OnProductSelect" items="{YY1_PRODUCT_CDS>/YY1_Product}">
+		<ColumnListItem id="_IDGenColumnListItem1_Product" vAlign="Middle">
+			<cells>
+				<Text id="Product1" text="{YY1_PRODUCT_CDS>Product}"/>
+				<Text id="ProductName1" text="{YY1_PRODUCT_CDS>ProductName}"/>
+				<Text id="BaseUnit1" text="{YY1_PRODUCT_CDS>BaseUnit}"/>
+			</cells>
+		</ColumnListItem>
+		<columns>
+			<Column id="Product2" >
+				<header>
+					<Text id="Product3" text="Product"/>
+				</header>
+			</Column>
+			<Column id="ProductName2" >
+				<header>
+					<Text id="ProductName3" text="Product Name"/>
+				</header>
+			</Column>
+			<Column id="BaseUnit2" >
+				<header>
+					<Text id="BaseUnit3" text="UOM"/>
+				</header>
+			</Column>
+		</columns>
+	</TableSelectDialog>
+</core:FragmentDefinition>

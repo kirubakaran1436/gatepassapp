@@ -1,0 +1,832 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="https://my401677-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my401677-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my401677-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my401677-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="SAP__CodeList"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my401677-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my401677-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my401677-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my401677-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my401677-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my401677-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="YY1_GATEPASSHEADERDATA_CDS" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="I_LanguageType" sap:label="Language" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Language"/>
+                </Key>
+                <Property Name="Language" Type="Edm.String" Nullable="false" MaxLength="2" sap:text="Language_Text" sap:label="Language Key"/>
+                <Property Name="Language_Text" Type="Edm.String" MaxLength="16" sap:label="Name" sap:quickinfo="Name of Language" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="LanguageISOCode" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Language Code" sap:quickinfo="2-Character SAP Language Code"/>
+            </EntityType>
+            <EntityType Name="I_Scbo_ILM_Status_TextType" sap:label="Text for ILM Status" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="language"/>
+                    <PropertyRef Name="code"/>
+                </Key>
+                <Property Name="language" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Lang." sap:quickinfo="Language Key"/>
+                <Property Name="code" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:text="description" sap:label="Lower Value" sap:quickinfo="Values for Domains: Single Value/Lower Limit"/>
+                <Property Name="description" Type="Edm.String" MaxLength="60" sap:label="Short Description" sap:quickinfo="Short Text for Fixed Values"/>
+            </EntityType>
+            <EntityType Name="I_UnitOfMeasureType" sap:label="Unit of Measure" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="UnitOfMeasure"/>
+                </Key>
+                <Property Name="UnitOfMeasure" Type="Edm.String" Nullable="false" MaxLength="3" sap:text="UnitOfMeasure_Text" sap:label="Unit of Measure" sap:semantics="unit-of-measure"/>
+                <Property Name="UnitOfMeasure_Text" Type="Edm.String" MaxLength="30" sap:label="Meas. Unit Text" sap:quickinfo="Unit of Measurement Text (Maximum 30 Characters)" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="UnitOfMeasureSAPCode" Type="Edm.String" MaxLength="3" sap:label="Internal SAP Code" sap:quickinfo="Unit of Measurement, Internal SAP Code (No Conversion)"/>
+                <Property Name="UnitOfMeasureISOCode" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:text="to_ISOCode/UnitOfMeasureISOCode_Text" sap:label="ISO Code" sap:quickinfo="ISO Code for Unit of Measurement" sap:value-list="standard"/>
+                <Property Name="IsPrimaryUnitForISOCode" Type="Edm.Boolean" sap:label="Primary code" sap:quickinfo="Selection field for conversion from ISO code to int. code"/>
+                <Property Name="UnitOfMeasureNumberOfDecimals" Type="Edm.Int16" sap:label="Decimal Rounding" sap:quickinfo="No. of decimal places for rounding"/>
+                <Property Name="UnitOfMeasureIsCommercial" Type="Edm.Boolean" sap:label="Commercial Unit" sap:quickinfo="Commercial measurement unit ID"/>
+                <Property Name="UnitOfMeasureDimension" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:text="to_Dimension/UnitOfMeasureDimension_Text" sap:label="Dimension" sap:quickinfo="Dimension key" sap:value-list="standard"/>
+                <Property Name="SIUnitCnvrsnRateNumerator" Type="Edm.Int32" sap:label="Numerator" sap:quickinfo="Numerator for conversion to SI unit"/>
+                <Property Name="SIUnitCnvrsnRateDenominator" Type="Edm.Int32" sap:label="Denominator" sap:quickinfo="Denominator for conversion into SI unit"/>
+                <Property Name="SIUnitCnvrsnRateExponent" Type="Edm.Int16" sap:label="Exponent" sap:quickinfo="base ten exponent for conversion to SI unit"/>
+                <Property Name="SIUnitCnvrsnAdditiveValue" Type="Edm.Decimal" Precision="9" Scale="6" sap:label="Additive constant" sap:quickinfo="Additive constant for conversion to SI unit"/>
+                <Property Name="UnitOfMeasureDspExponent" Type="Edm.Int16" sap:label="Exp. 10 Floating Pt" sap:quickinfo="Exponent of 10 for Floating Point Format"/>
+                <Property Name="UnitOfMeasureDspNmbrOfDcmls" Type="Edm.Int16" sap:label="Decimal Places" sap:quickinfo="Number of Decimal Places for Number Display"/>
+                <Property Name="UnitOfMeasureTemperature" Type="Edm.Double" sap:unit="UnitOfMeasureTemperatureUnit" sap:label="Temperature"/>
+                <Property Name="UnitOfMeasureTemperatureUnit" Type="Edm.String" MaxLength="3" sap:label="Temperature unit" sap:semantics="unit-of-measure"/>
+                <Property Name="UnitOfMeasurePressure" Type="Edm.Double" sap:unit="UnitOfMeasurePressureUnit" sap:label="Pressure Value"/>
+                <Property Name="UnitOfMeasurePressureUnit" Type="Edm.String" MaxLength="3" sap:label="Unit of Pressure" sap:semantics="unit-of-measure"/>
+                <NavigationProperty Name="to_Dimension" Relationship="YY1_GATEPASSHEADERDATA_CDS.assoc_744267C89213C6F0BEAA53E2EB9C8F4F" FromRole="FromRole_assoc_744267C89213C6F0BEAA53E2EB9C8F4F" ToRole="ToRole_assoc_744267C89213C6F0BEAA53E2EB9C8F4F"/>
+                <NavigationProperty Name="to_ISOCode" Relationship="YY1_GATEPASSHEADERDATA_CDS.assoc_5E18390584266C106B459BC3FD3D3C50" FromRole="FromRole_assoc_5E18390584266C106B459BC3FD3D3C50" ToRole="ToRole_assoc_5E18390584266C106B459BC3FD3D3C50"/>
+            </EntityType>
+            <EntityType Name="I_UnitOfMeasureDimensionType" sap:label="Unit of Measure Dimension" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="UnitOfMeasureDimension"/>
+                </Key>
+                <Property Name="UnitOfMeasureDimension" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="UpperCase" sap:text="UnitOfMeasureDimension_Text" sap:label="Dimension" sap:quickinfo="Dimension key"/>
+                <Property Name="UnitOfMeasureDimension_Text" Type="Edm.String" MaxLength="20" sap:label="Dimension Text" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="LengthExponent" Type="Edm.Int16" sap:label="Length" sap:quickinfo="Length exponent"/>
+                <Property Name="MassExponent" Type="Edm.Int16" sap:label="Mass" sap:quickinfo="Mass exponent"/>
+                <Property Name="TimeExponent" Type="Edm.Int16" sap:label="Time" sap:quickinfo="Current exponent"/>
+                <Property Name="ElectricCurrentExponent" Type="Edm.Int16" sap:label="elec. current" sap:quickinfo="Electric current exponent"/>
+                <Property Name="TemperatureExponent" Type="Edm.Int16" sap:label="Temperature" sap:quickinfo="Temperature exponent"/>
+                <Property Name="MoleQuantityExponent" Type="Edm.Int16" sap:label="Mole quantity" sap:quickinfo="Mole quantity exponent"/>
+                <Property Name="LuminosityExponent" Type="Edm.Int16" sap:label="Luminous intensity" sap:quickinfo="Luminosity exponent"/>
+                <Property Name="UnitOFMeasureSiUnit" Type="Edm.String" MaxLength="3" sap:label="SI unit" sap:semantics="unit-of-measure"/>
+                <Property Name="HasUnitsWithTemperatureSpec" Type="Edm.Boolean" sap:label="Temperature-Depend." sap:quickinfo="Indicator: Dimension has Unit with Temperature Specification"/>
+                <Property Name="HasUnitsWithPressureSpec" Type="Edm.Boolean" sap:label="Pressure-Dependent" sap:quickinfo="Indicator: Dimension has Units with Pressure Specification"/>
+            </EntityType>
+            <EntityType Name="I_UnitOfMeasureISOCodeType" sap:label="Unit of Measure ISO Code" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="UnitOfMeasureISOCode"/>
+                </Key>
+                <Property Name="UnitOfMeasureISOCode" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:text="UnitOfMeasureISOCode_Text" sap:label="ISO Code" sap:quickinfo="ISO Code for Unit of Measurement"/>
+                <Property Name="UnitOfMeasureISOCode_Text" Type="Edm.String" MaxLength="25" sap:label="ISO code" sap:quickinfo="ISO codes for measurement unit names" sap:creatable="false" sap:updatable="false"/>
+            </EntityType>
+            <EntityType Name="I_UnitOfMeasureTextType" sap:label="Unit of Measure Text" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Language"/>
+                    <PropertyRef Name="UnitOfMeasure"/>
+                </Key>
+                <Property Name="Language" Type="Edm.String" Nullable="false" MaxLength="2" sap:text="to_Language/Language_Text" sap:label="Language Key" sap:value-list="standard"/>
+                <Property Name="UnitOfMeasure" Type="Edm.String" Nullable="false" MaxLength="3" sap:text="to_UnitOfMeasure/UnitOfMeasure_Text" sap:label="Internal UoM" sap:quickinfo="Unit of Measurement" sap:value-list="standard" sap:semantics="unit-of-measure"/>
+                <Property Name="UnitOfMeasureLongName" Type="Edm.String" MaxLength="30" sap:label="Meas. Unit Text" sap:quickinfo="Unit of Measurement Text (Maximum 30 Characters)"/>
+                <Property Name="UnitOfMeasureName" Type="Edm.String" MaxLength="10" sap:label="Meas. Unit Text" sap:quickinfo="Unit of Measurement Text (Maximum 10 Characters)"/>
+                <Property Name="UnitOfMeasureTechnicalName" Type="Edm.String" MaxLength="6" sap:label="Technical" sap:quickinfo="External Unit of Measurement in Technical Format (6-Char.)"/>
+                <Property Name="UnitOfMeasure_E" Type="Edm.String" MaxLength="3" sap:label="Commercial" sap:quickinfo="External Unit of Measurement in Commercial Format (3-Char.)"/>
+                <Property Name="UnitOfMeasureCommercialName" Type="Edm.String" MaxLength="3" sap:label="Commercial" sap:quickinfo="External Unit of Measurement in Commercial Format (3-Char.)"/>
+                <NavigationProperty Name="to_Language" Relationship="YY1_GATEPASSHEADERDATA_CDS.assoc_75B1DB854C2712DFD34CE2A48D0D7317" FromRole="FromRole_assoc_75B1DB854C2712DFD34CE2A48D0D7317" ToRole="ToRole_assoc_75B1DB854C2712DFD34CE2A48D0D7317"/>
+                <NavigationProperty Name="to_UnitOfMeasure" Relationship="YY1_GATEPASSHEADERDATA_CDS.assoc_1278BB73BB2872FCD47A1D378622590C" FromRole="FromRole_assoc_1278BB73BB2872FCD47A1D378622590C" ToRole="ToRole_assoc_1278BB73BB2872FCD47A1D378622590C"/>
+            </EntityType>
+            <EntityType Name="P_Scbo_UserType" sap:label="User" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="name"/>
+                </Key>
+                <Property Name="name" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="UpperCase" sap:label="User" sap:quickinfo="User Name in User Master Record"/>
+                <Property Name="description" Type="Edm.String" MaxLength="80" sap:label="Description" sap:quickinfo="Description of the Technical User Account"/>
+            </EntityType>
+            <EntityType Name="YY1_GATEENTRYTYPEType" sap:label="Gate entry type" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Code"/>
+                </Key>
+                <Property Name="Code" Type="Edm.String" Nullable="false" MaxLength="4" sap:text="Description" sap:label="Code"/>
+                <Property Name="Description" Type="Edm.String" MaxLength="60" sap:label="Description"/>
+            </EntityType>
+            <EntityType Name="YY1_GATEPASSHEADERDATAType" sap:label="Gate Pass - Header Data" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SAP_UUID"/>
+                </Key>
+                <Property Name="SAP_UUID" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
+                <Property Name="SAP_Description" Type="Edm.String" MaxLength="80" sap:label="Description"/>
+                <Property Name="Gateentrytype" Type="Edm.String" MaxLength="4" sap:text="Gateentrytype_Text" sap:label="Gate Entry Type" sap:quickinfo="Gate entry type" sap:value-list="standard"/>
+                <Property Name="Gateentrytype_Text" Type="Edm.String" MaxLength="60" sap:label="Description" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="GateEntryYear" Type="Edm.String" MaxLength="3" sap:label="Gate Entry Year"/>
+                <Property Name="GateEntryNo" Type="Edm.String" MaxLength="20" sap:label="Gate Entry No" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Requester" Type="Edm.String" MaxLength="20" sap:label="Requester"/>
+                <Property Name="Reason" Type="Edm.String" MaxLength="20" sap:label="Reason"/>
+                <Property Name="Remarks" Type="Edm.String" MaxLength="40" sap:label="Remarks"/>
+                <Property Name="Status" Type="Edm.String" MaxLength="2" sap:text="Status_Text" sap:label="Status" sap:quickinfo="status" sap:value-list="standard"/>
+                <Property Name="Status_Text" Type="Edm.String" MaxLength="60" sap:label="Description" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="StatusDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Status Date" sap:quickinfo="Status date"/>
+                <Property Name="PurchasingDocument" Type="Edm.String" MaxLength="10" sap:label="Purchasing Document Number"/>
+                <Property Name="PurchaseDocItem" Type="Edm.String" MaxLength="4" sap:label="Purchase DocItem"/>
+                <Property Name="CustomerNumber" Type="Edm.String" MaxLength="20" sap:label="Customer Number"/>
+                <Property Name="VendorNumber" Type="Edm.String" MaxLength="20" sap:label="Vendor Number"/>
+                <Property Name="NameVendorCustomer" Type="Edm.String" MaxLength="60" sap:label="Name of Vendor or Customer" sap:quickinfo="Name vendor customer" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="VehicleNo" Type="Edm.String" MaxLength="20" sap:label="Vehicle No"/>
+                <Property Name="Carrier" Type="Edm.String" MaxLength="20" sap:label="Carrier" sap:quickinfo="CARRIER"/>
+                <Property Name="DeletionIndicator" Type="Edm.Boolean" sap:label="Deletion Indicator" sap:quickinfo="Deletion indicator"/>
+                <Property Name="Plant" Type="Edm.String" MaxLength="4" sap:label="Plant"/>
+                <Property Name="PlantDescription" Type="Edm.String" MaxLength="60" sap:label="Plant Description" sap:quickinfo="Plant description" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Approvedby" Type="Edm.String" MaxLength="20" sap:label="Approved By" sap:quickinfo="Approved by"/>
+                <Property Name="SAP_CreatedDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Created On" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SAP_CreatedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:text="SAP_CreatedByUser_Text" sap:label="Created By" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SAP_CreatedByUser_Text" Type="Edm.String" MaxLength="80" sap:label="Description" sap:quickinfo="Description of the Technical User Account" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SAP_LastChangedDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Last Changed On" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SAP_LastChangedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:text="SAP_LastChangedByUser_Text" sap:label="Last Changed By" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SAP_LastChangedByUser_Text" Type="Edm.String" MaxLength="80" sap:label="Description" sap:quickinfo="Description of the Technical User Account" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SAP_LifecycleStatus" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:text="SAP_LifecycleStatus_Text" sap:label="Lifecycle Status" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SAP_LifecycleStatus_Text" Type="Edm.String" MaxLength="60" sap:label="Short Description" sap:quickinfo="Short Text for Fixed Values" sap:creatable="false" sap:updatable="false"/>
+                <NavigationProperty Name="to_Gateentrytype" Relationship="YY1_GATEPASSHEADERDATA_CDS.assoc_28FD9738D98F7EE3EA4EF52342D91D20" FromRole="FromRole_assoc_28FD9738D98F7EE3EA4EF52342D91D20" ToRole="ToRole_assoc_28FD9738D98F7EE3EA4EF52342D91D20"/>
+                <NavigationProperty Name="to_GatePassItemData" Relationship="YY1_GATEPASSHEADERDATA_CDS.assoc_CC3F44617A1947421AE925C328D15FA3" FromRole="FromRole_assoc_CC3F44617A1947421AE925C328D15FA3" ToRole="ToRole_assoc_CC3F44617A1947421AE925C328D15FA3"/>
+                <NavigationProperty Name="to_ILM_Status_Text" Relationship="YY1_GATEPASSHEADERDATA_CDS.assoc_B85CC59D30455EF0F433996468EB4F89" FromRole="FromRole_assoc_B85CC59D30455EF0F433996468EB4F89" ToRole="ToRole_assoc_B85CC59D30455EF0F433996468EB4F89"/>
+                <NavigationProperty Name="to_SAPSysAdminDataChangeUser" Relationship="YY1_GATEPASSHEADERDATA_CDS.assoc_A1F165B5B317F214FEF0AD2F433ACB5C" FromRole="FromRole_assoc_A1F165B5B317F214FEF0AD2F433ACB5C" ToRole="ToRole_assoc_A1F165B5B317F214FEF0AD2F433ACB5C"/>
+                <NavigationProperty Name="to_SAPSysAdminDataCreateUser" Relationship="YY1_GATEPASSHEADERDATA_CDS.assoc_5FFDA9A89BE8ABE97E5E190A8210FB15" FromRole="FromRole_assoc_5FFDA9A89BE8ABE97E5E190A8210FB15" ToRole="ToRole_assoc_5FFDA9A89BE8ABE97E5E190A8210FB15"/>
+                <NavigationProperty Name="to_Status" Relationship="YY1_GATEPASSHEADERDATA_CDS.assoc_7A54F05C36ADDCE19BB1EDC273CEF456" FromRole="FromRole_assoc_7A54F05C36ADDCE19BB1EDC273CEF456" ToRole="ToRole_assoc_7A54F05C36ADDCE19BB1EDC273CEF456"/>
+            </EntityType>
+            <EntityType Name="YY1_GATEPASSITEMDATA_GATEPASSHType" sap:label="Gate Pass - Item Data" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SAP_UUID"/>
+                </Key>
+                <Property Name="SAP_UUID" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
+                <Property Name="SAP_PARENT_UUID" Type="Edm.Guid" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
+                <Property Name="Plant" Type="Edm.String" MaxLength="4" sap:label="Plant"/>
+                <Property Name="Gateentrytype" Type="Edm.String" MaxLength="4" sap:text="Gateentrytype_Text" sap:label="Gate entry type" sap:value-list="standard"/>
+                <Property Name="Gateentrytype_Text" Type="Edm.String" MaxLength="60" sap:label="Description" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="GateEntryYear" Type="Edm.String" MaxLength="10" sap:display-format="NonNegative" sap:label="Gate Entry Year"/>
+                <Property Name="GateEntryNo" Type="Edm.String" MaxLength="10" sap:display-format="NonNegative" sap:label="Gate Entry No"/>
+                <Property Name="GatePassItemNO" Type="Edm.String" MaxLength="10" sap:display-format="NonNegative" sap:label="Gate Pass Item NO"/>
+                <Property Name="Material" Type="Edm.String" MaxLength="20" sap:label="Material"/>
+                <Property Name="Description" Type="Edm.String" MaxLength="3" sap:label="Description"/>
+                <Property Name="UpdateStatus" Type="Edm.String" MaxLength="2" sap:label="Update Status"/>
+                <Property Name="Quantity_V" Type="Edm.Decimal" Precision="15" Scale="3" sap:unit="Quantity_U" sap:label="Quantity"/>
+                <Property Name="Quantity_U" Type="Edm.String" MaxLength="3" sap:text="Quantity_U_Text" sap:label="Quantity" sap:value-list="standard" sap:semantics="unit-of-measure"/>
+                <Property Name="Quantity_U_Text" Type="Edm.String" MaxLength="30" sap:label="Meas. Unit Text" sap:quickinfo="Unit of Measurement Text (Maximum 30 Characters)" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="RecQuantit_V" Type="Edm.Decimal" Precision="15" Scale="3" sap:unit="RecQuantit_U" sap:label="Rec. Quantit"/>
+                <Property Name="RecQuantit_U" Type="Edm.String" MaxLength="3" sap:text="RecQuantit_U_Text" sap:label="Rec. Quantit" sap:value-list="standard" sap:semantics="unit-of-measure"/>
+                <Property Name="RecQuantit_U_Text" Type="Edm.String" MaxLength="30" sap:label="Meas. Unit Text" sap:quickinfo="Unit of Measurement Text (Maximum 30 Characters)" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="BaseUnit" Type="Edm.String" MaxLength="20" sap:label="Base Unit"/>
+                <Property Name="BaselineDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Baseline Date"/>
+                <Property Name="SAP_LifecycleStatus" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:text="SAP_LifecycleStatus_Text" sap:label="Lifecycle Status" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SAP_LifecycleStatus_Text" Type="Edm.String" MaxLength="60" sap:label="Short Description" sap:quickinfo="Short Text for Fixed Values" sap:creatable="false" sap:updatable="false"/>
+                <NavigationProperty Name="to_GATEPASSHEADERDATA" Relationship="YY1_GATEPASSHEADERDATA_CDS.assoc_CC3F44617A1947421AE925C328D15FA3" FromRole="ToRole_assoc_CC3F44617A1947421AE925C328D15FA3" ToRole="FromRole_assoc_CC3F44617A1947421AE925C328D15FA3"/>
+                <NavigationProperty Name="to_Gateentrytype" Relationship="YY1_GATEPASSHEADERDATA_CDS.assoc_75B7CE5B7CF435791A4066F026B544E7" FromRole="FromRole_assoc_75B7CE5B7CF435791A4066F026B544E7" ToRole="ToRole_assoc_75B7CE5B7CF435791A4066F026B544E7"/>
+                <NavigationProperty Name="to_ILM_Status_Text" Relationship="YY1_GATEPASSHEADERDATA_CDS.assoc_EF70BC2A3A837CC9B361D4ABBBDBB41D" FromRole="FromRole_assoc_EF70BC2A3A837CC9B361D4ABBBDBB41D" ToRole="ToRole_assoc_EF70BC2A3A837CC9B361D4ABBBDBB41D"/>
+                <NavigationProperty Name="to_Quantity" Relationship="YY1_GATEPASSHEADERDATA_CDS.assoc_2B584978A90FA6D98D72803F23F7D253" FromRole="FromRole_assoc_2B584978A90FA6D98D72803F23F7D253" ToRole="ToRole_assoc_2B584978A90FA6D98D72803F23F7D253"/>
+                <NavigationProperty Name="to_RecQuantit" Relationship="YY1_GATEPASSHEADERDATA_CDS.assoc_26A8FCD9B03E56F22DFF318D8B41E497" FromRole="FromRole_assoc_26A8FCD9B03E56F22DFF318D8B41E497" ToRole="ToRole_assoc_26A8FCD9B03E56F22DFF318D8B41E497"/>
+                <NavigationProperty Name="to__Quantity" Relationship="YY1_GATEPASSHEADERDATA_CDS.assoc_6007F4EFF302D29B90DCBA87BCC6B8DF" FromRole="FromRole_assoc_6007F4EFF302D29B90DCBA87BCC6B8DF" ToRole="ToRole_assoc_6007F4EFF302D29B90DCBA87BCC6B8DF"/>
+                <NavigationProperty Name="to__RecQuantit" Relationship="YY1_GATEPASSHEADERDATA_CDS.assoc_6D4C4710CC9B9B9C76CDBEDCAE891381" FromRole="FromRole_assoc_6D4C4710CC9B9B9C76CDBEDCAE891381" ToRole="ToRole_assoc_6D4C4710CC9B9B9C76CDBEDCAE891381"/>
+            </EntityType>
+            <EntityType Name="YY1_STATUSType" sap:label="status" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Code"/>
+                </Key>
+                <Property Name="Code" Type="Edm.String" Nullable="false" MaxLength="2" sap:text="Description" sap:label="Code"/>
+                <Property Name="Description" Type="Edm.String" MaxLength="60" sap:label="Description"/>
+            </EntityType>
+            <Association Name="assoc_75B7CE5B7CF435791A4066F026B544E7" sap:content-version="1">
+                <End Type="YY1_GATEPASSHEADERDATA_CDS.YY1_GATEPASSITEMDATA_GATEPASSHType" Multiplicity="1" Role="FromRole_assoc_75B7CE5B7CF435791A4066F026B544E7"/>
+                <End Type="YY1_GATEPASSHEADERDATA_CDS.YY1_GATEENTRYTYPEType" Multiplicity="0..1" Role="ToRole_assoc_75B7CE5B7CF435791A4066F026B544E7"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_assoc_75B7CE5B7CF435791A4066F026B544E7">
+                        <PropertyRef Name="Code"/>
+                    </Principal>
+                    <Dependent Role="FromRole_assoc_75B7CE5B7CF435791A4066F026B544E7">
+                        <PropertyRef Name="Gateentrytype"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_EF70BC2A3A837CC9B361D4ABBBDBB41D" sap:content-version="1">
+                <End Type="YY1_GATEPASSHEADERDATA_CDS.YY1_GATEPASSITEMDATA_GATEPASSHType" Multiplicity="1" Role="FromRole_assoc_EF70BC2A3A837CC9B361D4ABBBDBB41D"/>
+                <End Type="YY1_GATEPASSHEADERDATA_CDS.I_Scbo_ILM_Status_TextType" Multiplicity="0..1" Role="ToRole_assoc_EF70BC2A3A837CC9B361D4ABBBDBB41D"/>
+            </Association>
+            <Association Name="assoc_2B584978A90FA6D98D72803F23F7D253" sap:content-version="1">
+                <End Type="YY1_GATEPASSHEADERDATA_CDS.YY1_GATEPASSITEMDATA_GATEPASSHType" Multiplicity="1" Role="FromRole_assoc_2B584978A90FA6D98D72803F23F7D253"/>
+                <End Type="YY1_GATEPASSHEADERDATA_CDS.I_UnitOfMeasureType" Multiplicity="0..1" Role="ToRole_assoc_2B584978A90FA6D98D72803F23F7D253"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_assoc_2B584978A90FA6D98D72803F23F7D253">
+                        <PropertyRef Name="UnitOfMeasure"/>
+                    </Principal>
+                    <Dependent Role="FromRole_assoc_2B584978A90FA6D98D72803F23F7D253">
+                        <PropertyRef Name="Quantity_U"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_26A8FCD9B03E56F22DFF318D8B41E497" sap:content-version="1">
+                <End Type="YY1_GATEPASSHEADERDATA_CDS.YY1_GATEPASSITEMDATA_GATEPASSHType" Multiplicity="1" Role="FromRole_assoc_26A8FCD9B03E56F22DFF318D8B41E497"/>
+                <End Type="YY1_GATEPASSHEADERDATA_CDS.I_UnitOfMeasureType" Multiplicity="0..1" Role="ToRole_assoc_26A8FCD9B03E56F22DFF318D8B41E497"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_assoc_26A8FCD9B03E56F22DFF318D8B41E497">
+                        <PropertyRef Name="UnitOfMeasure"/>
+                    </Principal>
+                    <Dependent Role="FromRole_assoc_26A8FCD9B03E56F22DFF318D8B41E497">
+                        <PropertyRef Name="RecQuantit_U"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_6007F4EFF302D29B90DCBA87BCC6B8DF" sap:content-version="1">
+                <End Type="YY1_GATEPASSHEADERDATA_CDS.YY1_GATEPASSITEMDATA_GATEPASSHType" Multiplicity="1" Role="FromRole_assoc_6007F4EFF302D29B90DCBA87BCC6B8DF"/>
+                <End Type="YY1_GATEPASSHEADERDATA_CDS.I_UnitOfMeasureTextType" Multiplicity="*" Role="ToRole_assoc_6007F4EFF302D29B90DCBA87BCC6B8DF"/>
+            </Association>
+            <Association Name="assoc_6D4C4710CC9B9B9C76CDBEDCAE891381" sap:content-version="1">
+                <End Type="YY1_GATEPASSHEADERDATA_CDS.YY1_GATEPASSITEMDATA_GATEPASSHType" Multiplicity="1" Role="FromRole_assoc_6D4C4710CC9B9B9C76CDBEDCAE891381"/>
+                <End Type="YY1_GATEPASSHEADERDATA_CDS.I_UnitOfMeasureTextType" Multiplicity="*" Role="ToRole_assoc_6D4C4710CC9B9B9C76CDBEDCAE891381"/>
+            </Association>
+            <Association Name="assoc_5E18390584266C106B459BC3FD3D3C50" sap:content-version="1">
+                <End Type="YY1_GATEPASSHEADERDATA_CDS.I_UnitOfMeasureType" Multiplicity="1" Role="FromRole_assoc_5E18390584266C106B459BC3FD3D3C50"/>
+                <End Type="YY1_GATEPASSHEADERDATA_CDS.I_UnitOfMeasureISOCodeType" Multiplicity="0..1" Role="ToRole_assoc_5E18390584266C106B459BC3FD3D3C50"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_assoc_5E18390584266C106B459BC3FD3D3C50">
+                        <PropertyRef Name="UnitOfMeasureISOCode"/>
+                    </Principal>
+                    <Dependent Role="FromRole_assoc_5E18390584266C106B459BC3FD3D3C50">
+                        <PropertyRef Name="UnitOfMeasureISOCode"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_744267C89213C6F0BEAA53E2EB9C8F4F" sap:content-version="1">
+                <End Type="YY1_GATEPASSHEADERDATA_CDS.I_UnitOfMeasureType" Multiplicity="1" Role="FromRole_assoc_744267C89213C6F0BEAA53E2EB9C8F4F"/>
+                <End Type="YY1_GATEPASSHEADERDATA_CDS.I_UnitOfMeasureDimensionType" Multiplicity="0..1" Role="ToRole_assoc_744267C89213C6F0BEAA53E2EB9C8F4F"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_assoc_744267C89213C6F0BEAA53E2EB9C8F4F">
+                        <PropertyRef Name="UnitOfMeasureDimension"/>
+                    </Principal>
+                    <Dependent Role="FromRole_assoc_744267C89213C6F0BEAA53E2EB9C8F4F">
+                        <PropertyRef Name="UnitOfMeasureDimension"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_75B1DB854C2712DFD34CE2A48D0D7317" sap:content-version="1">
+                <End Type="YY1_GATEPASSHEADERDATA_CDS.I_UnitOfMeasureTextType" Multiplicity="1" Role="FromRole_assoc_75B1DB854C2712DFD34CE2A48D0D7317"/>
+                <End Type="YY1_GATEPASSHEADERDATA_CDS.I_LanguageType" Multiplicity="0..1" Role="ToRole_assoc_75B1DB854C2712DFD34CE2A48D0D7317"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_assoc_75B1DB854C2712DFD34CE2A48D0D7317">
+                        <PropertyRef Name="Language"/>
+                    </Principal>
+                    <Dependent Role="FromRole_assoc_75B1DB854C2712DFD34CE2A48D0D7317">
+                        <PropertyRef Name="Language"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_1278BB73BB2872FCD47A1D378622590C" sap:content-version="1">
+                <End Type="YY1_GATEPASSHEADERDATA_CDS.I_UnitOfMeasureTextType" Multiplicity="1" Role="FromRole_assoc_1278BB73BB2872FCD47A1D378622590C"/>
+                <End Type="YY1_GATEPASSHEADERDATA_CDS.I_UnitOfMeasureType" Multiplicity="0..1" Role="ToRole_assoc_1278BB73BB2872FCD47A1D378622590C"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_assoc_1278BB73BB2872FCD47A1D378622590C">
+                        <PropertyRef Name="UnitOfMeasure"/>
+                    </Principal>
+                    <Dependent Role="FromRole_assoc_1278BB73BB2872FCD47A1D378622590C">
+                        <PropertyRef Name="UnitOfMeasure"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_28FD9738D98F7EE3EA4EF52342D91D20" sap:content-version="1">
+                <End Type="YY1_GATEPASSHEADERDATA_CDS.YY1_GATEPASSHEADERDATAType" Multiplicity="1" Role="FromRole_assoc_28FD9738D98F7EE3EA4EF52342D91D20"/>
+                <End Type="YY1_GATEPASSHEADERDATA_CDS.YY1_GATEENTRYTYPEType" Multiplicity="0..1" Role="ToRole_assoc_28FD9738D98F7EE3EA4EF52342D91D20"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_assoc_28FD9738D98F7EE3EA4EF52342D91D20">
+                        <PropertyRef Name="Code"/>
+                    </Principal>
+                    <Dependent Role="FromRole_assoc_28FD9738D98F7EE3EA4EF52342D91D20">
+                        <PropertyRef Name="Gateentrytype"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_CC3F44617A1947421AE925C328D15FA3" sap:content-version="1">
+                <End Type="YY1_GATEPASSHEADERDATA_CDS.YY1_GATEPASSHEADERDATAType" Multiplicity="1" Role="FromRole_assoc_CC3F44617A1947421AE925C328D15FA3">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Type="YY1_GATEPASSHEADERDATA_CDS.YY1_GATEPASSITEMDATA_GATEPASSHType" Multiplicity="*" Role="ToRole_assoc_CC3F44617A1947421AE925C328D15FA3"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assoc_CC3F44617A1947421AE925C328D15FA3">
+                        <PropertyRef Name="SAP_UUID"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assoc_CC3F44617A1947421AE925C328D15FA3">
+                        <PropertyRef Name="SAP_PARENT_UUID"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_B85CC59D30455EF0F433996468EB4F89" sap:content-version="1">
+                <End Type="YY1_GATEPASSHEADERDATA_CDS.YY1_GATEPASSHEADERDATAType" Multiplicity="1" Role="FromRole_assoc_B85CC59D30455EF0F433996468EB4F89"/>
+                <End Type="YY1_GATEPASSHEADERDATA_CDS.I_Scbo_ILM_Status_TextType" Multiplicity="0..1" Role="ToRole_assoc_B85CC59D30455EF0F433996468EB4F89"/>
+            </Association>
+            <Association Name="assoc_A1F165B5B317F214FEF0AD2F433ACB5C" sap:content-version="1">
+                <End Type="YY1_GATEPASSHEADERDATA_CDS.YY1_GATEPASSHEADERDATAType" Multiplicity="1" Role="FromRole_assoc_A1F165B5B317F214FEF0AD2F433ACB5C"/>
+                <End Type="YY1_GATEPASSHEADERDATA_CDS.P_Scbo_UserType" Multiplicity="0..1" Role="ToRole_assoc_A1F165B5B317F214FEF0AD2F433ACB5C"/>
+            </Association>
+            <Association Name="assoc_5FFDA9A89BE8ABE97E5E190A8210FB15" sap:content-version="1">
+                <End Type="YY1_GATEPASSHEADERDATA_CDS.YY1_GATEPASSHEADERDATAType" Multiplicity="1" Role="FromRole_assoc_5FFDA9A89BE8ABE97E5E190A8210FB15"/>
+                <End Type="YY1_GATEPASSHEADERDATA_CDS.P_Scbo_UserType" Multiplicity="0..1" Role="ToRole_assoc_5FFDA9A89BE8ABE97E5E190A8210FB15"/>
+            </Association>
+            <Association Name="assoc_7A54F05C36ADDCE19BB1EDC273CEF456" sap:content-version="1">
+                <End Type="YY1_GATEPASSHEADERDATA_CDS.YY1_GATEPASSHEADERDATAType" Multiplicity="1" Role="FromRole_assoc_7A54F05C36ADDCE19BB1EDC273CEF456"/>
+                <End Type="YY1_GATEPASSHEADERDATA_CDS.YY1_STATUSType" Multiplicity="0..1" Role="ToRole_assoc_7A54F05C36ADDCE19BB1EDC273CEF456"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_assoc_7A54F05C36ADDCE19BB1EDC273CEF456">
+                        <PropertyRef Name="Code"/>
+                    </Principal>
+                    <Dependent Role="FromRole_assoc_7A54F05C36ADDCE19BB1EDC273CEF456">
+                        <PropertyRef Name="Status"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="YY1_GATEPASSHEADERDATA_CDS_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="I_Language" EntityType="YY1_GATEPASSHEADERDATA_CDS.I_LanguageType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="I_Scbo_ILM_Status_Text" EntityType="YY1_GATEPASSHEADERDATA_CDS.I_Scbo_ILM_Status_TextType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="I_UnitOfMeasure" EntityType="YY1_GATEPASSHEADERDATA_CDS.I_UnitOfMeasureType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="I_UnitOfMeasureDimension" EntityType="YY1_GATEPASSHEADERDATA_CDS.I_UnitOfMeasureDimensionType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="I_UnitOfMeasureISOCode" EntityType="YY1_GATEPASSHEADERDATA_CDS.I_UnitOfMeasureISOCodeType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="I_UnitOfMeasureText" EntityType="YY1_GATEPASSHEADERDATA_CDS.I_UnitOfMeasureTextType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="P_Scbo_User" EntityType="YY1_GATEPASSHEADERDATA_CDS.P_Scbo_UserType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="YY1_GATEENTRYTYPE" EntityType="YY1_GATEPASSHEADERDATA_CDS.YY1_GATEENTRYTYPEType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="YY1_GATEPASSHEADERDATA" EntityType="YY1_GATEPASSHEADERDATA_CDS.YY1_GATEPASSHEADERDATAType" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="YY1_GATEPASSITEMDATA_GATEPASSH" EntityType="YY1_GATEPASSHEADERDATA_CDS.YY1_GATEPASSITEMDATA_GATEPASSHType" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="YY1_STATUS" EntityType="YY1_GATEPASSHEADERDATA_CDS.YY1_STATUSType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <AssociationSet Name="assoc_5E18390584266C106B459BC3FD3D3C50" Association="YY1_GATEPASSHEADERDATA_CDS.assoc_5E18390584266C106B459BC3FD3D3C50" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="I_UnitOfMeasure" Role="FromRole_assoc_5E18390584266C106B459BC3FD3D3C50"/>
+                    <End EntitySet="I_UnitOfMeasureISOCode" Role="ToRole_assoc_5E18390584266C106B459BC3FD3D3C50"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_1278BB73BB2872FCD47A1D378622590C" Association="YY1_GATEPASSHEADERDATA_CDS.assoc_1278BB73BB2872FCD47A1D378622590C" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="I_UnitOfMeasureText" Role="FromRole_assoc_1278BB73BB2872FCD47A1D378622590C"/>
+                    <End EntitySet="I_UnitOfMeasure" Role="ToRole_assoc_1278BB73BB2872FCD47A1D378622590C"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_75B7CE5B7CF435791A4066F026B544E7" Association="YY1_GATEPASSHEADERDATA_CDS.assoc_75B7CE5B7CF435791A4066F026B544E7" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="YY1_GATEPASSITEMDATA_GATEPASSH" Role="FromRole_assoc_75B7CE5B7CF435791A4066F026B544E7"/>
+                    <End EntitySet="YY1_GATEENTRYTYPE" Role="ToRole_assoc_75B7CE5B7CF435791A4066F026B544E7"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_6007F4EFF302D29B90DCBA87BCC6B8DF" Association="YY1_GATEPASSHEADERDATA_CDS.assoc_6007F4EFF302D29B90DCBA87BCC6B8DF" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="YY1_GATEPASSITEMDATA_GATEPASSH" Role="FromRole_assoc_6007F4EFF302D29B90DCBA87BCC6B8DF"/>
+                    <End EntitySet="I_UnitOfMeasureText" Role="ToRole_assoc_6007F4EFF302D29B90DCBA87BCC6B8DF"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_A1F165B5B317F214FEF0AD2F433ACB5C" Association="YY1_GATEPASSHEADERDATA_CDS.assoc_A1F165B5B317F214FEF0AD2F433ACB5C" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="YY1_GATEPASSHEADERDATA" Role="FromRole_assoc_A1F165B5B317F214FEF0AD2F433ACB5C"/>
+                    <End EntitySet="P_Scbo_User" Role="ToRole_assoc_A1F165B5B317F214FEF0AD2F433ACB5C"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_CC3F44617A1947421AE925C328D15FA3" Association="YY1_GATEPASSHEADERDATA_CDS.assoc_CC3F44617A1947421AE925C328D15FA3" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="YY1_GATEPASSHEADERDATA" Role="FromRole_assoc_CC3F44617A1947421AE925C328D15FA3"/>
+                    <End EntitySet="YY1_GATEPASSITEMDATA_GATEPASSH" Role="ToRole_assoc_CC3F44617A1947421AE925C328D15FA3"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_5FFDA9A89BE8ABE97E5E190A8210FB15" Association="YY1_GATEPASSHEADERDATA_CDS.assoc_5FFDA9A89BE8ABE97E5E190A8210FB15" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="YY1_GATEPASSHEADERDATA" Role="FromRole_assoc_5FFDA9A89BE8ABE97E5E190A8210FB15"/>
+                    <End EntitySet="P_Scbo_User" Role="ToRole_assoc_5FFDA9A89BE8ABE97E5E190A8210FB15"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_7A54F05C36ADDCE19BB1EDC273CEF456" Association="YY1_GATEPASSHEADERDATA_CDS.assoc_7A54F05C36ADDCE19BB1EDC273CEF456" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="YY1_GATEPASSHEADERDATA" Role="FromRole_assoc_7A54F05C36ADDCE19BB1EDC273CEF456"/>
+                    <End EntitySet="YY1_STATUS" Role="ToRole_assoc_7A54F05C36ADDCE19BB1EDC273CEF456"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_6D4C4710CC9B9B9C76CDBEDCAE891381" Association="YY1_GATEPASSHEADERDATA_CDS.assoc_6D4C4710CC9B9B9C76CDBEDCAE891381" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="YY1_GATEPASSITEMDATA_GATEPASSH" Role="FromRole_assoc_6D4C4710CC9B9B9C76CDBEDCAE891381"/>
+                    <End EntitySet="I_UnitOfMeasureText" Role="ToRole_assoc_6D4C4710CC9B9B9C76CDBEDCAE891381"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_B85CC59D30455EF0F433996468EB4F89" Association="YY1_GATEPASSHEADERDATA_CDS.assoc_B85CC59D30455EF0F433996468EB4F89" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="YY1_GATEPASSHEADERDATA" Role="FromRole_assoc_B85CC59D30455EF0F433996468EB4F89"/>
+                    <End EntitySet="I_Scbo_ILM_Status_Text" Role="ToRole_assoc_B85CC59D30455EF0F433996468EB4F89"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_26A8FCD9B03E56F22DFF318D8B41E497" Association="YY1_GATEPASSHEADERDATA_CDS.assoc_26A8FCD9B03E56F22DFF318D8B41E497" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="YY1_GATEPASSITEMDATA_GATEPASSH" Role="FromRole_assoc_26A8FCD9B03E56F22DFF318D8B41E497"/>
+                    <End EntitySet="I_UnitOfMeasure" Role="ToRole_assoc_26A8FCD9B03E56F22DFF318D8B41E497"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_2B584978A90FA6D98D72803F23F7D253" Association="YY1_GATEPASSHEADERDATA_CDS.assoc_2B584978A90FA6D98D72803F23F7D253" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="YY1_GATEPASSITEMDATA_GATEPASSH" Role="FromRole_assoc_2B584978A90FA6D98D72803F23F7D253"/>
+                    <End EntitySet="I_UnitOfMeasure" Role="ToRole_assoc_2B584978A90FA6D98D72803F23F7D253"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_28FD9738D98F7EE3EA4EF52342D91D20" Association="YY1_GATEPASSHEADERDATA_CDS.assoc_28FD9738D98F7EE3EA4EF52342D91D20" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="YY1_GATEPASSHEADERDATA" Role="FromRole_assoc_28FD9738D98F7EE3EA4EF52342D91D20"/>
+                    <End EntitySet="YY1_GATEENTRYTYPE" Role="ToRole_assoc_28FD9738D98F7EE3EA4EF52342D91D20"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_75B1DB854C2712DFD34CE2A48D0D7317" Association="YY1_GATEPASSHEADERDATA_CDS.assoc_75B1DB854C2712DFD34CE2A48D0D7317" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="I_UnitOfMeasureText" Role="FromRole_assoc_75B1DB854C2712DFD34CE2A48D0D7317"/>
+                    <End EntitySet="I_Language" Role="ToRole_assoc_75B1DB854C2712DFD34CE2A48D0D7317"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_EF70BC2A3A837CC9B361D4ABBBDBB41D" Association="YY1_GATEPASSHEADERDATA_CDS.assoc_EF70BC2A3A837CC9B361D4ABBBDBB41D" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="YY1_GATEPASSITEMDATA_GATEPASSH" Role="FromRole_assoc_EF70BC2A3A837CC9B361D4ABBBDBB41D"/>
+                    <End EntitySet="I_Scbo_ILM_Status_Text" Role="ToRole_assoc_EF70BC2A3A837CC9B361D4ABBBDBB41D"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_744267C89213C6F0BEAA53E2EB9C8F4F" Association="YY1_GATEPASSHEADERDATA_CDS.assoc_744267C89213C6F0BEAA53E2EB9C8F4F" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="I_UnitOfMeasure" Role="FromRole_assoc_744267C89213C6F0BEAA53E2EB9C8F4F"/>
+                    <End EntitySet="I_UnitOfMeasureDimension" Role="ToRole_assoc_744267C89213C6F0BEAA53E2EB9C8F4F"/>
+                </AssociationSet>
+                <FunctionImport Name="YY1_GATEPASSHEADERDATASap_upsert" ReturnType="YY1_GATEPASSHEADERDATA_CDS.YY1_GATEPASSHEADERDATAType" EntitySet="YY1_GATEPASSHEADERDATA" m:HttpMethod="POST">
+                    <Parameter Name="SAP_Description" Type="Edm.String" Mode="In" MaxLength="80" sap:label="Text of length 80"/>
+                    <Parameter Name="Gateentrytype" Type="Edm.String" Mode="In" MaxLength="4" sap:label="GENERATED: Value of code list YY1_GATEENTRYTYPE"/>
+                    <Parameter Name="GateEntryYear" Type="Edm.String" Mode="In" MaxLength="3" sap:label="Text of length 3"/>
+                    <Parameter Name="Requester" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Text of length 20"/>
+                    <Parameter Name="Reason" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Text of length 20"/>
+                    <Parameter Name="Remarks" Type="Edm.String" Mode="In" MaxLength="40" sap:label="Text of length 40"/>
+                    <Parameter Name="Status" Type="Edm.String" Mode="In" MaxLength="2" sap:label="GENERATED: Value of code list YY1_STATUS"/>
+                    <Parameter Name="StatusDate" Type="Edm.DateTime" Mode="In" Precision="0" sap:label="Status Date" sap:display-format="Date"/>
+                    <Parameter Name="PurchasingDocument" Type="Edm.String" Mode="In" MaxLength="10" sap:label="Text of length 10"/>
+                    <Parameter Name="PurchaseDocItem" Type="Edm.String" Mode="In" MaxLength="4" sap:label="Text of length 4"/>
+                    <Parameter Name="CustomerNumber" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Text of length 20"/>
+                    <Parameter Name="VendorNumber" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Text of length 20"/>
+                    <Parameter Name="VehicleNo" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Text of length 20"/>
+                    <Parameter Name="Carrier" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Text of length 20"/>
+                    <Parameter Name="DeletionIndicator" Type="Edm.Boolean" Mode="In" sap:label="TRUE"/>
+                    <Parameter Name="Plant" Type="Edm.String" Mode="In" MaxLength="4" sap:label="Text of length 4"/>
+                    <Parameter Name="Approvedby" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Text of length 20"/>
+                </FunctionImport>
+            </EntityContainer>
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <Annotations Target="YY1_GATEPASSHEADERDATA_CDS.I_UnitOfMeasureType/UnitOfMeasureISOCode" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Unit of Measure ISO Code"/>
+                        <PropertyValue Property="CollectionPath" String="I_UnitOfMeasureISOCode"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="UnitOfMeasureISOCode"/>
+                                    <PropertyValue Property="ValueListProperty" String="UnitOfMeasureISOCode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="UnitOfMeasureISOCode_Text"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="YY1_GATEPASSHEADERDATA_CDS.I_UnitOfMeasureType/UnitOfMeasureDimension" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Unit of Measure Dimension"/>
+                        <PropertyValue Property="CollectionPath" String="I_UnitOfMeasureDimension"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="UnitOfMeasureDimension"/>
+                                    <PropertyValue Property="ValueListProperty" String="UnitOfMeasureDimension"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="UnitOfMeasureDimension_Text"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="YY1_GATEPASSHEADERDATA_CDS.I_UnitOfMeasureTextType/Language" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Language"/>
+                        <PropertyValue Property="CollectionPath" String="I_Language"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Language"/>
+                                    <PropertyValue Property="ValueListProperty" String="Language"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Language_Text"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="YY1_GATEPASSHEADERDATA_CDS.I_UnitOfMeasureTextType/UnitOfMeasure" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Unit of Measure"/>
+                        <PropertyValue Property="CollectionPath" String="I_UnitOfMeasure"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="UnitOfMeasure"/>
+                                    <PropertyValue Property="ValueListProperty" String="UnitOfMeasure"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="UnitOfMeasure_Text"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="YY1_GATEPASSHEADERDATA_CDS.YY1_GATEPASSHEADERDATAType/Gateentrytype" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Gate entry type"/>
+                        <PropertyValue Property="CollectionPath" String="YY1_GATEENTRYTYPE"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Gateentrytype"/>
+                                    <PropertyValue Property="ValueListProperty" String="Code"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Description"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="YY1_GATEPASSHEADERDATA_CDS.YY1_GATEPASSHEADERDATAType/Status" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="status"/>
+                        <PropertyValue Property="CollectionPath" String="YY1_STATUS"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Status"/>
+                                    <PropertyValue Property="ValueListProperty" String="Code"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Description"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="YY1_GATEPASSHEADERDATA_CDS.YY1_GATEPASSITEMDATA_GATEPASSHType/Gateentrytype" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Gate entry type"/>
+                        <PropertyValue Property="CollectionPath" String="YY1_GATEENTRYTYPE"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Gateentrytype"/>
+                                    <PropertyValue Property="ValueListProperty" String="Code"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Description"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="YY1_GATEPASSHEADERDATA_CDS.YY1_GATEPASSITEMDATA_GATEPASSHType/Quantity_U" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Unit of Measure"/>
+                        <PropertyValue Property="CollectionPath" String="I_UnitOfMeasure"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Quantity_U"/>
+                                    <PropertyValue Property="ValueListProperty" String="UnitOfMeasure"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="UnitOfMeasure_Text"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="YY1_GATEPASSHEADERDATA_CDS.YY1_GATEPASSITEMDATA_GATEPASSHType/RecQuantit_U" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Unit of Measure"/>
+                        <PropertyValue Property="CollectionPath" String="I_UnitOfMeasure"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="RecQuantit_U"/>
+                                    <PropertyValue Property="ValueListProperty" String="UnitOfMeasure"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="UnitOfMeasure_Text"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="YY1_GATEPASSHEADERDATA_CDS.YY1_GATEPASSHEADERDATA_CDS_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+            </Annotations>
+            <Annotations Target="YY1_GATEPASSHEADERDATA_CDS.YY1_GATEPASSHEADERDATAType/to_GatePassItemData" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Composition"/>
+            </Annotations>
+            <Annotations Target="YY1_GATEPASSHEADERDATA_CDS.YY1_GATEPASSHEADERDATA_CDS_Entities/I_UnitOfMeasure" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_Dimension"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_ISOCode"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="YY1_GATEPASSHEADERDATA_CDS.YY1_GATEPASSHEADERDATA_CDS_Entities/I_UnitOfMeasureText" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_Language"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_UnitOfMeasure"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="YY1_GATEPASSHEADERDATA_CDS.YY1_GATEPASSHEADERDATA_CDS_Entities/YY1_GATEPASSHEADERDATA" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_GatePassItemData"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="true"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_Gateentrytype"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_ILM_Status_Text"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_SAPSysAdminDataChangeUser"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_SAPSysAdminDataCreateUser"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_Status"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="YY1_GATEPASSHEADERDATA_CDS.YY1_GATEPASSHEADERDATA_CDS_Entities/YY1_GATEPASSITEMDATA_GATEPASSH" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_GATEPASSHEADERDATA"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_Gateentrytype"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_ILM_Status_Text"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_Quantity"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_RecQuantit"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to__Quantity"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to__RecQuantit"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="YY1_GATEPASSHEADERDATA_CDS.YY1_GATEPASSHEADERDATAType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SemanticKey">
+                    <Collection>
+                        <PropertyPath>Gateentrytype</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="YY1_GATEPASSHEADERDATA_CDS.I_UnitOfMeasureType/UnitOfMeasure" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.UnitSpecificScale" Path="UnitOfMeasureDspNmbrOfDcmls"/>
+            </Annotations>
+            <atom:link rel="self" href="https://my401677-api.s4hana.cloud.sap/sap/opu/odata/sap/YY1_GATEPASSHEADERDATA_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="https://my401677-api.s4hana.cloud.sap/sap/opu/odata/sap/YY1_GATEPASSHEADERDATA_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

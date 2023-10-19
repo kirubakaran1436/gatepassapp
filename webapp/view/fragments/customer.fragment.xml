@@ -1,0 +1,33 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<TableSelectDialog id="_IDGenTableSelectDialog1300000"
+		noDataText="No Products Found" contentWidth="40%"
+		title="Select Product"
+		search="._handleValueHelpSearch5"
+		searchPlaceholder="Search Products"
+		confirm="._handleValueHelpClose5"
+		cancel="._handleValueHelpClose6"
+		showClearButton="true"
+		items="{customermodel>/CustDatas}">
+		<ColumnListItem id="_IDGenColumnListItem11100000000" selected="{selected}">
+			<cells>
+				<ObjectIdentifier id="_IDGenObjectIdentifier11200" text="{customermodel>customer}" />
+				
+				
+			</cells>
+		</ColumnListItem>
+		<columns>
+			<Column id="_IDGenColumn1110000000000" >
+				<header>
+					<Text id="_IDGenText5hhj" text="customer" />
+				</header>
+			</Column>
+		
+		
+		
+			
+			
+		</columns>
+	</TableSelectDialog>
+</core:FragmentDefinition>

@@ -1,0 +1,1690 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:fb="sap.ui.comp.filterbar"
+ xmlns:svm="sap.ui.comp.smartvariants" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:k="sap.ui.table" 
+  controllerName="gatepass.controller.report.item_gatepass_report" height="100%" xmlns:columnmenu="sap.m.table.columnmenu"
+  >
+    <Page id="page" titleAlignment="Center" title="{i18n>gatepass_report}">
+
+        <VBox id="_IDGenVBox01" class="sapUiSmallMargin">
+		<!-- <f:SimpleForm class="simform" id="SimpleFormChangeColumn_twoGroups234" editable="true" layout="ColumnLayout" columnsM="2" columnsL="3" columnsXL="4">
+			<f:content> -->
+
+            <Input visible="false" id="Ref_Data01" value=""/>
+            <Input visible="false" id="Ref_Export_Count01" value=""/>
+			
+			<!-- </f:content>
+		</f:SimpleForm> -->
+	</VBox>
+
+
+
+    <!-- ======⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩=========____ Start For General Purchase Table ___=======⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩========  -->
+
+     <VBox id="_IDGenVBox2" class="sapUiSmallMargin">  
+
+        <k:Table id="general_purchase_table" firstVisibleRow="0" fixedRowCount="0" fixedBottomRowCount="0" visible="false"
+         columnHeaderVisible="true" threshold="15" selectionMode="None" visibleRowCount="{JModelCount>/data/DataCount}"
+          showColumnVisibilityMenu="true" minAutoRowCount="5" enableSelectAll="true" sort="onSort" enableBusyIndicator="true" columnMove="onColumnMove"
+           enableColumnReordering="true" rows="{path:'JModel>/data'}">
+            <k:extension>
+                <OverflowToolbar id="_IDGenOverflowToolbar2" style="Clear">
+                    <Title id="title" text="General Purchase Items"/>
+                    <ToolbarSeparator id="_IDGenToolbarSeparator1"/>
+                    <ToolbarSpacer id="_IDGenToolbarSeparator2"/>
+                    <ToolbarSpacer id="_IDGenToolbarSpacer3"/>
+                    <Button id="_IDGenButton1" icon="sap-icon://download" press="OnExport"/>
+                    <Button icon="sap-icon://action-settings" press="openPersoDialog"/>
+                </OverflowToolbar>
+            </k:extension>
+            <k:dependents>
+                <columnmenu:Menu id="menu">
+                    <columnmenu:items>
+                        <columnmenu:ActionItem id="_IDGenActionItem1" icon="sap-icon://sort" label="Sort" press="onColumnHeaderItemPress"/>
+                        <columnmenu:ActionItem id="_IDGenActionItem2" icon="sap-icon://table-column" label="Columns" press="onColumnHeaderItemPress"/>
+                    </columnmenu:items>
+                </columnmenu:Menu>
+            </k:dependents>
+            <k:noData>
+                <Text text="No Data found."/>
+            </k:noData>
+            <k:columns>
+
+
+             <k:Column id="_IDGenColumn23" sortProperty="JModel>Status" headerMenu="menu" width="3rem">
+                    <Label id="_IDGenLabel23" text="Status"/>
+                    <k:template>
+                    <Button id="_IDGenButton4" enabled="false" visible="{= ${JModel>Status} === 'deleted' }" icon="sap-icon://delete" type="Reject" tooltip="Deleted"/>
+                    </k:template>
+                </k:Column> 
+
+                <k:Column id="_IDGenColumn1" sortProperty="JModel>Id" headerMenu="menu" width="11rem">
+                    <Label id="_IDGenLabel1" text="Document No"/>
+                    <k:template>
+                        <Input id="_IDGenInput1" editable="false" value="{JModel>Id}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column id="_IDGenColumn2" sortProperty="JModel>Purchasing_Document_Item" headerMenu="menu" width="11rem">
+                    <Label id="_IDGenLabel2" text="Purchasing Document Item"/>
+                    <k:template>
+                        <Input id="_IDGenInput2" editable="false" value="{JModel>Purchasing_Document_Item}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column id="_IDGenColumn3" sortProperty="JModel>Purchasing_Document" headerMenu="menu" width="11rem">
+                    <Label id="_IDGenLabel3" text="Purchasing Document No"/>
+                    <k:template>
+                        <Input id="_IDGenInput3" editable="false" value="{JModel>Purchasing_Document}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column id="_IDGenColumn4" sortProperty="JModel>Material_Code" headerMenu="menu" width="11rem">
+                    <Label id="_IDGenLabel4" text="Material Code"/>
+                    <k:template>
+                        <Input id="_IDGenInput4" editable="false" value="{JModel>Material_Code}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column id="_IDGenColumn5" sortProperty="JModel>Material_Description" headerMenu="menu" width="11rem">
+                    <Label id="_IDGenLabel5" text="Material Description"/>
+                    <k:template>
+                        <Input id="_IDGenInput5" editable="false" value="{JModel>Material_Description}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column id="_IDGenColumn6" sortProperty="JModel>Quantity" headerMenu="menu" width="11rem">
+                    <Label id="_IDGenLabel6" text="Quantity"/>
+                    <k:template>
+                        <Input id="_IDGenInput6" editable="false" value="{JModel>Quantity}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column id="_IDGenColumn61" sortProperty="JModel>Gate_Quantity_To_Post" headerMenu="menu" width="11rem">
+                    <Label id="_IDGenLabel61" text="Quantity to POST"/>
+                    <k:template>
+                        <Input id="_IDGenInput61" editable="false" value="{JModel>Gate_Quantity_To_Post}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column id="_IDGenColumn7" sortProperty="JModel>UOM" headerMenu="menu" width="11rem">
+                    <Label id="_IDGenLabel7" text="UOM"/>
+                    <k:template>
+                        <Input id="_IDGenInput7" editable="false" value="{JModel>UOM}"/>
+                    </k:template>
+                </k:Column>
+                
+                <k:Column id="_IDGenColumn8" sortProperty="JModel>HSN_Code" headerMenu="menu" width="11rem">
+                    <Label id="_IDGenLabel8" text="HSN Code"/>
+                    <k:template>
+                        <Input id="_IDGenInput8" editable="false" value="{JModel>HSN_Code}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column id="_IDGenColumn9" sortProperty="JModel>Net_Price" headerMenu="menu" width="11rem">
+                    <Label id="_IDGenLabel9" text="Net Price"/>
+                    <k:template>
+                        <Input id="_IDGenInput9" editable="false" value="{JModel>Net_Price}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column id="_IDGenColumn10" sortProperty="JModel>Plant" headerMenu="menu" width="11rem">
+                    <Label id="_IDGenLabel10" text="Plant"/>
+                    <k:template>
+                        <Input id="_IDGenInput10" editable="false" value="{JModel>Plant}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column id="_IDGenColumn11" sortProperty="JModel>Vendor_Code" headerMenu="menu" width="11rem">
+                    <Label id="_IDGenLabel11" text="Vendor Code"/>
+                    <k:template>
+                        <Input id="_IDGenInput11" editable="false" value="{JModel>Vendor_Code}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column id="_IDGenColumn12" sortProperty="JModel>Vendor_Name" headerMenu="menu" width="11rem">
+                    <Label id="_IDGenLabel12" text="Vendor Name"/>
+                    <k:template>
+                        <Input id="_IDGenInput12" editable="false" value="{JModel>Vendor_Name}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column id="_IDGenColumn13" sortProperty="JModel>Partner_Document_No" headerMenu="menu" width="11rem">
+                    <Label id="_IDGenLabel13" text="Invoice No"/>
+                    <k:template>
+                        <Input id="_IDGenInput13" editable="false" value="{JModel>Partner_Document_No}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column id="_IDGenColumn14" sortProperty="JModel>Invoice_Date" headerMenu="menu" width="11rem">
+                    <Label id="_IDGenLabel14" text="Invoice Date"/>
+                    <k:template>
+                        <Input id="_IDGenInput14" editable="false" value="{JModel>Invoice_Date}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column id="_IDGenColumn15" sortProperty="JModel>No_Of_Packages" headerMenu="menu" width="11rem">
+                    <Label id="_IDGenLabel15" text="No Of Packages"/>
+                    <k:template>
+                        <Input id="_IDGenInput15" editable="false" value="{JModel>No_Of_Packages}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column id="_IDGenColumn16" sortProperty="JModel>Vehicle_No" headerMenu="menu" width="11rem">
+                    <Label id="_IDGenLabel16" text="Vehicle No"/>
+                    <k:template>
+                        <Input id="_IDGenInput16" editable="false" value="{JModel>Vehicle_No}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column id="_IDGenColumn17" sortProperty="JModel>Bins" headerMenu="menu" width="11rem">
+                    <Label id="_IDGenLabel17" text="Bins"/>
+                    <k:template>
+                        <Input id="_IDGenInput17" editable="false" value="{JModel>Bins}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column id="_IDGenColumn18" sortProperty="JModel>No_Of_Bins" headerMenu="menu" width="11rem">
+                    <Label id="_IDGenLabel18" text="No Of Bins"/>
+                    <k:template>
+                        <Input id="_IDGenInput18" editable="false" value="{JModel>No_Of_Bins}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column id="_IDGenColumn19" sortProperty="" headerMenu="menu" width="11rem">
+                    <Label id="_IDGenLabel19" text="Created At Gen"/>
+                    <k:template>
+                        <Input id="_IDGenInput19" editable="false" value="{parts:[{path:'JModel>SAP_PARENT_UUID'}, {path:'JModel>Id'}], formatter:'.OnCreatedAt'}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column id="_IDGenColumn20" sortProperty="" headerMenu="menu" width="11rem">
+                    <Label id="_IDGenLabel20" text="Created By"/>
+                    <k:template>
+                        <Input id="_IDGenInput20" editable="false" value="{parts:[{path:'JModel>SAP_PARENT_UUID'}, {path:'JModel>Id'}], formatter:'.OnCreatedBy'}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column id="_IDGenColumn21" sortProperty="" headerMenu="menu" width="11rem">
+                    <Label id="_IDGenLabel21" text="Changed At"/>
+                    <k:template>
+                        <Input id="_IDGenInput21" editable="false" value="{parts:[{path:'JModel>SAP_PARENT_UUID'}, {path:'JModel>Id'}], formatter:'.OnChangedAt'}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column id="_IDGenColumn22" sortProperty="" headerMenu="menu" width="11rem">
+                    <Label id="_IDGenLabel22" text="Changed By"/>
+                    <k:template>
+                        <Input id="_IDGenInput22" editable="false" value="{parts:[{path:'JModel>SAP_PARENT_UUID'}, {path:'JModel>Id'}], formatter:'.OnChangedBy'}"/>
+                    </k:template>
+                </k:Column> 
+
+                
+                
+                             
+            </k:columns>
+            
+        </k:Table>
+
+    </VBox>
+    <!-- =====⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧==========___ End For General Purchase Table ___======⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧==========  -->
+
+
+    <!-- =====⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩========____ Start For Cash Purchase Table ___========⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩===========  -->
+
+     <VBox id="_IDGenVBox3" class="sapUiSmallMargin">
+
+        <k:Table id="cash_purchase_table" firstVisibleRow="0" fixedRowCount="0" fixedBottomRowCount="0" visible="false"
+         columnHeaderVisible="true" threshold="100" visibleRowCount="{JModelCount>/data/DataCount}"
+          showColumnVisibilityMenu="true" minAutoRowCount="5" enableSelectAll="false" sort="onSort"
+           enableColumnReordering="true" rows="{path:'JModel>/data'}">
+            <k:extension>
+                <OverflowToolbar id="_IDGenOverflowToolbar3"  style="Clear">
+                    <Title id="_IDGenTitle1" text="Cash Purchase Items"/>
+                    <ToolbarSeparator id="_IDGenToolbarSeparator3" />
+                    <ToolbarSpacer id="_IDGenToolbarSpacer5" />
+                    <ToolbarSpacer id="_IDGenToolbarSpacer6" />
+                     <Button id="_IDGenButton5" icon="sap-icon://download" press="OnExport"/>
+                </OverflowToolbar>
+            </k:extension>
+            <k:columns>
+
+            <k:Column id="_IDGenColumn40" sortProperty="" width="5rem">
+                    <Label id="_IDGenLabel40" text="Status"/>
+                    <k:template>
+                    <Button id="_IDGenButton6" enabled="false" visible="{= ${JModel>Status} === 'deleted' }" icon="sap-icon://delete" type="Reject" tooltip="Deleted"/>
+                    </k:template>
+                </k:Column>  
+
+                <k:Column id="_IDGenColumn24" sortProperty="" width="11rem">
+                    <Label id="_IDGenLabel24" text="Document No"/>
+                    <k:template>
+                        <Input id="_IDGenInput23" editable="false" value="{JModel>Id}"/>
+                    </k:template>
+                </k:Column>
+
+                <!-- <k:Column sortProperty="" width="11rem">
+                    <Label text="Material Code"/>
+                    <k:template>
+                        <Input editable="false" value="{JModel>Material_Code}"/>
+                    </k:template>
+                </k:Column> -->
+
+                <k:Column id="_IDGenColumn25" sortProperty="" width="11rem">
+                    <Label id="_IDGenLabel25" text="Material Description"/>
+                    <k:template>
+                        <Input id="_IDGenInput24" editable="false" value="{JModel>Material_Description}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column id="_IDGenColumn26" sortProperty="" width="11rem">
+                    <Label id="_IDGenLabel26" text="Quantity"/>
+                    <k:template>
+                        <Input id="_IDGenInput25" editable="false" value="{JModel>Quantity}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column sortProperty="JModel>Quantity_To_Post" headerMenu="menu" width="11rem">
+                    <Label text="Quantity to POST"/>
+                    <k:template>
+                        <Input editable="false" value="{JModel>Quantity_To_Post}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column id="_IDGenColumn27" sortProperty="" width="11rem">
+                    <Label id="_IDGenLabel27" text="Amount"/>
+                    <k:template>
+                        <Input id="_IDGenInput26" editable="false" value="{JModel>Amount}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column id="_IDGenColumn28" sortProperty="" width="11rem">
+                    <Label id="_IDGenLabel28" text="Bill No"/>
+                    <k:template>
+                        <Input id="_IDGenInput27" editable="false" value="{JModel>Bill_No}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column id="_IDGenColumn29" sortProperty="" width="11rem">
+                    <Label id="_IDGenLabel29" text="Partner Document No"/>
+                    <k:template>
+                        <Input id="_IDGenInput28" editable="false" value="{JModel>Partner_Doc_No}"/>
+                    </k:template>
+                </k:Column>
+                
+                <!-- <k:Column sortProperty="" width="11rem">
+                    <Label text="Vendor Code"/>
+                    <k:template>
+                        <Input editable="false" value="{JModel>Vendor_Code}"/>
+                    </k:template>
+                </k:Column> -->
+
+                <k:Column id="_IDGenColumn30" sortProperty="" width="11rem">
+                    <Label id="_IDGenLabel30" text="Vendor Name"/>
+                    <k:template>
+                        <Input id="_IDGenInput29" editable="false" value="{JModel>Vendor_Name}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column id="_IDGenColumn31" sortProperty="" width="11rem">
+                    <Label id="_IDGenLabel31" text="No Of Packages"/>
+                    <k:template>
+                        <Input id="_IDGenInput30" editable="false" value="{JModel>No_Of_Packages}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column id="_IDGenColumn32" sortProperty="" width="11rem">
+                    <Label id="_IDGenLabel32" text="Vehicle No"/>
+                    <k:template>
+                        <Input id="_IDGenInput31" editable="false" value="{JModel>Vehicle_No}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column id="_IDGenColumn33" sortProperty="" width="11rem">
+                    <Label id="_IDGenLabel33" text="Bins"/>
+                    <k:template>
+                        <Input id="_IDGenInput32" editable="false" value="{JModel>Bins}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column id="_IDGenColumn34" sortProperty="" width="11rem">
+                    <Label id="_IDGenLabel34" text="No Of Bins"/>
+                    <k:template>
+                        <Input id="_IDGenInput33" editable="false" value="{JModel>No_Of_Bins}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column id="_IDGenColumn35" sortProperty="" width="11rem">
+                    <Label id="_IDGenLabel35" text="Person Name"/>
+                    <k:template>
+                        <Input id="_IDGenInput34" editable="false" value="{JModel>Person_Name}"/>
+                    </k:template>
+                </k:Column>
+
+                 <k:Column id="_IDGenColumn36" sortProperty="" width="11rem">
+                    <Label id="_IDGenLabel36" text="Created At"/>
+                    <k:template>
+                        <Input id="_IDGenInput35" editable="false" value="{parts:[{path:'JModel>SAP_PARENT_UUID'}, {path:'JModel>Id'}], formatter:'.OnCreatedAt'}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column id="_IDGenColumn37" sortProperty="" width="11rem">
+                    <Label id="_IDGenLabel37" text="Created By"/>
+                    <k:template>
+                        <Input id="_IDGenInput36" editable="false" value="{parts:[{path:'JModel>SAP_PARENT_UUID'}, {path:'JModel>Id'}], formatter:'.OnCreatedBy'}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column id="_IDGenColumn38" sortProperty="" width="11rem">
+                    <Label id="_IDGenLabel38" text="Changed At"/>
+                    <k:template>
+                        <Input id="_IDGenInput37" editable="false" value="{parts:[{path:'JModel>SAP_PARENT_UUID'}, {path:'JModel>Id'}], formatter:'.OnChangedAt'}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column id="_IDGenColumn39" sortProperty="" width="11rem">
+                    <Label id="_IDGenLabel39" text="Changed By"/>
+                    <k:template>
+                        <Input id="_IDGenInput38" editable="false" value="{parts:[{path:'JModel>SAP_PARENT_UUID'}, {path:'JModel>Id'}], formatter:'.OnChangedBy'}"/>
+                    </k:template>
+                </k:Column> 
+
+                             
+                             
+            </k:columns>
+            
+        </k:Table>
+
+    </VBox>
+
+    <!-- =====⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧========____ End For Cash Purchase Table ___=========⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧==========  -->
+
+    <!-- =====⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩========____ Start For Sales Return Table ___========⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩=========== -->
+
+     <VBox id="_IDGenVBox4" class="sapUiSmallMargin">
+
+        <k:Table id="sales_return_table" firstVisibleRow="0" fixedRowCount="0" fixedBottomRowCount="0" visible="false"
+         columnHeaderVisible="true" threshold="100" visibleRowCount="{JModelCount>/data/DataCount}"
+          showColumnVisibilityMenu="true" minAutoRowCount="5" enableSelectAll="false" sort="onSort"
+           enableColumnReordering="true" rows="{path:'JModel>/data'}">
+            <k:extension>
+                <OverflowToolbar id="_IDGenOverflowToolbar4" style="Clear">
+                    <Title id="_IDGenTitle2"  text="Sales Return Items"/>
+                    <ToolbarSeparator id="_IDGenToolbarSeparator4" />
+                    <ToolbarSpacer id="_IDGenToolbarSpacer7" />
+                    <ToolbarSpacer id="_IDGenToolbarSpacer8" />
+                     <Button id="_IDGenButton7" icon="sap-icon://download" press="OnExport"/>
+                </OverflowToolbar>
+            </k:extension>
+             <k:columns>
+
+              <k:Column id="_IDGenColumn59" sortProperty="JModel>" width="5rem">
+                    <Label id="_IDGenLabel59" text="Status"/>
+                    <k:template>
+                    <Button id="_IDGenButton8" enabled="false" visible="{= ${JModel>Status} === 'deleted' }" icon="sap-icon://delete" type="Reject" tooltip="Deleted"/>
+                    </k:template>
+                </k:Column> 
+
+                <k:Column id="_IDGenColumn41" sortProperty="JModel>Id" width="11rem">
+                    <Label id="_IDGenLabel41" text="Document No"/>
+                    <k:template>
+                        <Input id="_IDGenInput39" editable="false" value="{JModel>Id}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column id="_IDGenColumn42" sortProperty="" width="11rem">
+                    <Label id="_IDGenLabel42" text="Sales Order Item"/>
+                    <k:template>
+                        <Input id="_IDGenInput40" editable="false" value="{JModel>Sales_Order_Item}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column id="_IDGenColumn43" sortProperty="JModel>" width="11rem">
+                    <Label id="_IDGenLabel43" text="Sales Order"/>
+                    <k:template>
+                        <Input id="_IDGenInput41" editable="false" value="{JModel>Sales_Order}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column id="_IDGenColumn44" sortProperty="JModel>" width="11rem">
+                    <Label id="_IDGenLabel44" text="Material Code"/>
+                    <k:template>
+                        <Input id="_IDGenInput42" editable="false" value="{JModel>Product}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column id="_IDGenColumn45" sortProperty="JModel>" width="11rem">
+                    <Label id="_IDGenLabel45" text="Material Description"/>
+                    <k:template>
+                        <Input id="_IDGenInput43" editable="false" value="{JModel>Product_Name}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column id="_IDGenColumn46" sortProperty="JModel>" width="11rem">
+                    <Label id="_IDGenLabel46" text="Quantity"/>
+                    <k:template>
+                        <Input id="_IDGenInput44" editable="false" value="{JModel>Quantity}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column sortProperty="JModel>Quantity_To_Post" headerMenu="menu" width="11rem">
+                    <Label text="Quantity to POST"/>
+                    <k:template>
+                        <Input editable="false" value="{JModel>Quantity_To_Post}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column id="_IDGenColumn47" sortProperty="JModel>" width="11rem">
+                    <Label id="_IDGenLabel47" text="Plant"/>
+                    <k:template>
+                        <Input id="_IDGenInput45" editable="false" value="{JModel>Plant}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column id="_IDGenColumn48" sortProperty="JModel>" width="11rem">
+                    <Label id="_IDGenLabel48" text="Customer Code"/>
+                    <k:template>
+                        <Input id="_IDGenInput46" editable="false" value="{JModel>Customer_Code}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column id="_IDGenColumn49" sortProperty="JModel>" width="11rem">
+                    <Label id="_IDGenLabel49" text="Customer Name"/>
+                    <k:template>
+                        <Input id="_IDGenInput47" editable="false" value="{JModel>Customer_Code}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column id="_IDGenColumn50" sortProperty="JModel>" width="11rem">
+                    <Label id="_IDGenLabel50" text="No Of Packages"/>
+                    <k:template>
+                        <Input id="_IDGenInput48" editable="false" value="{JModel>No_Of_Packages}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column id="_IDGenColumn51" sortProperty="JModel>" width="11rem">
+                    <Label id="_IDGenLabel51" text="Vehicle No"/>
+                    <k:template>
+                        <Input id="_IDGenInput49" editable="false" value="{JModel>Vehicle_No}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column id="_IDGenColumn52" sortProperty="JModel>" width="11rem">
+                    <Label id="_IDGenLabel52" text="Bins"/>
+                    <k:template>
+                        <Input id="_IDGenInput50" editable="false" value="{JModel>Bins}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column id="_IDGenColumn53" sortProperty="JModel>" width="11rem">
+                    <Label id="_IDGenLabel53" text="No Of Bins"/>
+                    <k:template>
+                        <Input id="_IDGenInput51" editable="false" value="{JModel>No_Of_Bins}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column id="_IDGenColumn54" sortProperty="JModel>" width="11rem">
+                    <Label id="_IDGenLabel54" text="Transporter"/>
+                    <k:template>
+                        <Input id="_IDGenInput52" editable="false" value="{JModel>Transporter}"/>
+                    </k:template>
+                </k:Column>
+
+                 <k:Column id="_IDGenColumn55" sortProperty="JModel>" width="11rem">
+                    <Label id="_IDGenLabel55" text="Created At"/>
+                    <k:template>
+                        <Input id="_IDGenInput53" editable="false" value="{parts:[{path:'JModel>SAP_PARENT_UUID'}, {path:'JModel>Id'}], formatter:'.OnCreatedAt'}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column id="_IDGenColumn56" sortProperty="JModel>" width="11rem">
+                    <Label id="_IDGenLabel56" text="Created By"/>
+                    <k:template>
+                        <Input id="_IDGenInput54" editable="false" value="{parts:[{path:'JModel>SAP_PARENT_UUID'}, {path:'JModel>Id'}], formatter:'.OnCreatedBy'}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column id="_IDGenColumn57" sortProperty="JModel>" width="11rem">
+                    <Label id="_IDGenLabel57" text="Changed At"/>
+                    <k:template>
+                        <Input id="_IDGenInput55" editable="false" value="{parts:[{path:'JModel>SAP_PARENT_UUID'}, {path:'JModel>Id'}], formatter:'.OnChangedAt'}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column id="_IDGenColumn58" sortProperty="JModel>" width="11rem">
+                    <Label id="_IDGenLabel58" text="Changed By"/>
+                    <k:template>
+                        <Input id="_IDGenInput56" editable="false" value="{parts:[{path:'JModel>SAP_PARENT_UUID'}, {path:'JModel>Id'}], formatter:'.OnChangedBy'}"/>
+                    </k:template>
+                </k:Column> 
+
+                
+                
+                             
+            </k:columns>
+            
+        </k:Table>
+
+    </VBox>
+
+    <!-- =====⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧========____ End For Sales Return Table ____=========⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧==========  -->
+
+    <!-- =====⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩========____ Start For Inward Returnable Challan Table ___========⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩=========== -->
+
+     <VBox id="_IDGenVBox5" class="sapUiSmallMargin">
+
+        <k:Table id="in_returnable_challan_table" firstVisibleRow="0" fixedRowCount="0" fixedBottomRowCount="0" visible="false"
+         columnHeaderVisible="true" threshold="100" visibleRowCount="{JModelCount>/data/DataCount}"
+          showColumnVisibilityMenu="true" minAutoRowCount="5" enableSelectAll="false" sort="onSort"
+           enableColumnReordering="true" rows="{path:'JModel>/data'}">
+            <k:extension>
+                <OverflowToolbar style="Clear">
+                    <Title text="Inward Returnable Challan Items"/>
+                    <ToolbarSeparator />
+                    <ToolbarSpacer  />
+                    <ToolbarSpacer  />
+                     <Button icon="sap-icon://download" press="OnExport"/>
+                </OverflowToolbar>
+            </k:extension>
+             <k:columns>
+
+              <k:Column  sortProperty="JModel>" width="5rem">
+                    <Label  text="Status"/>
+                    <k:template>
+                    <Button enabled="false" visible="{= ${JModel>Status} === 'deleted' }" icon="sap-icon://delete" type="Reject" tooltip="Deleted"/>
+                    </k:template>
+                </k:Column> 
+
+                <k:Column sortProperty="JModel>" width="11rem">
+                    <Label text="Document No"/>
+                    <k:template>
+                        <Input  editable="false" value="{JModel>Id}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column  sortProperty="JModel>Material_Document_Item" width="11rem">
+                    <Label  text="Material Document Item"/>
+                    <k:template>
+                        <Input  editable="false" value="{JModel>Material_Document_Item}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column  sortProperty="JModel>Material_Document_Year" width="11rem">
+                    <Label  text="Material Document Year"/>
+                    <k:template>
+                        <Input editable="false" value="{JModel>Material_Document_Year}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column  sortProperty="JModel>Material_Document_No" width="11rem">
+                    <Label  text="Material Document No"/>
+                    <k:template>
+                        <Input editable="false" value="{JModel>Material_Document_No}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column  sortProperty="JModel>Material_Code" width="11rem">
+                    <Label  text="Material Code"/>
+                    <k:template>
+                        <Input  editable="false" value="{JModel>Material_Code}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column  sortProperty="JModel>Material_Description" width="11rem">
+                    <Label  text="Material Description"/>
+                    <k:template>
+                        <Input  editable="false" value="{JModel>Material_Description}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column  sortProperty="JModel>Quantity" width="11rem">
+                    <Label  text="Quantity"/>
+                    <k:template>
+                        <Input  editable="false" value="{JModel>Quantity}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column sortProperty="JModel>Quantity_To_Post" headerMenu="menu" width="11rem">
+                    <Label text="Quantity to POST"/>
+                    <k:template>
+                        <Input editable="false" value="{JModel>Quantity_To_Post}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column  sortProperty="JModel>Plant" width="11rem">
+                    <Label  text="Plant"/>
+                    <k:template>
+                        <Input  editable="false" value="{JModel>Plant}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column  sortProperty="JModel>Vendor_Code" width="11rem">
+                    <Label  text="Vendor Code"/>
+                    <k:template>
+                        <Input  editable="false" value="{JModel>Vendor_Code}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column sortProperty="JModel>Vendor_Name" width="11rem">
+                    <Label text="Vendor Name"/>
+                    <k:template>
+                        <Input editable="false" value="{JModel>Vendor_Name}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column sortProperty="JModel>No_Of_Packages" width="11rem">
+                    <Label  text="No Of Packages"/>
+                    <k:template>
+                        <Input editable="false" value="{JModel>No_Of_Packages}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column  sortProperty="JModel>Vehicle_No" width="11rem">
+                    <Label  text="Vehicle No"/>
+                    <k:template>
+                        <Input editable="false" value="{JModel>Vehicle_No}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column sortProperty="JModel>Bins" width="11rem">
+                    <Label text="Bins"/>
+                    <k:template>
+                        <Input editable="false" value="{JModel>Bins}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column sortProperty="JModel>" width="11rem">
+                    <Label text="No Of Bins"/>
+                    <k:template>
+                        <Input editable="false" value="{JModel>No_Of_Bins}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column sortProperty="JModel>" width="11rem">
+                    <Label text="Transporter"/>
+                    <k:template>
+                        <Input editable="false" value="{JModel>Transporter}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column sortProperty="JModel>" width="11rem">
+                    <Label text="Bin Challan No"/>
+                    <k:template>
+                        <Input editable="false" value="{JModel>Bin_Challan_No}"/>
+                    </k:template>
+                </k:Column>
+
+                 <k:Column sortProperty="JModel>" width="11rem">
+                    <Label text="Created At"/>
+                    <k:template>
+                        <Input editable="false" value="{parts:[{path:'JModel>SAP_PARENT_UUID'}, {path:'JModel>Id'}], formatter:'.OnCreatedAt'}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column sortProperty="JModel>" width="11rem">
+                    <Label text="Created By"/>
+                    <k:template>
+                        <Input editable="false" value="{parts:[{path:'JModel>SAP_PARENT_UUID'}, {path:'JModel>Id'}], formatter:'.OnCreatedBy'}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column sortProperty="JModel>" width="11rem">
+                    <Label text="Changed At"/>
+                    <k:template>
+                        <Input editable="false" value="{parts:[{path:'JModel>SAP_PARENT_UUID'}, {path:'JModel>Id'}], formatter:'.OnChangedAt'}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column sortProperty="JModel>" width="11rem">
+                    <Label text="Changed By"/>
+                    <k:template>
+                        <Input editable="false" value="{parts:[{path:'JModel>SAP_PARENT_UUID'}, {path:'JModel>Id'}], formatter:'.OnChangedBy'}"/>
+                    </k:template>
+                </k:Column> 
+
+                
+                
+                             
+            </k:columns>
+            
+        </k:Table>
+
+    </VBox>
+
+    <!-- =====⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧========____ End For Inward Returnable Challan Table ____=========⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧==========  -->
+
+
+    <!-- =====⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩========____ Start For Outward Vendor Return Table ___========⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩=========== -->
+
+     <VBox id="_IDGenVBox6" class="sapUiSmallMargin">
+
+        <k:Table id="vendor_return_table" firstVisibleRow="0" fixedRowCount="0" fixedBottomRowCount="0" visible="false"
+         columnHeaderVisible="true" threshold="100" visibleRowCount="{JModelCount>/data/DataCount}"
+          showColumnVisibilityMenu="true" minAutoRowCount="5" enableSelectAll="false" sort="onSort"
+           enableColumnReordering="true" rows="{path:'JModel>/data'}">
+            <k:extension>
+                <OverflowToolbar style="Clear">
+                    <Title text="Gate Pass Items"/>
+                    <ToolbarSeparator />
+                    <ToolbarSpacer  />
+                    <ToolbarSpacer  />
+                     <Button icon="sap-icon://download" press="OnExport"/>
+                </OverflowToolbar>
+            </k:extension>
+             <k:columns>
+
+             <k:Column  sortProperty="JModel>" width="5rem">
+                    <Label  text="Status"/>
+                    <k:template>
+                    <Button enabled="false" visible="{= ${JModel>Status} === 'deleted' }" icon="sap-icon://delete" type="Reject" tooltip="Deleted"/>
+                    </k:template>
+                </k:Column> 
+
+                <k:Column sortProperty="JModel>" width="11rem">
+                    <Label text="Document No"/>
+                    <k:template>
+                        <Input  editable="false" value="{JModel>Id}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column  sortProperty="JModel>Material_Document_Item" width="11rem">
+                    <Label  text="Material Document Item"/>
+                    <k:template>
+                        <Input  editable="false" value="{JModel>Material_Document_Item}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column  sortProperty="JModel>Material_Document_Year" width="11rem">
+                    <Label  text="Material Document Year"/>
+                    <k:template>
+                        <Input editable="false" value="{JModel>Material_Document_Year}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column  sortProperty="JModel>Material_Document_No" width="11rem">
+                    <Label  text="Material Document No"/>
+                    <k:template>
+                        <Input editable="false" value="{JModel>Material_Document_No}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column  sortProperty="JModel>Material_Code" width="11rem">
+                    <Label  text="Material Code"/>
+                    <k:template>
+                        <Input  editable="false" value="{JModel>Material_Code}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column  sortProperty="JModel>Material_Description" width="11rem">
+                    <Label  text="Material Description"/>
+                    <k:template>
+                        <Input  editable="false" value="{JModel>Material_Description}"/>
+                    </k:template>
+                </k:Column> 
+
+                <k:Column  sortProperty="JModel>Quantity" width="11rem">
+                    <Label  text="Quantity"/>
+                    <k:template>
+                        <Input  editable="false" value="{JModel>Quantity}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column sortProperty="JModel>Quantity_To_Post" headerMenu="menu" width="11rem">
+                    <Label text="Quantity to POST"/>
+                    <k:template>
+                        <Input editable="false" value="{JModel>Quantity_To_Post}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column  sortProperty="JModel>Plant" width="11rem">
+                    <Label  text="Plant"/>
+                    <k:template>
+                        <Input  editable="false" value="{JModel>Plant}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column  sortProperty="JModel>Vendor_Code" width="11rem">
+                    <Label  text="Vendor Code"/>
+                    <k:template>
+                        <Input  editable="false" value="{JModel>Vendor_Code}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column sortProperty="JModel>Vendor_Name" width="11rem">
+                    <Label text="Vendor Name"/>
+                    <k:template>
+                        <Input editable="false" value="{JModel>Vendor_Name}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column sortProperty="JModel>No_Of_Packages" width="11rem">
+                    <Label  text="No Of Packages"/>
+                    <k:template>
+                        <Input editable="false" value="{JModel>No_Of_Packages}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column  sortProperty="JModel>Vehicle_No" width="11rem">
+                    <Label  text="Vehicle No"/>
+                    <k:template>
+                        <Input editable="false" value="{JModel>Vehicle_No}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column sortProperty="JModel>Bins" width="11rem">
+                    <Label text="Bins"/>
+                    <k:template>
+                        <Input editable="false" value="{JModel>Bins}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column sortProperty="JModel>" width="11rem">
+                    <Label text="No Of Bins"/>
+                    <k:template>
+                        <Input editable="false" value="{JModel>No_Of_Bins}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column sortProperty="JModel>" width="11rem">
+                    <Label text="Transporter"/>
+                    <k:template>
+                        <Input editable="false" value="{JModel>Transporter}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column sortProperty="JModel>" width="11rem">
+                    <Label text="Bin Challan No"/>
+                    <k:template>
+                        <Input editable="false" value="{JModel>Bin_Challan_No}"/>
+                    </k:template>
+                </k:Column>
+
+                 <k:Column sortProperty="JModel>" width="11rem">
+                    <Label text="Created At"/>
+                    <k:template>
+                        <Input editable="false" value="{parts:[{path:'JModel>SAP_PARENT_UUID'}, {path:'JModel>Id'}], formatter:'.OnCreatedAt'}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column sortProperty="JModel>" width="11rem">
+                    <Label text="Created By"/>
+                    <k:template>
+                        <Input editable="false" value="{parts:[{path:'JModel>SAP_PARENT_UUID'}, {path:'JModel>Id'}], formatter:'.OnCreatedBy'}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column sortProperty="JModel>" width="11rem">
+                    <Label text="Changed At"/>
+                    <k:template>
+                        <Input editable="false" value="{parts:[{path:'JModel>SAP_PARENT_UUID'}, {path:'JModel>Id'}], formatter:'.OnChangedAt'}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column sortProperty="JModel>" width="11rem">
+                    <Label text="Changed By"/>
+                    <k:template>
+                        <Input editable="false" value="{parts:[{path:'JModel>SAP_PARENT_UUID'}, {path:'JModel>Id'}], formatter:'.OnChangedBy'}"/>
+                    </k:template>
+                </k:Column> 
+
+                 
+                
+                             
+            </k:columns>
+            
+        </k:Table>
+
+    </VBox>
+
+    <!-- =====⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧========____ End For Outward Vendor Return Table ____=========⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧==========  -->
+
+    <!-- =====⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩========____ Start For Outward Returnable Challan Table ___========⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩=========== -->
+
+     <VBox id="_IDGenVBox7" class="sapUiSmallMargin">
+
+        <k:Table id="out_returnable_challan_table" firstVisibleRow="0" fixedRowCount="0" fixedBottomRowCount="0" visible="false"
+         columnHeaderVisible="true" threshold="100" visibleRowCount="{JModelCount>/data/DataCount}"
+          showColumnVisibilityMenu="true" minAutoRowCount="5" enableSelectAll="false" sort="onSort"
+           enableColumnReordering="true" rows="{path:'JModel>/data'}">
+            <k:extension>
+                <OverflowToolbar style="Clear">
+                    <Title text="Ow Retunable Challan Items"/>
+                    <ToolbarSeparator />
+                    <ToolbarSpacer  />
+                    <ToolbarSpacer  />
+                     <Button icon="sap-icon://download" press="OnExport"/>
+                </OverflowToolbar>
+            </k:extension>
+             <k:columns>
+
+                 <k:Column  sortProperty="JModel>" width="5rem">
+                    <Label  text="Status"/>
+                    <k:template>
+                    <Button enabled="false" visible="{= ${JModel>Status} === 'deleted' }" icon="sap-icon://delete" type="Reject" tooltip="Deleted"/>
+                    </k:template>
+                </k:Column> 
+
+                <k:Column sortProperty="JModel>" width="11rem">
+                    <Label text="Document No"/>
+                    <k:template>
+                        <Input  editable="false" value="{JModel>Id}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column  sortProperty="JModel>Material_Document_Item" width="11rem">
+                    <Label  text="Material Document Item"/>
+                    <k:template>
+                        <Input  editable="false" value="{JModel>Material_Document_Item}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column  sortProperty="JModel>Material_Document_year" width="11rem">
+                    <Label  text="Material Document Year"/>
+                    <k:template>
+                        <Input editable="false" value="{JModel>Material_Document_year}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column  sortProperty="JModel>Material_Document_No" width="11rem">
+                    <Label  text="Material Document No"/>
+                    <k:template>
+                        <Input editable="false" value="{JModel>Material_Document_No}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column  sortProperty="JModel>Material_Code" width="11rem">
+                    <Label  text="Material Code"/>
+                    <k:template>
+                        <Input  editable="false" value="{JModel>Material_Code}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column  sortProperty="JModel>Material_Description" width="11rem">
+                    <Label  text="Material Description"/>
+                    <k:template>
+                        <Input  editable="false" value="{JModel>Material_Description}"/>
+                    </k:template>
+                </k:Column> 
+
+                <k:Column  sortProperty="JModel>Quantity" width="11rem">
+                    <Label  text="Quantity"/>
+                    <k:template>
+                        <Input  editable="false" value="{JModel>Quantity}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column sortProperty="JModel>Quantity_To_Post" headerMenu="menu" width="11rem">
+                    <Label text="Quantity to POST"/>
+                    <k:template>
+                        <Input editable="false" value="{JModel>Quantity_To_Post}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column  sortProperty="JModel>Plant" width="11rem">
+                    <Label  text="Plant"/>
+                    <k:template>
+                        <Input  editable="false" value="{JModel>Plant}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column  sortProperty="JModel>Vendor_Code" width="11rem">
+                    <Label  text="Vendor Code"/>
+                    <k:template>
+                        <Input  editable="false" value="{JModel>Vendor_Code}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column sortProperty="JModel>Vendor_Name" width="11rem">
+                    <Label text="Vendor Name"/>
+                    <k:template>
+                        <Input editable="false" value="{JModel>Vendor_Name}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column  sortProperty="JModel>Customer_Code" width="11rem">
+                    <Label  text="Customer Code"/>
+                    <k:template>
+                        <Input  editable="false" value="{JModel>Customer_Code}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column sortProperty="JModel>Customer_Name" width="11rem">
+                    <Label text="Customer Name"/>
+                    <k:template>
+                        <Input editable="false" value="{JModel>Customer_Name}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column sortProperty="JModel>No_Of_Packages" width="11rem">
+                    <Label  text="No Of Packages"/>
+                    <k:template>
+                        <Input editable="false" value="{JModel>No_Of_Packages}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column  sortProperty="JModel>Vehicle_No" width="11rem">
+                    <Label  text="Vehicle No"/>
+                    <k:template>
+                        <Input editable="false" value="{JModel>Vehicle_No}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column sortProperty="JModel>Bins" width="11rem">
+                    <Label text="Bins"/>
+                    <k:template>
+                        <Input editable="false" value="{JModel>Bins}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column sortProperty="JModel>" width="11rem">
+                    <Label text="No Of Bins"/>
+                    <k:template>
+                        <Input editable="false" value="{JModel>No_Of_Bins}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column sortProperty="JModel>" width="11rem">
+                    <Label text="Transporter"/>
+                    <k:template>
+                        <Input editable="false" value="{JModel>Transporter}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column sortProperty="JModel>" width="11rem">
+                    <Label text="Bin Challan No"/>
+                    <k:template>
+                        <Input editable="false" value="{JModel>Bin_Challan_No}"/>
+                    </k:template>
+                </k:Column>
+
+                 <k:Column sortProperty="JModel>" width="11rem">
+                    <Label text="Created At"/>
+                    <k:template>
+                        <Input editable="false" value="{parts:[{path:'JModel>SAP_PARENT_UUID'}, {path:'JModel>Id'}], formatter:'.OnCreatedAt'}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column sortProperty="JModel>" width="11rem">
+                    <Label text="Created By"/>
+                    <k:template>
+                        <Input editable="false" value="{parts:[{path:'JModel>SAP_PARENT_UUID'}, {path:'JModel>Id'}], formatter:'.OnCreatedBy'}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column sortProperty="JModel>" width="11rem">
+                    <Label text="Changed At"/>
+                    <k:template>
+                        <Input editable="false" value="{parts:[{path:'JModel>SAP_PARENT_UUID'}, {path:'JModel>Id'}], formatter:'.OnChangedAt'}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column sortProperty="JModel>" width="11rem">
+                    <Label text="Changed By"/>
+                    <k:template>
+                        <Input editable="false" value="{parts:[{path:'JModel>SAP_PARENT_UUID'}, {path:'JModel>Id'}], formatter:'.OnChangedBy'}"/>
+                    </k:template>
+                </k:Column> 
+
+             
+                
+                             
+            </k:columns>
+            
+        </k:Table>
+
+    </VBox>
+
+    <!-- =====⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧========____ End For Outward Returnable Challan Table ____=========⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧==========  -->
+
+    <!-- =====⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩========____ Start For Outward Subcontracting Vendor Table ___========⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩=========== -->
+
+     <VBox id="_IDGenVBox8" class="sapUiSmallMargin">
+
+        <k:Table id="subcontracting_vendor_table" firstVisibleRow="0" fixedRowCount="0" fixedBottomRowCount="0" visible="false"
+         columnHeaderVisible="true" threshold="100" visibleRowCount="{JModelCount>/data/DataCount}"
+          showColumnVisibilityMenu="true" minAutoRowCount="5" enableSelectAll="false" sort="onSort"
+           enableColumnReordering="true" rows="{path:'JModel>/data'}">
+            <k:extension>
+                <OverflowToolbar style="Clear">
+                    <Title text="Subcontracting Vendor Items"/>
+                    <ToolbarSeparator />
+                    <ToolbarSpacer  />
+                    <ToolbarSpacer  />
+                     <Button icon="sap-icon://download" press="OnExport"/>
+                </OverflowToolbar>
+            </k:extension>
+             <k:columns>
+              <k:Column  sortProperty="JModel>" width="5rem">
+                    <Label  text="Status"/>
+                    <k:template>
+                    <Button enabled="false" visible="{= ${JModel>Status} === 'deleted' }" icon="sap-icon://delete" type="Reject" tooltip="Deleted"/>
+                    </k:template>
+                </k:Column> 
+
+                <k:Column sortProperty="JModel>" width="11rem">
+                    <Label text="Document No"/>
+                    <k:template>
+                        <Input  editable="false" value="{JModel>Id}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column  sortProperty="JModel>Material_Document_Item" width="11rem">
+                    <Label  text="Material Document Item"/>
+                    <k:template>
+                        <Input  editable="false" value="{JModel>Material_Document_Item}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column  sortProperty="JModel>Material_Document_Year" width="11rem">
+                    <Label  text="Material Document Year"/>
+                    <k:template>
+                        <Input editable="false" value="{JModel>Material_Document_Year}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column  sortProperty="JModel>Material_Document_No" width="11rem">
+                    <Label  text="Material Document No"/>
+                    <k:template>
+                        <Input editable="false" value="{JModel>Material_Document_No}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column  sortProperty="JModel>Material_Code" width="11rem">
+                    <Label  text="Material Code"/>
+                    <k:template>
+                        <Input  editable="false" value="{JModel>Material_Code}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column  sortProperty="JModel>Material_Description" width="11rem">
+                    <Label  text="Material Description"/>
+                    <k:template>
+                        <Input  editable="false" value="{JModel>Material_Description}"/>
+                    </k:template>
+                </k:Column> 
+
+                <k:Column  sortProperty="JModel>Quantity" width="11rem">
+                    <Label  text="Quantity"/>
+                    <k:template>
+                        <Input  editable="false" value="{JModel>Quantity}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column sortProperty="JModel>Quantity_To_Post" headerMenu="menu" width="11rem">
+                    <Label text="Quantity to POST"/>
+                    <k:template>
+                        <Input editable="false" value="{JModel>Quantity_To_Post}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column  sortProperty="JModel>Plant" width="11rem">
+                    <Label  text="Plant"/>
+                    <k:template>
+                        <Input  editable="false" value="{JModel>Plant}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column  sortProperty="JModel>Vendor_Code" width="11rem">
+                    <Label  text="Vendor Code"/>
+                    <k:template>
+                        <Input  editable="false" value="{JModel>Vendor_Code}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column sortProperty="JModel>Vendor_Name" width="11rem">
+                    <Label text="Vendor Name"/>
+                    <k:template>
+                        <Input editable="false" value="{JModel>Vendor_Name}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column  sortProperty="JModel>Customer_Code" width="11rem">
+                    <Label  text="Customer Code"/>
+                    <k:template>
+                        <Input  editable="false" value="{JModel>Customer_Code}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column sortProperty="JModel>Customer_Name" width="11rem">
+                    <Label text="Customer Name"/>
+                    <k:template>
+                        <Input editable="false" value="{JModel>Customer_Name}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column sortProperty="JModel>No_Of_Packages" width="11rem">
+                    <Label  text="No Of Packages"/>
+                    <k:template>
+                        <Input editable="false" value="{JModel>No_Of_Packages}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column  sortProperty="JModel>Vehicle_No" width="11rem">
+                    <Label  text="Vehicle No"/>
+                    <k:template>
+                        <Input editable="false" value="{JModel>Vehicle_No}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column sortProperty="JModel>Bins" width="11rem">
+                    <Label text="Bins"/>
+                    <k:template>
+                        <Input editable="false" value="{JModel>Bins}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column sortProperty="JModel>" width="11rem">
+                    <Label text="No Of Bins"/>
+                    <k:template>
+                        <Input editable="false" value="{JModel>No_Of_Bins}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column sortProperty="JModel>" width="11rem">
+                    <Label text="Transporter"/>
+                    <k:template>
+                        <Input editable="false" value="{JModel>Transporter}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column sortProperty="JModel>" width="11rem">
+                    <Label text="Bin Challan No"/>
+                    <k:template>
+                        <Input editable="false" value="{JModel>Bin_Challan_No}"/>
+                    </k:template>
+                </k:Column>
+
+                 <k:Column sortProperty="JModel>" width="11rem">
+                    <Label text="Created At"/>
+                    <k:template>
+                        <Input editable="false" value="{parts:[{path:'JModel>SAP_PARENT_UUID'}, {path:'JModel>Id'}], formatter:'.OnCreatedAt'}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column sortProperty="JModel>" width="11rem">
+                    <Label text="Created By"/>
+                    <k:template>
+                        <Input editable="false" value="{parts:[{path:'JModel>SAP_PARENT_UUID'}, {path:'JModel>Id'}], formatter:'.OnCreatedBy'}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column sortProperty="JModel>" width="11rem">
+                    <Label text="Changed At"/>
+                    <k:template>
+                        <Input editable="false" value="{parts:[{path:'JModel>SAP_PARENT_UUID'}, {path:'JModel>Id'}], formatter:'.OnChangedAt'}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column sortProperty="JModel>" width="11rem">
+                    <Label text="Changed By"/>
+                    <k:template>
+                        <Input editable="false" value="{parts:[{path:'JModel>SAP_PARENT_UUID'}, {path:'JModel>Id'}], formatter:'.OnChangedBy'}"/>
+                    </k:template>
+                </k:Column> 
+
+                
+                
+                             
+            </k:columns>
+            
+        </k:Table>
+
+    </VBox>
+
+    <!-- =====⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧========____ End For Outward Subcontracting Vendor Table ____=========⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧==========  -->
+
+    <!-- =====⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩========____ Start For Outward Sales STO Table ___========⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩=========== -->
+
+     <VBox id="_IDGenVBox9" class="sapUiSmallMargin">
+
+        <k:Table id="sales_sto_table" firstVisibleRow="0" fixedRowCount="0" fixedBottomRowCount="0" visible="false"
+         columnHeaderVisible="true" threshold="100" visibleRowCount="{JModelCount>/data/DataCount}"
+          showColumnVisibilityMenu="true" minAutoRowCount="5" enableSelectAll="false" sort="onSort"
+           enableColumnReordering="true" rows="{path:'JModel>/data'}">
+            <k:extension>
+                <OverflowToolbar style="Clear">
+                    <Title text="Sales STO Items"/>
+                    <ToolbarSeparator />
+                    <ToolbarSpacer  />
+                    <ToolbarSpacer  />
+                     <Button icon="sap-icon://download" press="OnExport"/>
+                </OverflowToolbar>
+            </k:extension>
+             <k:columns>
+
+               <k:Column  sortProperty="JModel>" width="5rem">
+                    <Label  text="Status"/>
+                    <k:template>
+                    <Button enabled="false" visible="{= ${JModel>Status} === 'deleted' }" icon="sap-icon://delete" type="Reject" tooltip="Deleted"/>
+                    </k:template>
+                </k:Column> 
+
+                <k:Column sortProperty="JModel>" width="11rem">
+                    <Label text="Document No"/>
+                    <k:template>
+                        <Input  editable="false" value="{JModel>Id}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column  sortProperty="JModel>Delivery_No_Item" width="11rem">
+                    <Label  text="Delivery Document Item"/>
+                    <k:template>
+                        <Input  editable="false" value="{JModel>Delivery_No_Item}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column  sortProperty="JModel>Delivery_No" width="11rem">
+                    <Label  text="Delivery No"/>
+                    <k:template>
+                        <Input editable="false" value="{JModel>Delivery_No}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column  sortProperty="JModel>Material" width="11rem">
+                    <Label  text="Material Code"/>
+                    <k:template>
+                        <Input  editable="false" value="{JModel>Material}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column  sortProperty="JModel>Material_Description" width="11rem">
+                    <Label  text="Material Description"/>
+                    <k:template>
+                        <Input  editable="false" value="{JModel>Material_Description}"/>
+                    </k:template>
+                </k:Column> 
+
+                <k:Column  sortProperty="JModel>Quantity" width="11rem">
+                    <Label  text="Quantity"/>
+                    <k:template>
+                        <Input  editable="false" value="{JModel>Quantity}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column sortProperty="JModel>Quantity_To_Post" headerMenu="menu" width="11rem">
+                    <Label text="Quantity to POST"/>
+                    <k:template>
+                        <Input editable="false" value="{JModel>Quantity_To_Post}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column  sortProperty="JModel>Plant" width="11rem">
+                    <Label  text="Plant"/>
+                    <k:template>
+                        <Input  editable="false" value="{JModel>Plant}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column  sortProperty="JModel>Customer_Code" width="11rem">
+                    <Label  text="Customer Code"/>
+                    <k:template>
+                        <Input  editable="false" value="{JModel>Customer_Code}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column sortProperty="JModel>Customer_Name" width="11rem">
+                    <Label text="Customer Name"/>
+                    <k:template>
+                        <Input editable="false" value="{JModel>Customer_Name}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column sortProperty="JModel>No_Of_Packages" width="11rem">
+                    <Label  text="No Of Packages"/>
+                    <k:template>
+                        <Input editable="false" value="{JModel>No_Of_Packages}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column  sortProperty="JModel>Vehicle_No" width="11rem">
+                    <Label  text="Vehicle No"/>
+                    <k:template>
+                        <Input editable="false" value="{JModel>Vehicle_No}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column sortProperty="JModel>Bins" width="11rem">
+                    <Label text="Bins"/>
+                    <k:template>
+                        <Input editable="false" value="{JModel>Bins}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column sortProperty="JModel>" width="11rem">
+                    <Label text="No Of Bins"/>
+                    <k:template>
+                        <Input editable="false" value="{JModel>No_Of_Bins}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column sortProperty="JModel>" width="11rem">
+                    <Label text="Transporter"/>
+                    <k:template>
+                        <Input editable="false" value="{JModel>Transporter}"/>
+                    </k:template>
+                </k:Column>
+
+                 <k:Column sortProperty="JModel>" width="11rem">
+                    <Label text="Created At"/>
+                    <k:template>
+                        <Input editable="false" value="{parts:[{path:'JModel>SAP_PARENT_UUID'}, {path:'JModel>Id'}], formatter:'.OnCreatedAt'}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column sortProperty="JModel>" width="11rem">
+                    <Label text="Created By"/>
+                    <k:template>
+                        <Input editable="false" value="{parts:[{path:'JModel>SAP_PARENT_UUID'}, {path:'JModel>Id'}], formatter:'.OnCreatedBy'}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column sortProperty="JModel>" width="11rem">
+                    <Label text="Changed At"/>
+                    <k:template>
+                        <Input editable="false" value="{parts:[{path:'JModel>SAP_PARENT_UUID'}, {path:'JModel>Id'}], formatter:'.OnChangedAt'}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column sortProperty="JModel>" width="11rem">
+                    <Label text="Changed By"/>
+                    <k:template>
+                        <Input editable="false" value="{parts:[{path:'JModel>SAP_PARENT_UUID'}, {path:'JModel>Id'}], formatter:'.OnChangedBy'}"/>
+                    </k:template>
+                </k:Column> 
+
+               
+                
+                             
+            </k:columns>
+            
+        </k:Table>
+
+    </VBox>
+
+    <!-- =====⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧========____ End For Outward Sales STO Table ____=========⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧==========  -->
+    
+
+        <!-- =====⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩========____ Start For INWORD STO Goods Receipt (Sales STO) Table ___========⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩=========== -->
+
+     <VBox id="_IDGenVBox10" class="sapUiSmallMargin">
+
+        <k:Table id="inword_sales_sto_table" firstVisibleRow="0" fixedRowCount="0" fixedBottomRowCount="0" visible="false"
+         columnHeaderVisible="true" threshold="100" visibleRowCount="{JModelCount>/data/DataCount}"
+          showColumnVisibilityMenu="true" minAutoRowCount="5" enableSelectAll="false" sort="onSort"
+           enableColumnReordering="true" rows="{path:'JModel>/data'}">
+            <k:extension>
+                <OverflowToolbar style="Clear">
+                    <Title text="STO Goods Receipt"/>
+                    <ToolbarSeparator />
+                    <ToolbarSpacer  />
+                    <ToolbarSpacer  />
+                     <Button icon="sap-icon://download" press="OnExport"/>
+                </OverflowToolbar>
+            </k:extension>
+             <k:columns>
+
+               <k:Column  sortProperty="JModel>" width="5rem">
+                    <Label  text="Status"/>
+                    <k:template>
+                    <Button enabled="false" visible="{= ${JModel>Status} === 'deleted' }" icon="sap-icon://delete" type="Reject" tooltip="Deleted"/>
+                    </k:template>
+                </k:Column> 
+
+                <k:Column sortProperty="JModel>" width="11rem">
+                    <Label text="Document No"/>
+                    <k:template>
+                        <Input  editable="false" value="{JModel>Id}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column  sortProperty="JModel>Return_Order_Item" width="11rem">
+                    <Label  text="Return Order Item"/>
+                    <k:template>
+                        <Input  editable="false" value="{JModel>Return_Order_Item}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column  sortProperty="JModel>Return_Order" width="11rem">
+                    <Label  text="Return Order"/>
+                    <k:template>
+                        <Input editable="false" value="{JModel>Return_Order}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column  sortProperty="JModel>Material" width="11rem">
+                    <Label  text="Material Code"/>
+                    <k:template>
+                        <Input  editable="false" value="{JModel>Material}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column  sortProperty="JModel>Material_Description" width="11rem">
+                    <Label  text="Material Description"/>
+                    <k:template>
+                        <Input  editable="false" value="{JModel>Material_Description}"/>
+                    </k:template>
+                </k:Column> 
+
+                <k:Column  sortProperty="JModel>Quantity" width="11rem">
+                    <Label  text="Quantity"/>
+                    <k:template>
+                        <Input  editable="false" value="{JModel>Quantity}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column sortProperty="JModel>Quantity_To_Post" headerMenu="menu" width="11rem">
+                    <Label text="Quantity to POST"/>
+                    <k:template>
+                        <Input editable="false" value="{JModel>Quantity_To_Post}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column  sortProperty="JModel>Plant" width="11rem">
+                    <Label  text="Plant"/>
+                    <k:template>
+                        <Input  editable="false" value="{JModel>Plant}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column  sortProperty="JModel>Customer_Code" width="11rem">
+                    <Label  text="Customer Code"/>
+                    <k:template>
+                        <Input  editable="false" value="{JModel>Customer_Code}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column sortProperty="JModel>Customer_Name" width="11rem">
+                    <Label text="Customer Name"/>
+                    <k:template>
+                        <Input editable="false" value="{JModel>Customer_Name}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column sortProperty="JModel>No_Of_Packages" width="11rem">
+                    <Label  text="No Of Packages"/>
+                    <k:template>
+                        <Input editable="false" value="{JModel>No_Of_Packages}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column  sortProperty="JModel>Vehicle_No" width="11rem">
+                    <Label  text="Vehicle No"/>
+                    <k:template>
+                        <Input editable="false" value="{JModel>Vehicle_No}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column sortProperty="JModel>Bins" width="11rem">
+                    <Label text="Bins"/>
+                    <k:template>
+                        <Input editable="false" value="{JModel>Bins}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column sortProperty="JModel>" width="11rem">
+                    <Label text="No Of Bins"/>
+                    <k:template>
+                        <Input editable="false" value="{JModel>No_Of_Bins}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column sortProperty="JModel>" width="11rem">
+                    <Label text="Transporter"/>
+                    <k:template>
+                        <Input editable="false" value="{JModel>Transporter}"/>
+                    </k:template>
+                </k:Column>
+
+                 <k:Column sortProperty="JModel>" width="11rem">
+                    <Label text="Created At"/>
+                    <k:template>
+                        <Input editable="false" value="{parts:[{path:'JModel>SAP_PARENT_UUID'}, {path:'JModel>Id'}], formatter:'.OnCreatedAt'}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column sortProperty="JModel>" width="11rem">
+                    <Label text="Created By"/>
+                    <k:template>
+                        <Input editable="false" value="{parts:[{path:'JModel>SAP_PARENT_UUID'}, {path:'JModel>Id'}], formatter:'.OnCreatedBy'}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column sortProperty="JModel>" width="11rem">
+                    <Label text="Changed At"/>
+                    <k:template>
+                        <Input editable="false" value="{parts:[{path:'JModel>SAP_PARENT_UUID'}, {path:'JModel>Id'}], formatter:'.OnChangedAt'}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column sortProperty="JModel>" width="11rem">
+                    <Label text="Changed By"/>
+                    <k:template>
+                        <Input editable="false" value="{parts:[{path:'JModel>SAP_PARENT_UUID'}, {path:'JModel>Id'}], formatter:'.OnChangedBy'}"/>
+                    </k:template>
+                </k:Column> 
+
+               
+                
+                             
+            </k:columns>
+            
+        </k:Table>
+
+    </VBox>
+
+    <!-- =====⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧========____ End For INWORD STO Goods Receipt (Sales STO) Table  ____=========⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧==========  -->
+
+    	<footer>
+    
+            <Toolbar id="otbFooter">
+
+                <Button id="_IDGenButton2" icon="sap-icon://alert" text="{= ${message>/}.length }" visible="false" type="Emphasized" press="onMessagePopoverPress"/>
+
+                <ToolbarSpacer id="_IDGenToolbarSpacer4"/>
+
+                <Button id="Final_Back_Button" enabled="true" type="Default" text="Back" press="OnBack"/>
+                <Button id="_IDGenButton3" text=""/>
+
+            </Toolbar>
+        </footer>
+
+    </Page>
+</mvc:View>
