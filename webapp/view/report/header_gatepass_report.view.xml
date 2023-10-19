@@ -52,8 +52,8 @@
                 <Button icon="sap-icon://alert" text="{= ${message>/}.length }" visible="false" type="Emphasized" press="onMessagePopoverPress"/>
                 <ToolbarSpacer/>
 				<Button press="OnGoItemPage" enabled="false" id="Go_Button" icon="sap-icon://present" tooltip="Execute" type="Ghost"/>
-                <Button id="Final_Reset_Button" enabled="true" type="Default" text="Reset" press="OnReset"/>
-                <Button id="Final_Back_Button" enabled="true" type="Default" text="Back" press="OnBack"/>
+                <Button id="Final_Reset_Button" enabled="true" type="Default" text="Reset"  tooltip="Reset" press="OnReset"/>
+                <Button id="Final_Back_Button" enabled="true" type="Default" tooltip="Go Back" text="Back" press="OnBack"/>
                 <!-- <Button id="Final_Delete_Button" icon="sap-icon://delete" enabled="true" type="Default" text="Delete" press="OnDelete"/> -->
                 <Button text=""/>
             </Toolbar>
