@@ -41,14 +41,13 @@
                 	<DatePicker change="OnMatDocDateChange" id="DP11" valueFormat="yyyy" required="true" displayFormat="yyyy"  />
 					
                 
+                
+ 
+
                 <!-- ____________________________________________________ -->
 
                  <Label id="idven"  text= "Vendor"/>
 				<Input id="idretvend"  change="OnMatDesChange" placeholder="Vendor" value=""/>
-
-				<!-- ____________________________________________________ -->
-                <Label id="idvech"  text= "No of Packages"/>
-				<Input id="idretnoofpackg"  placeholder="No of Packages" value=""/>  
 
                
 	<!-- ____________________________________________________ -->
@@ -56,6 +55,11 @@
                
                  <Label id="idcustname"  text= "Vendor Name"/>
 				<Input id="idretcustname"  placeholder="Vendor Name" value=""/>  
+
+                
+				<!-- ____________________________________________________ -->
+                <Label id="idvech"  text= "No of Packages"/>
+				<Input id="idretnoofpackg"  placeholder="No of Packages" value=""/> 
 
 	<!-- ____________________________________________________ -->
 
@@ -208,42 +212,37 @@
                     </k:template>
                 </k:Column>
 
-                    <k:Column id="idcolcust"   sortProperty="Customer" width="11rem">
-                    <Label id="idlblcust"    text="Customer" />
+                    <k:Column id="idcolcust"   sortProperty="Customer" width="1rem">
+                    <Label id="idlblcust"    text="" />
                     <k:template>
                         <Input id="idretcust"   change="Customer" value="{Customer}"/>
                     </k:template>
                 </k:Column>
 
 
-                <k:Column id="idcolcustname"   sortProperty="Customer Name" width="11rem">
-                    <Label id="idlblcustnam"    text="Customer Name" />
+                <k:Column id="idcolcustname"   sortProperty="Customer Name" width="1rem">
+                    <Label id="idlblcustnam"    text="" />
                     <k:template>
                         <Input id="idretcustnam"   change="Customer Name" value="{CustomerName}"/>
                     </k:template>
                 </k:Column>
 
 
-                <k:Column id="idcolcustdoc"   sortProperty="Bin Challan No" width="11rem">
-                    <Label id="idlblcustdoc"    text="Bin Challan No" />
-                    <k:template>
-                        <Input id="idretcustd"   change="Customer Doc No." value="{path:'', formatter:'.OnCustomerDocFetch'}"/>
-                    </k:template>
-                </k:Column>
+               
 
                 
 
                  <k:Column id="idcolmat"   sortProperty="Material" width="11rem">
                     <Label id="idlblmat1"   text="Material" />
                     <k:template>
-                        <Input id="idretmatv"   change="Material" value="{Supplier}"/>
+                        <Input id="idretmatv"   change="Material" value="{Material}"/>
                     </k:template>
                 </k:Column>
 
                  <k:Column id="idcolmatdes"   sortProperty="Material description" width="11rem">
                     <Label id="idlblmatdes"   text="Material description" />
                     <k:template>
-                        <Input id="idretmatdes"   change="Material description" value="{SupplierName}"/>
+                        <Input id="idretmatdes"   change="Material description" value="{ProductName}"/>
                     </k:template>
                 </k:Column>
                  
@@ -275,6 +274,13 @@
                     <Label id="idlblnoofbins"   text="Bins Yes/No" />
                     <k:template>
                         <Input id="idretbinyes"   change="Bins Yes/No" value="{path:'', formatter:'.OnBinsFetch'}"/>
+                    </k:template>
+                </k:Column>
+
+                 <k:Column id="idcolcustdoc"   sortProperty="Bin Challan No" width="11rem">
+                    <Label id="idlblcustdoc"    text="Bin Challan No" />
+                    <k:template>
+                        <Input id="idretcustd"   change="Customer Doc No." value="{path:'', formatter:'.OnCustomerDocFetch'}"/>
                     </k:template>
                 </k:Column>
 

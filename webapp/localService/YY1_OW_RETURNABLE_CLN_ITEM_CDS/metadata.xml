@@ -53,6 +53,7 @@
                 <Property Name="TotalGoodsMvtAmtInCCCrcy" Type="Edm.Decimal" Precision="14" Scale="3" sap:aggregation-role="measure" sap:required-in-filter="false" sap:unit="CompanyCodeCurrency" sap:label="Amt.in Loc.Cur." sap:quickinfo="Amount in Local Currency" sap:filterable="false"/>
                 <Property Name="CompanyCodeCurrency" Type="Edm.String" MaxLength="5" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:required-in-filter="false" sap:label="Company Code Currency" sap:semantics="currency-code"/>
                 <Property Name="GoodsMovementType" Type="Edm.String" MaxLength="3" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:required-in-filter="false" sap:label="Movement Type" sap:quickinfo="Movement Type (Inventory Management)"/>
+                <Property Name="IsAutomaticallyCreated" Type="Edm.String" MaxLength="1" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:required-in-filter="false" sap:label="Automat. Created" sap:quickinfo="Item Automatically Created Indicator"/>
             </EntityType>
             <EntityContainer Name="YY1_OW_RETURNABLE_CLN_ITEM_CDS_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
                 <EntitySet Name="YY1_OW_Returnable_Cln_Item" EntityType="YY1_OW_RETURNABLE_CLN_ITEM_CDS.YY1_OW_Returnable_Cln_ItemType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>

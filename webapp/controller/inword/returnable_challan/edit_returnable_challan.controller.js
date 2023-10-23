@@ -169,13 +169,11 @@ sap.ui.define([
                             that.getView().byId("DeleteIndicId").setVisible(true); 
                             that.getView().byId("Final_Update_Button").setVisible(false); 
                             that.getView().byId("Final_DeleteEntireDocument_Button").setVisible(false); 
-                            that.getView().byId("Final_Cancel_Button").setVisible(false); 
                             that.getView().byId("UnFinal_DeleteEntireDocument_Button").setVisible(true); 
                         }else{
                             that.getView().byId("DeleteIndicId").setVisible(false); 
                             that.getView().byId("Final_Update_Button").setVisible(true); 
                             that.getView().byId("Final_DeleteEntireDocument_Button").setVisible(true);
-                            that.getView().byId("Final_Cancel_Button").setVisible(true);
                             that.getView().byId("UnFinal_DeleteEntireDocument_Button").setVisible(false);
                         }
                         
@@ -679,7 +677,6 @@ sap.ui.define([
                     that.getView().byId("DeleteIndicId").setVisible(true); 
                     that.getView().byId("Final_Update_Button").setVisible(false); 
                     that.getView().byId("Final_DeleteEntireDocument_Button").setVisible(false); 
-                    that.getView().byId("Final_Cancel_Button").setVisible(false); 
                     that.getView().byId("UnFinal_DeleteEntireDocument_Button").setVisible(true);
                 },
                 error: function(error) {
@@ -767,7 +764,6 @@ sap.ui.define([
                     that.getView().byId("DeleteIndicId").setVisible(false); 
                     that.getView().byId("Final_Update_Button").setVisible(true); 
                     that.getView().byId("Final_DeleteEntireDocument_Button").setVisible(true);
-                    that.getView().byId("Final_Cancel_Button").setVisible(true);
                     that.getView().byId("UnFinal_DeleteEntireDocument_Button").setVisible(false);
                 },
                 error: function(error) {

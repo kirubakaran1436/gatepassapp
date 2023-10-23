@@ -8,7 +8,7 @@
 				<Text id="_IDGenText1" text="{YY1_PURCHASE_DOC_HEADER_CDS>PurchaseOrder}"/>
 				<Text id="_IDGenText2" text="{YY1_PURCHASE_DOC_HEADER_CDS>Supplier}"/>
 				<Text id="_IDGenText3" text="{YY1_PURCHASE_DOC_HEADER_CDS>SupplierName}"/>
-				<Text id="_IDGenText4" text="{YY1_PURCHASE_DOC_HEADER_CDS>Supplier}"/>
+				<Text visible="false" id="_IDGenText4" text="{YY1_PURCHASE_DOC_HEADER_CDS>Supplier}"/>
 			</cells>
 		</ColumnListItem>
 		<columns>
@@ -27,7 +27,7 @@
 					<Text id="_IDGenText41" text="Vendor Name"/>
 				</header>
 			</Column>
-			<Column id="_IDGenColumn4" >
+			<Column visible="false" id="_IDGenColumn4" >
 				<header>
 					<Text id="_IDGenText6" text="Plant"/>
 				</header>

@@ -601,21 +601,21 @@
                 </k:Column>
 
                 <k:Column  sortProperty="JModel>Material_Document_Item" width="11rem">
-                    <Label  text="Material Document Item"/>
+                    <Label  text="Purchase Document Item"/>
                     <k:template>
                         <Input  editable="false" value="{JModel>Material_Document_Item}"/>
                     </k:template>
                 </k:Column>
 
-                <k:Column  sortProperty="JModel>Material_Document_Year" width="11rem">
-                    <Label  text="Material Document Year"/>
+                <k:Column  sortProperty="JModel>Material_Document_Year" width="0rem">
+                    <Label  text=""/>
                     <k:template>
                         <Input editable="false" value="{JModel>Material_Document_Year}"/>
                     </k:template>
                 </k:Column>
 
                 <k:Column  sortProperty="JModel>Material_Document_No" width="11rem">
-                    <Label  text="Material Document No"/>
+                    <Label  text="Purchase Document No"/>
                     <k:template>
                         <Input editable="false" value="{JModel>Material_Document_No}"/>
                     </k:template>

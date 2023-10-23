@@ -66,9 +66,9 @@ sap.ui.define([
             },
 
             Quantity_to_Post_InputyLine:function(oEvent){
-                let Quantity_to_Post_Input = oEvent.getSource().getParent().getCells()[6].getValue(); 
+                let Quantity_to_Post_Input = oEvent.getSource().getParent().getCells()[5].getValue(); 
                 let QuantityLine = oEvent.getSource().getParent().getCells()[2].getValue();
-                let Pending_Quantity_Item = oEvent.getSource().getParent().getCells()[5].getValue();
+                let Pending_Quantity_Item = oEvent.getSource().getParent().getCells()[4].getValue();
 
                 let Quantity_to_Post_Input_Float = parseFloat(Quantity_to_Post_Input);
                 let QuantityLine_Float = parseFloat(QuantityLine);
@@ -77,8 +77,8 @@ sap.ui.define([
                 if(Quantity_to_Post_Input_Float > Pending_Quantity_Item_Float){
                     MessageToast.show("Please Enter Valid Quantity...!");
                     // oEvent.getSource().getParent().getCells()[6].setValue(QuantityLine);
-                    oEvent.getSource().getParent().getCells()[6].setValueState(sap.ui.core.ValueState.Error);
-                    oEvent.getSource().getParent().getCells()[6].setValueStateText("Please Enter Valid Quantity");
+                    oEvent.getSource().getParent().getCells()[5].setValueState(sap.ui.core.ValueState.Error);
+                    oEvent.getSource().getParent().getCells()[5].setValueStateText("Please Enter Valid Quantity");
                     // this.getView().byId("OnSubmit").setEnabled(false);
                     // oEvent.getSource().getParent().getCells()[5].setValue("");
                     // oEvent.getSource().getParent().getCells()[3].setValue("");
@@ -86,9 +86,9 @@ sap.ui.define([
                     this.getView().byId("Final_Save_Button").setEnabled(false);
 
                 }else if(Quantity_to_Post_Input_Float === "" || Quantity_to_Post_Input_Float === "0" || Quantity_to_Post_Input_Float === 0 ){
-                    oEvent.getSource().getParent().getCells()[6].setValue("0");
-                    oEvent.getSource().getParent().getCells()[6].setValueState(sap.ui.core.ValueState.Error);
-                    oEvent.getSource().getParent().getCells()[6].setValueStateText("Please enter atleast one value");
+                    oEvent.getSource().getParent().getCells()[5].setValue("0");
+                    oEvent.getSource().getParent().getCells()[5].setValueState(sap.ui.core.ValueState.Error);
+                    oEvent.getSource().getParent().getCells()[5].setValueStateText("Please enter atleast one value");
                     // oEvent.getSource().getParent().getCells()[5].setValue("");
                     // oEvent.getSource().getParent().getCells()[3].setValue("");
                     this.getView().byId("Final_Save_Button").setEnabled(false);
@@ -96,7 +96,7 @@ sap.ui.define([
                 }
 
                 else if (Quantity_to_Post_Input_Float <= Pending_Quantity_Item_Float) {
-                    oEvent.getSource().getParent().getCells()[6].setValueState(sap.ui.core.ValueState.None);
+                    oEvent.getSource().getParent().getCells()[5].setValueState(sap.ui.core.ValueState.None);
                     // this.getView().byId("OnSubmit").setEnabled(true);
 
                     let A01 = Pending_Quantity_Item_Float - Quantity_to_Post_Input_Float;
@@ -125,7 +125,7 @@ sap.ui.define([
                         // var oFilter3 = new sap.ui.model.Filter("Status", sap.ui.model.FilterOperator.EQ, '');
                 
                         var oModel = that.getView().getModel("YY1_IN_RETURNABLE_CLN_CDS");
-                        var oFilters = [oFilter, oFilter1, oFilter2];
+                        var oFilters = [oFilter, oFilter1];
 
                         var CalData = 0;
                 
@@ -157,11 +157,11 @@ sap.ui.define([
                 
                         var oFilter = new sap.ui.model.Filter("Material_Document_Item", sap.ui.model.FilterOperator.EQ, PoItem);
                         var oFilter1 = new sap.ui.model.Filter("Material_Document_No", sap.ui.model.FilterOperator.EQ, PoNo);
-                        var oFilter2 = new sap.ui.model.Filter("Material_Document_Year", sap.ui.model.FilterOperator.EQ, year);
+                        // var oFilter2 = new sap.ui.model.Filter("Material_Document_Year", sap.ui.model.FilterOperator.EQ, year);
                         // var oFilter3 = new sap.ui.model.Filter("Status", sap.ui.model.FilterOperator.EQ, '');
                 
                         var oModel = that.getView().getModel("YY1_IN_RETURNABLE_CLN_CDS");
-                        var oFilters = [oFilter, oFilter1, oFilter2];
+                        var oFilters = [oFilter, oFilter1];
 
                         var CalData = 0;
                 
@@ -203,7 +203,7 @@ sap.ui.define([
                         // var oFilter3 = new sap.ui.model.Filter("Status", sap.ui.model.FilterOperator.EQ, '');
                 
                         var oModel = that.getView().getModel("YY1_IN_RETURNABLE_CLN_CDS");
-                        var oFilters = [oFilter, oFilter1, oFilter2];
+                        var oFilters = [oFilter, oFilter1];
 
                         var CalData = 0;
                 
@@ -261,16 +261,16 @@ sap.ui.define([
 
                     // ------------------------------
 
-                    var oFilter = new sap.ui.model.Filter("MaterialDocument", sap.ui.model.FilterOperator.EQ, Material_Docuement_H);
+                    var oFilter = new sap.ui.model.Filter("PurchaseOrder", sap.ui.model.FilterOperator.EQ, Material_Docuement_H);
 
                     var oTable = this.byId("RetunableChallenTable");
-                    var oModel = this.getView().getModel("YY1_OW_RETURNABLE_CLN_ITEM_CDS"); // Replace with your actual OData model name
+                    var oModel = this.getView().getModel("YY1_PURCHASE_DOC_ITEMS_CDS"); // Replace with your actual OData model name
 
                     var oFilters = [oFilter];
 
                     var that = this;
 
-                    oModel.read("/YY1_OW_Returnable_Cln_Item", {
+                    oModel.read("/YY1_Purchase_Doc_Items", {
                         filters: oFilters,
                         success: function(oData) {
                             var aItems = oData.results; // The array of read items
@@ -321,48 +321,22 @@ sap.ui.define([
 
                 },
 
-                OnMatDocFragOpen:function(oEvent){
-
-                let Get_Mat_Doc_Date = this.getView().byId("Material_Docuement_Year_H").getValue();
-            // ====================================================================
-                var oFilter1 = new sap.ui.model.Filter("MaterialDocumentYear", sap.ui.model.FilterOperator.EQ, Get_Mat_Doc_Date);
-                // var oFilter2 = new sap.ui.model.Filter("GoodsMovementType", sap.ui.model.FilterOperator.EQ,"541");
-                var oModel1 = this.getView().getModel("YY1_OW_RETURNABLE_CHALLAN__CDS"); // Replace with your actual OData model name
-                var oFilters1 = [oFilter1];
-                var that = this;
-
-                oModel1.read("/YY1_OW_Returnable_Challan_", {
-                    filters: oFilters1,
-                    success: function (oData) {
-                        var aItems = oData.results; // The array of read items
-                        var oJSONModel = new sap.ui.model.json.JSONModel({
-                            data: aItems
-                        });
-                       console.log(oJSONModel);
-                        that.getView().setModel(oJSONModel, "JModel");
-                    },
-                    error: function (oError) {
-                        console.error("Error reading data: ", oError);
+                OnMatFragOpenChallan:function(oEvent){
+                    if (!this._dialog_matdochead) {
+                        this._dialog_matdochead = sap.ui.xmlfragment(this.getView().getId("PoDocHead_dialog"), "gatepass.view.fragments.Mat_Po_Doc", this);
+                        this.getView().addDependent(this._dialog_matdochead);
                     }
-                })
-            // ====================================================================
-
-
-                    if (!this._dialog_podochead) {
-                        this._dialog_podochead = sap.ui.xmlfragment(this.getView().getId("MatDoc_dialog"), "gatepass.view.fragments.Material_Document_Head", this);
-                        this.getView().addDependent(this._dialog_podochead);
-                    }
-                    this._dialog_podochead.open();
+                    this._dialog_matdochead.open();
                 },
-
-                OnMatDocSearch: function (oEvent) {
+                
+                OnPoDocHeadSearch: function (oEvent) {
                     var sValue = oEvent.getParameter("value");
-                    var oFilter = new Filter("MaterialDocument", FilterOperator.Contains, sValue);
+                    var oFilter = new Filter("PurchaseOrder", FilterOperator.Contains, sValue);
                     var oBinding = oEvent.getSource().getBinding("items");
                     oBinding.filter([oFilter]);
                 },
 
-                OnMatDocSelect : function (oEvent) {
+                OnPoDcoHeadSelect : function (oEvent) {
 
                     // ------- Loder Model Boc Open - Enable ----------------
                     if (!this._pBusyDialog) {
@@ -377,7 +351,7 @@ sap.ui.define([
 
                     var aContexts = oEvent.getParameter("selectedContexts");
                     console.log(aContexts)
-                    var var1, var2, var3;
+                    var var1, var3;
 
                     if (aContexts === undefined){
                         console.log("undefined");
@@ -394,33 +368,33 @@ sap.ui.define([
                     if (aContexts && aContexts.length) {
 
                         aContexts.map(function (oContext) {
-                            var1 = oContext.getObject().MaterialDocument;
-                            var2 = oContext.getObject().MaterialDocumentYear;
-                            var3 = oContext.getObject().PostingDate;
+                            var1 = oContext.getObject().PurchaseOrder;
+                            // var2 = oContext.getObject().MaterialDocumentYear;
+                            // var3 = oContext.getObject().PostingDate;
                             return;
                         });
                         this.getView().byId("Material_Docuement_H").setValue(var1);
-                        this.getView().byId("Material_Docuement_Year_H").setValue(var2);
+                        // this.getView().byId("Material_Docuement_Year_H").setValue(var2);
                         // this.getView().byId("Vendor_Name_H").setValue(var3);
                     }
 
                     var Material_Docuement_H = this.getView().byId("Material_Docuement_H").getValue();
-                    var oFilter1 = new sap.ui.model.Filter("MaterialDocument", sap.ui.model.FilterOperator.EQ, var1);
-                    var oModel1 = this.getView().getModel("YY1_OW_RETURNABLE_CLN_ITEM_CDS"); // Replace with your actual OData model name
+                    var oFilter1 = new sap.ui.model.Filter("PurchaseOrder", sap.ui.model.FilterOperator.EQ, var1);
+                    var oModel1 = this.getView().getModel("YY1_PURCHASE_DOC_HEADER_CDS"); // Replace with your actual OData model name
                     
                     var oFilters1 = [oFilter1];
                     var that = this;
                     
-                    oModel1.read("/YY1_OW_Returnable_Cln_Item", {
+                    oModel1.read("/YY1_Purchase_Doc_Header", {
                         filters: oFilters1,
                         success: function(oData) {
                             var aItems = oData.results; // The array of read items
-                            let Plant = aItems[0].Plant;
-                            let PlantName = aItems[0].PlantName;
+                            // let Plant = aItems[0].Plant;
+                            // let PlantName = aItems[0].PlantName;
                             let vcode = aItems[0].Supplier;
                             let vname = aItems[0].SupplierName;
-                            that.getView().byId("Plant_H").setValue(Plant);
-                            that.getView().byId("Plant_Name_H").setValue(PlantName);
+                            // that.getView().byId("Plant_H").setValue(Plant);
+                            // that.getView().byId("Plant_Name_H").setValue(PlantName);
                             that.getView().byId("Vendor_Code_H").setValue(vcode);
                             that.getView().byId("Vendor_Name_H").setValue(vname);
                             that._pBusyDialog.close();
@@ -430,6 +404,27 @@ sap.ui.define([
                             // Handle error
                             console.error("Error reading data: ", oError);
                             that._pBusyDialog.close();
+                        }
+                    });
+
+                    var oFilter1 = new sap.ui.model.Filter("PurchaseOrder", sap.ui.model.FilterOperator.EQ, Material_Docuement_H);
+                    var oModel11 = this.getView().getModel("YY1_PURCHASE_DOC_ITEMS_CDS"); // Replace with your actual OData model name
+                    
+                    var oFilters1 = [oFilter1];
+                    var that = this;
+
+
+                    oModel11.read("/YY1_Purchase_Doc_Items", {
+                        filters: oFilters1,
+                        success: function(oData) {
+                            var aItems = oData.results; // The array of read items
+                            let lant_H = aItems[0].Plant;
+                            that.getView().byId("Plant_H").setValue(lant_H);
+                    
+                        },
+                        error: function(oError) {
+                            // Handle error
+                            console.error("Error reading data: ", oError);
                         }
                     });
 
@@ -587,10 +582,10 @@ sap.ui.define([
                     var oRow = Table_Id.getRows()[i];
                     var oBindingContext = oRow.getBindingContext();
                     if (oBindingContext) {
-                        var MaterialDocumentItem = oBindingContext.getProperty("MaterialDocumentItem");
-                        var MaterialDocumentYear = oBindingContext.getProperty("MaterialDocumentYear");
-                        var MaterialDocument = oBindingContext.getProperty("MaterialDocument");
-                        var Quantity = oBindingContext.getProperty("QuantityInBaseUnit");
+                        var MaterialDocumentItem = oBindingContext.getProperty("PurchaseOrderItem");
+                        // var MaterialDocumentYear = oBindingContext.getProperty("MaterialDocumentYear");
+                        var MaterialDocument = oBindingContext.getProperty("PurchaseOrder");
+                        var Quantity = oBindingContext.getProperty("OrderQuantity");
                         var Received_Quantity = oBindingContext.getProperty("GRReceivedQuantity");
                         var Pending_Quantity = oBindingContext.getProperty("GatePendingQuantity");
                         var Quantity_To_Post_get = oBindingContext.getProperty("QuantityToPostInputLine");
@@ -610,7 +605,7 @@ sap.ui.define([
                             Plant:Plant,
                             Plant_Name:Plant_Name,
                             Material_Document_Item:MaterialDocumentItem,
-                            Material_Document_Year:MaterialDocumentYear,
+                            Material_Document_Year:"",
                             Material_Document_No:MaterialDocument,
                             Quantity:Quantity,
                             UOM:"",
