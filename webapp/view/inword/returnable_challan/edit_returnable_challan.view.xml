@@ -28,12 +28,12 @@
 				<Input id="Plant_Name_H" enabled="false" class="InputBackclr" placeholder="Plant Name" value=""/>
 				<!-- ____________________________________________________ -->			
 
-                <Label id="_IDGenLabel9" text="Material Document"/>
-				<Input enabled="false" id="Material_Document_H" placeholder="Material Document"/>
+                <Label id="_IDGenLabel9" text="Purchase Document"/>
+				<Input enabled="false" id="Material_Document_H" placeholder="Purchase Document"/>
 				<!-- ____________________________________________________ -->			
 
-                <Label id="_IDGenLabel10" text="Material Document Year"/>
-				<Input id="Material_Document_Year_H" enabled="false" placeholder="Material Document Year" value=""/>
+                <Label visible="false" id="_IDGenLabel10" text="Material Document Year"/>
+				<Input visible="false" id="Material_Document_Year_H" enabled="false" placeholder="Material Document Year" value=""/>
 				<!-- ____________________________________________________ -->			
 
                 <Label id="_IDGenLabel11" text="Vendor"/>
@@ -99,22 +99,22 @@
                     </k:template>
                 </k:Column>
 
-                <k:Column sortProperty="Material Document Item" width="11rem">
-                    <Label text="Material Document Item"/>
+                <k:Column sortProperty="Purchase Document Item" width="11rem">
+                    <Label text="Purchase Document Item"/>
                     <k:template>
                         <Input enabled="false" id="Material_Document_Item_I" value="{JModel>Material_Document_Item}"/>
                     </k:template>
                 </k:Column>
 
-                <k:Column sortProperty="Material Document" width="11rem">
-                    <Label text="Material Document"/>
+                <k:Column sortProperty="Purchase Document" width="11rem">
+                    <Label text="Purchase Document"/>
                     <k:template>
                         <Input enabled="false" id="Material_Document_No_I" value="{JModel>Material_Document_No}"/>
                     </k:template>
                 </k:Column>
 
-                <k:Column sortProperty="Material_Document_Year" width="11rem">
-                    <Label text="Year"/>
+                <k:Column sortProperty="" width="0rem">
+                    <Label text=""/>
                     <k:template>
                         <Input enabled="false" id="Material_Document_Year_I" value="{JModel>Material_Document_Year}"/>
                     </k:template>

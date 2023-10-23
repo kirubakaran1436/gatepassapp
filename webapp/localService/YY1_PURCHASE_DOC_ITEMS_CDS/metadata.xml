@@ -55,6 +55,7 @@
                 <Property Name="CreationDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:required-in-filter="false" sap:label="Created On" sap:quickinfo="Creation Date of Purchasing Document"/>
                 <Property Name="PurchaseOrderDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:required-in-filter="false" sap:label="Purchase Order Date"/>
                 <Property Name="LastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:required-in-filter="false" sap:label="Last Changed" sap:quickinfo="Change Time Stamp"/>
+                <Property Name="PurchaseOrderItemCategory" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:required-in-filter="false" sap:label="Item Category" sap:quickinfo="Item category in purchasing document"/>
             </EntityType>
             <EntityContainer Name="YY1_PURCHASE_DOC_ITEMS_CDS_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
                 <EntitySet Name="YY1_Purchase_Doc_Items" EntityType="YY1_PURCHASE_DOC_ITEMS_CDS.YY1_Purchase_Doc_ItemsType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>

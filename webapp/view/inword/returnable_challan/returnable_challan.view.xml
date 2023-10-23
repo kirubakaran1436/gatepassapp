@@ -24,19 +24,19 @@
 
                 <Label id="_IDGenLabel1" text="Plant"/>
 				<Input  id="Plant_H" editable="false" placeholder="Plant" value=""/>
-				<Input  id="Plant_Name_H" editable="false" placeholder="Plant Name" value=""/>
+				<Input visible="false" id="Plant_Name_H" editable="false" placeholder="Plant Name" value=""/>
 				<!-- ____________________________________________________ -->	
 
-                <Label  text="Material Docuement Year"/>
-                <DatePicker change="OnMatDocDateChange" id="Material_Docuement_Year_H" valueFormat="yyyy" required="true" displayFormat="yyyy"  />               
+                <Label visible="false" text="Material Docuement Year"/>
+                <DatePicker visible="false" change="OnMatDocDateChange" id="Material_Docuement_Year_H" valueFormat="yyyy" required="true" displayFormat="yyyy"  />               
 				<!-- ____________________________________________________ -->		
 		
+                   
+                <Label id="_IDGenLabel21" text="Purchasing Document"/>
+				<Input id="Material_Docuement_H" required="true" placeholder="Purchasing Document" valueHelpOnly="true" valueHelpRequest="OnMatFragOpenChallan" showValueHelp="true"/>
 
-                <Label id="_IDGenLabel2" text="Material Document No"/>
-				<Input  id="Material_Docuement_H" enabled="false" required="true" placeholder="Material Document No" valueHelpOnly="true" valueHelpRequest="OnMatDocFragOpen" showValueHelp="true" />
-
-				<!-- ____________________________________________________ -->		
-                <Label  text="Vendor"/>
+	
+                <Label id="_IDGenLabel3" text="Vendor"/>
                 <Input   id="Vendor_Code_H" editable="false" placeholder="Vendor Code" value=""/>
 				<Input   id="Vendor_Name_H" editable="false" placeholder="Vendor Name" value=""/>
                 
@@ -97,52 +97,52 @@
             </k:extension>
             <k:columns>
 
-                <k:Column sortProperty="MaterialDocumentItem" width="6rem">
+                <k:Column sortProperty="PurchaseOrderItem" width="6rem">
                     <Label text="Item No" />
                     <k:template>
-                        <Input editable="false" value="{MaterialDocumentItem}"/>
+                        <Input editable="false" value="{PurchaseOrderItem}"/>
                     </k:template>
                 </k:Column>
 
-                <k:Column sortProperty="MaterialDocumentYear" width="6rem">
-                    <Label text="Year" />
+                <k:Column visible="false" sortProperty="MaterialDocumentYear" width="6rem">
+                    <Label visible="false"  text="Year" />
                     <k:template>
-                        <Input editable="false"  value="{MaterialDocumentYear}"/>
+                        <Input  visible="false" editable="false"  value="{MaterialDocumentYear}"/>
                     </k:template>
                 </k:Column>
 
-                <k:Column sortProperty="MaterialDocument" width="11rem">
-                    <Label text="Material Document No" />
+                <k:Column sortProperty="PurchaseOrder" width="11rem">
+                    <Label text="Purchase Document No" />
                     <k:template>
-                        <Input editable="false" value="{MaterialDocument}"/>
+                        <Input editable="false" value="{PurchaseOrder}"/>
                     </k:template>
                 </k:Column>
 
-                 <k:Column id="_IDGenColumn4" sortProperty="Quantity" width="11rem">
+                 <k:Column id="_IDGenColumn4" sortProperty="OrderQuantity" width="11rem">
                     <Label id="_IDGenLabel15" text="Quantity" />
                     <k:template>
-                        <Input editable="false" id="_IDGenInput10" change="Quantity" value="{QuantityInBaseUnit}"/>
+                        <Input editable="false" id="_IDGenInput10" change="Quantity" value="{OrderQuantity}"/>
                     </k:template>
                 </k:Column>
 
                  <k:Column id="_IDGenColumn5" sortProperty="Gate Entry Received" width="11rem">
                     <Label id="_IDGenLabel16" text="Gate Entry Received" />
                     <k:template>
-                        <Input editable="false" change="Gate Entry Received" value="{parts:[{path:'MaterialDocumentItem'}, {path:'QuantityInBaseUnit'}, {path:'MaterialDocumentYear'}], formatter:'.OnReceivedQtyCal'}"/>
+                        <Input editable="false" change="Gate Entry Received" value="{parts:[{path:'PurchaseOrderItem'}, {path:'OrderQuantity'}], formatter:'.OnReceivedQtyCal'}"/>
                     </k:template>
                 </k:Column>
 
                 <k:Column id="_IDGenColumn7" sortProperty="Gate Pending Quantity" width="11rem">
                     <Label id="_IDGenLabel18" text="Pending Quantity" />
                     <k:template>
-                        <Input editable="false" id="_IDGenInput13" change="Pending Quantity" value="{parts:[{path:'MaterialDocumentItem'}, {path:'QuantityInBaseUnit'}, {path:'MaterialDocumentYear'}], formatter:'.OnPendingQtyCal'}"/>
+                        <Input editable="false" id="_IDGenInput13" change="Pending Quantity" value="{parts:[{path:'PurchaseOrderItem'}, {path:'OrderQuantity'}], formatter:'.OnPendingQtyCal'}"/>
                     </k:template>
                 </k:Column>
 
                 <k:Column id="_IDGenColumn8" sortProperty="Gate Quantity to Post" width="11rem">
                     <Label id="_IDGenLabel19" text="Gate Quantity to Post" />
                     <k:template>
-                        <Input id="_IDGenInput14" enabled="{parts:[{path:'MaterialDocumentItem'}, {path:'QuantityInBaseUnit'}, {path:'MaterialDocumentYear'}], formatter:'.OnPutQtyENDB'}"  change="Quantity_to_Post_InputyLine" value="{QuantityToPostInputLine}"/>
+                        <Input id="_IDGenInput14" enabled="{parts:[{path:'PurchaseOrderItem'}, {path:'OrderQuantity'}], formatter:'.OnPutQtyENDB'}"  change="Quantity_to_Post_InputyLine" value="{QuantityToPostInputLine}"/>
                     </k:template>
                 </k:Column>
 
@@ -166,6 +166,8 @@
                         <Input editable="false" id="_IDGenInput20" change="Material description" value="{ProductName}"/>
                     </k:template>
                 </k:Column>
+
+                 
                              
             </k:columns>
             
