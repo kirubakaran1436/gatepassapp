@@ -8,8 +8,8 @@
 		<!-- <f:SimpleForm class="simform" id="SimpleFormChangeColumn_twoGroups234" editable="true" layout="ColumnLayout" columnsM="2" columnsL="3" columnsXL="4">
 			<f:content> -->
 
-            <Input visible="false" id="Ref_Data01" value=""/>
-            <Input visible="false" id="Ref_Export_Count01" value=""/>
+            <Input visible="true" id="Ref_Data01" value=""/>
+            <Input visible="true" id="Ref_Export_Count01" value=""/>
 			
 			<!-- </f:content>
 		</f:SimpleForm> -->
@@ -217,9 +217,7 @@
                     </k:template>
                 </k:Column> 
 
-                
-                
-                             
+
             </k:columns>
             
         </k:Table>
