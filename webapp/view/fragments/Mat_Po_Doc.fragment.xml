@@ -1,13 +1,13 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
 	<TableSelectDialog id="PoDocHead_dialog" noDataText="No Purchase Document Found" title="Select Purchase Document" search=".OnPoDocHeadSearch" confirm=".OnPoDcoHeadSelect"
-		contentWidth="50%" cancel=".OnPoDcoHeadSelect" items="{YY1_PURCHASE_DOC_HEADER_CDS>/YY1_Purchase_Doc_Header}">
+		contentWidth="50%" cancel=".OnPoDcoHeadSelect" items="{JModel>/data}">
 		<ColumnListItem id="_IDGenColumnListItem1" vAlign="Middle">
 			<cells>
-				<Text id="_IDGenText1" text="{YY1_PURCHASE_DOC_HEADER_CDS>PurchaseOrder}"/>
-				<Text id="_IDGenText2" text="{YY1_PURCHASE_DOC_HEADER_CDS>Supplier}"/>
-				<Text id="_IDGenText3" text="{YY1_PURCHASE_DOC_HEADER_CDS>SupplierName}"/>
-				<Text visible="false" id="_IDGenText4" text="{YY1_PURCHASE_DOC_HEADER_CDS>Supplier}"/>
-				<Text visible="false" id="_IDGenText45" text="{YY1_PURCHASE_DOC_HEADER_CDS>Plant}"/>
+				<Text id="_IDGenText1" text="{JModel>PurchaseOrder}"/>
+				<Text id="_IDGenText2" text="{JModel>Supplier}"/>
+				<Text id="_IDGenText3" text="{JModel>SupplierName}"/>
+				<Text visible="false" id="_IDGenText4" text="{JModel>Supplier}"/>
+				<Text visible="false" id="_IDGenText45" text="{JModel>Plant}"/>
 			</cells>
 		</ColumnListItem>
 		<columns>

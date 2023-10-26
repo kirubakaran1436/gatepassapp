@@ -322,6 +322,49 @@ sap.ui.define([
                 },
 
                 OnMatFragOpenChallan:function(oEvent){
+
+
+                  var matdocyear = this.getView().byId("Material_Docuement_Year_H").getValue();
+            // ====================================================================
+
+            var oFilter1 = new sap.ui.model.Filter("MaterialDocumentYear", sap.ui.model.FilterOperator.EQ, matdocyear);
+            var oFilter2 = new sap.ui.model.Filter("GoodsMovementType", sap.ui.model.FilterOperator.EQ,"541");
+            var oModel1 = this.getView().getModel("YY1_OW_RETURNABLE_CLN_ITEM_CDS"); // Replace with your actual OData model name
+            var oFilters1 = [oFilter1,oFilter2];
+            var that = this;
+
+            oModel1.read("/YY1_OW_Returnable_Cln_Item", {
+
+                filters: oFilters1,
+
+                success: function (oData) {
+
+                    var aItems = oData.results; // The array of read items
+
+                    const unique = aItems.filter((obj, index) => {
+                        return index === aItems.findIndex(o => obj.MaterialDocument === o.MaterialDocument);
+                    });
+
+                    console.log(unique);
+
+                    var oJSONModel = new sap.ui.model.json.JSONModel({
+                        data: unique
+                    });
+                   console.log(oJSONModel);
+                    that.getView().setModel(oJSONModel, "JModel");
+
+
+
+
+                },
+
+                error: function (oError) {
+                    console.error("Error reading data: ", oError);
+
+                }
+            
+            })
+        // ====================================================================
                     if (!this._dialog_matdochead) {
                         this._dialog_matdochead = sap.ui.xmlfragment(this.getView().getId("PoDocHead_dialog"), "gatepass.view.fragments.Mat_Po_Doc", this);
                         this.getView().addDependent(this._dialog_matdochead);
