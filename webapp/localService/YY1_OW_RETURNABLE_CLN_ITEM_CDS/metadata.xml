@@ -54,6 +54,9 @@
                 <Property Name="CompanyCodeCurrency" Type="Edm.String" MaxLength="5" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:required-in-filter="false" sap:label="Company Code Currency" sap:semantics="currency-code"/>
                 <Property Name="GoodsMovementType" Type="Edm.String" MaxLength="3" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:required-in-filter="false" sap:label="Movement Type" sap:quickinfo="Movement Type (Inventory Management)"/>
                 <Property Name="IsAutomaticallyCreated" Type="Edm.String" MaxLength="1" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:required-in-filter="false" sap:label="Automat. Created" sap:quickinfo="Item Automatically Created Indicator"/>
+                <Property Name="PurchaseOrder" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:required-in-filter="false" sap:label="Purchase Order" sap:quickinfo="Purchase Order Number"/>
+                <Property Name="PurchaseOrderItem" Type="Edm.String" MaxLength="5" sap:aggregation-role="dimension" sap:display-format="NonNegative" sap:required-in-filter="false" sap:label="Item" sap:quickinfo="Item Number of Purchasing Document"/>
+                <Property Name="DocumentDate" Type="Edm.DateTime" Precision="0" sap:aggregation-role="dimension" sap:display-format="Date" sap:required-in-filter="false" sap:label="Document Date" sap:quickinfo="Document Date in Document"/>
             </EntityType>
             <EntityContainer Name="YY1_OW_RETURNABLE_CLN_ITEM_CDS_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
                 <EntitySet Name="YY1_OW_Returnable_Cln_Item" EntityType="YY1_OW_RETURNABLE_CLN_ITEM_CDS.YY1_OW_Returnable_Cln_ItemType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>

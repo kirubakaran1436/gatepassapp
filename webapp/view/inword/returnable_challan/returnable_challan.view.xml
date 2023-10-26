@@ -27,8 +27,8 @@
 				<Input visible="false" id="Plant_Name_H" editable="false" placeholder="Plant Name" value=""/>
 				<!-- ____________________________________________________ -->	
 
-                <Label visible="false" text="Material Docuement Year"/>
-                <DatePicker visible="false" change="OnMatDocDateChange" id="Material_Docuement_Year_H" valueFormat="yyyy" required="true" displayFormat="yyyy"  />               
+                <Label visible="true" text="Material Docuement Year"/>
+                <DatePicker visible="true" change="OnMatDocDateChange" id="Material_Docuement_Year_H" valueFormat="yyyy" required="true" displayFormat="yyyy"  />               
 				<!-- ____________________________________________________ -->		
 		
                    

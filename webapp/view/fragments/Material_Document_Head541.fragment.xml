@@ -1,5 +1,4 @@
 
-
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
 	<TableSelectDialog id="MatDoc_dialog" noDataText="No Items Found" title="Select Items" search=".OnMatDocSearch" confirm=".OnMatDocSelect"
 		contentWidth="50%" cancel=".OnMatDocSelect" items="{JModel>/data}">
