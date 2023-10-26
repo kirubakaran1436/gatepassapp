@@ -1252,7 +1252,9 @@ OnExport: function () {
 
     if(Ref_Data01 === "0"){ // For General Purchase Table
         var TableId1 = this.getView().byId("general_purchase_table");
-        var TableHeaderData = ["Document No", "Purchasing Document No", "Purchasing Document No", "Material Code", "Material Description", "Quantity", "UOM", "HSN Code", "Net Price", "Plant", "Vendor Code", "Vendor Name", "Invoice No", "Invoice Date", "No Of Packages", "Vehicle No", "Bins", "No Of Bins", "Created At", "Created By", "Changed At", "Changed By"]
+        var TableHeaderData = ["Status", "Document No", "Purchasing Document No", "Purchasing Document No", "Material Code", "Material Description", "Quantity", "Quantity To Post", "UOM", "HSN Code", "Net Price", "Plant", "Vendor Code", "Vendor Name", "Invoice No", "Invoice Date", "No Of Packages", "Vehicle No", "Bins", "No Of Bins", "Created At", "Created By", "Changed At", "Changed By"]
+        // var TableHeaderData = ["Document No", "Purchasing Document No"]
+        var ExportName = "General Purchase";
     }else if(Ref_Data01 === "1"){ // For Cash Purchase Table
         var TableId1 = this.getView().byId("cash_purchase_table");
         var TableHeaderData =["Document No", "Material Description", "Quantity", "Amount", "Bill No", "Partner Document No", "Vendor Name", "No Of Packages", "Vehicle No", "Bins", "No Of Bins", "Person Name", "Created At", "Created By", "Changed At", "Changed By"]
@@ -1327,8 +1329,9 @@ OnExport: function () {
                 var dataType = "H";
                 var dataStyle = "";
                 var dataValue = "";
+                console.log(TableId1.getRows()[j].getCells()[k]);
                 // dataValue = (dataValue) ? dataValue : HeaderData[k];
-                dataValue = (dataValue) ? dataValue : TableId1.getRows()[j].getCells()[k].getValue();
+                dataValue = (dataValue) ? dataValue : TableId1.getRows()[j].getCells()[k].mProperties.value;
                 // dataValue = (dataValue) ? dataValue : TableId1.getRows()[j].getBindingContext().getProperty("PurchaseOrderItem");;
                 var dataFormula = "";
                 ctx = {
@@ -1360,67 +1363,11 @@ OnExport: function () {
 
     var link = document.createElement("A");
     link.href = uri + base64(workbookXML);
-    link.download = 'Gate Pass Report.xls';
+    link.download = ExportName+'.xls';
     link.target = '_blank';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-    // }
-    // ();
-
-    // var Results = [
-    // 	["Col1", "Col2", "Col3", "Col4"],
-    // 	["Data", 50, 100, 500],
-    // 	["Data", -100, 20, 100],
-    // ];
-
-    // var CsvString = "";
-    // Results.forEach(function (RowItem, RowIndex) {
-    // 	RowItem.forEach(function (ColItem, ColIndex) {
-    // 		CsvString += ColItem + ',';
-    // 	});
-    // 	CsvString += "\r\n";
-    // });
-    // window.open('data:application/vnd.ms-excel,' + encodeURIComponent(CsvString));
-
-    // var Results = [
-    // 	["Col1", "Col2", "Col3", "Col4"],
-    // 	["K", 50, 100, ""],
-    // 	["I", -100, 20, 100],
-    // 	["R", -100, 20, 100],
-    // ];
-
-    // // exportToCsv = function () {
-    // var CsvString = "";
-    // Results.forEach(function (RowItem, RowIndex) {
-    // 	RowItem.forEach(function (ColItem, ColIndex) {
-    // 		CsvString += ColItem + ',';
-    // 	});
-    // 	CsvString += "\r\n";
-    // });
-    // window.open('application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8,' + encodeURIComponent(CsvString));
-    // // CsvString = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8," + encodeURIComponent(CsvString);
-    // var x = document.createElement("A");
-    // x.setAttribute("href", CsvString);
-    // x.setAttribute("download.xls");
-    // document.body.appendChild(x);
-    // x.click();
-    // }
-
-    // };
-    // var ArrayTableId = ["itemtableid", "itemtableid1"];
-    // var ArrayTableType = ["Moment Type - 101", "Moment Type - 601"];
-    // for (var i = 0; i < ArrayTableId.length; i++) {
-
-    // 	TableToExcel.convert(document.getElementById("container-DISPATCH_REPORT---View1--itemtableid-listUl"), {
-    // 		name: "Gateout.xlsx",
-
-    // 		sheet: {
-    // 			name: ArrayTableType[i]
-    // 		}
-
-    // 	});
-    // }
 
 },
 
