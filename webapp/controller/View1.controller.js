@@ -71,13 +71,14 @@ sap.ui.define([
                 this.getView().byId("Inword_Lebel").setText("Select Inward");
                 // this.getView().byId("Inword_combobox").setPlaceholder("Select Inward");
                 this.getView().byId("Inword_Lebel").setVisible(true);
-                this.getView().byId("Inword_combobox").setValue("");
+                this.getView().byId("Inword_combobox").setSelectedItem("");
+                this.getView().byId("Inword_combobox").setSelectedKey("");
                 this.getView().byId("Inword_combobox").setVisible(true);
                 this.getView().byId("Execute_Button").setVisible(false);
                 this.Select_Key = "";
                 }
 
-                if ( Selected_Options === "Outward"){
+                else if ( Selected_Options === "Outward"){
 
                     var mModel = new sap.ui.model.json.JSONModel({
                         Samples : [
@@ -92,14 +93,15 @@ sap.ui.define([
                 this.getView().setModel(mModel, "mModel");
                 this.getView().byId("Inword_Lebel").setText("Select Outward");
                 // this.getView().byId("Inword_combobox").setPlaceholder("Select Outward");
-                this.getView().byId("Inword_combobox").setValue("");
+                this.getView().byId("Inword_combobox").setSelectedItem("");
+                this.getView().byId("Inword_combobox").setSelectedKey("");
                 this.getView().byId("Inword_Lebel").setVisible(true);
                 this.getView().byId("Inword_combobox").setVisible(true);
                 this.getView().byId("Execute_Button").setVisible(false);
                 this.Select_Key = "";
                 }
 
-                if ( Selected_Options === "Report"){
+                else if ( Selected_Options === "Report"){
 
                     var mModel = new sap.ui.model.json.JSONModel({
                         Samples : [
@@ -109,7 +111,8 @@ sap.ui.define([
                 this.getView().setModel(mModel, "mModel");
                 this.getView().byId("Inword_Lebel").setText("Select Report");
                 // this.getView().byId("Inword_combobox").setPlaceholder("Select Report");
-                this.getView().byId("Inword_combobox").setValue("");
+                this.getView().byId("Inword_combobox").setSelectedItem("");
+                this.getView().byId("Inword_combobox").setSelectedKey("");
                 this.getView().byId("Inword_Lebel").setVisible(true);
                 this.getView().byId("Inword_combobox").setVisible(true);
                 this.getView().byId("Execute_Button").setVisible(false);

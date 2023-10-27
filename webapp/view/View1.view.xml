@@ -25,10 +25,10 @@
 				<core:Item id="_IDGenItem2" key="{mModel>key}" text="{mModel>text}" class="{mModel>key}" icon="{mModel>icon}" />
 			</ComboBox>				 -->
 
-			<Select visible="false"  change="InSelect_Combo" class="for_inword" id="Inword_combobox"
+			<Select visible="false" selectedKey="" selectedItemId="" change="InSelect_Combo" class="for_inword" id="Inword_combobox"
 					forceSelection="false"
 					items="{mModel>/Samples}">
-					<core:ListItem key="{mModel>key}" text="{mModel>text}" class="{mModel>key}" icon="{mModel>icon}"/>
+					<core:ListItem id="_IDGenListItem1" key="{mModel>key}" text="{mModel>text}" class="{mModel>key}" icon="{mModel>icon}"/>
 				</Select>
 	
 				<!-- ____________________________________________________ -->
