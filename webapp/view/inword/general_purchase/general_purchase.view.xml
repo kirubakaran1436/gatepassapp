@@ -1,4 +1,6 @@
-<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:fb="sap.ui.comp.filterbar" xmlns:svm="sap.ui.comp.smartvariants" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:k="sap.ui.table" xmlns:vm="sap.ui.fl.variants" controllerName="gatepass.controller.inword.general_purchase.general_purchase" height="100%">
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:fb="sap.ui.comp.filterbar"
+ xmlns:svm="sap.ui.comp.smartvariants" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:k="sap.ui.table"
+  xmlns:vm="sap.ui.fl.variants" controllerName="gatepass.controller.inword.general_purchase.general_purchase" height="100%">
     <Page id="page" titleAlignment="Center" title="General Purchase">
 
       <VBox id="_IDGenVBox1" class="sapUiSmallMargin">
@@ -49,11 +51,10 @@
 				<!-- ____________________________________________________ -->			
 
                 <Label id="_IDGenLabel159" text="Bins (Yes/No)"/>
-				<!-- <Input id="_IDGenInput8" placeholder="Bins Yes/No" value=""/> -->
                 <ComboBox placeholder="Select Bins Yes/No" id="Bin_Select_H" change="On_Bin_Select" items="">
 				<core:Item id="_IDGenItem101" key="1" text="Yes"/>
 				<core:Item id="_IDGenItem1101" key="2" text="No"/>
-			</ComboBox>
+			    </ComboBox>
 				<!-- ____________________________________________________ -->			
 
                 <Label id="_IDGenLabel196" text="No of Bins"/>
@@ -61,12 +62,8 @@
 				<!-- ____________________________________________________ -->			
 
                 <Label id="_IDGenLabel197" text="Invoice Date"/>
-				<!-- <Input id="_IDGenInput10"  placeholder="Invoice Date" value=""/> -->
                 <DatePicker id="Invoice_Date_H" placeholder="DD-MM-YYYY" valueFormat="dd-MM-yyyy" displayFormat="dd-MM-yyyy" change="DatePress" class="sapUiSmallMarginBottom"/>
 				<!-- ____________________________________________________ -->			
-<!-- 
-                <Label text=""/>
-				<Button text="go"  class="sapUiSmallMarginTop" type="Default" width="10%" ></Button> -->
 				<!-- ____________________________________________________ -->			
 
                 <Label id="_IDGenLabel918" text="Transporter"/>
@@ -75,8 +72,22 @@
                 
                 <Label id="_IDGenLabel111" text="E Way Bill"/>
 				<Input id="E_Way_Bill" placeholder="E Way Bill" value=""/>
-				<!-- ____________________________________________________ -->		
+				<!-- ____________________________________________________ -->
+
+                <Label text="Approve Status"/>
+                <!-- <RadioButtonGroup id="Approve_Status" columns="2" class="sapUiMediumMarginBottom">
+                    <RadioButton id="Yes" text="Yes" />
+                    <RadioButton id="No" text="No" />
+                </RadioButtonGroup> -->
+				<Select required="true" visible="true" change="OnApproveSelect" id="Approve_Status" forceSelection="false">
+					<core:ListItem key="Yes" text="Yes" icon="sap-icon://message-success"/>
+					<core:ListItem key="No" text="No" icon="sap-icon://sys-cancel-2"/>
+				</Select>
+                <Input value="" id="Business_User_Name" editable="false"/>
                 
+				<!-- ____________________________________________________ -->	
+                 <Label text=""/>	
+                <Input value="" id="Business_User_ID" visible="false" editable="false"/>
 				<!-- ____________________________________________________ -->
 			</f:content>
 			
@@ -327,10 +338,10 @@
 
                 <ToolbarSpacer/>
 
-                <Button id="Final_Save_Button" enabled="false" type="Accept" text="Submit" press="OnSubmit"/>
+                <Button id="Final_Save_Button" enabled="false" tooltip="Click to Save Document" type="Accept" icon="sap-icon://save" text="" press="OnSubmit"/>
                 <Button id="Final_Cancel_Button" visible="false" enabled="false" type="Reject" text="Cancel" press="OnCancel"/>
-                <Button id="Final_Edit_Button" enabled="true" type="Default" text="Change" press="OnEditPage"/>
-                <Button id="Final_Display_Button" enabled="true" type="Default" text="Display" press="OnDisplayPage"/>
+                <Button id="Final_Edit_Button" tooltip="Change to Edit Mode" enabled="true" type="Default" icon="sap-icon://edit" text="" press="OnEditPage"/>
+                <Button id="Final_Display_Button" tooltip="Change to Display Mode" icon="sap-icon://display" enabled="true" type="Default" text="" press="OnDisplayPage"/>
                 <Button id="Final_Back_Button" enabled="true" type="Default" text="Back" press="OnBack"/>
                 <Button text=""/>
 

@@ -83,10 +83,10 @@ server:
             destination: DEV_Tenent_401677_BA
           - path: /sap/opu/odata/sap/YY1_VENDOR_RETURN_OW_CDS/
             url: https://my401677-api.s4hana.cloud.sap
-            destination: DEV_Tenent_401677_BA
+            destination: my401677_SAML_ASSERTION
           - path: /sap/opu/odata/sap/YY1_OW_RETURNABLE_CLN_ITEM_CDS/
             url: https://my401677-api.s4hana.cloud.sap
-            destination: DEV_Tenent_401677_BA
+            destination: my401677_SAML_ASSERTION
           - path: /sap/opu/odata/sap/YY1_OW_RETURNABLE_CHALLAN__CDS/
             url: https://my401677-api.s4hana.cloud.sap
             destination: DEV_Tenent_401677_BA
@@ -97,6 +97,12 @@ server:
             url: https://my401677-api.s4hana.cloud.sap
             destination: DEV_Tenent_401677_BA
           - path: /sap/opu/odata/sap/YY1_INWORD_STO_CDS/
+            url: https://my401677-api.s4hana.cloud.sap
+            destination: DEV_Tenent_401677_BA
+          - path: /sap/opu/odata/sap/YY1_CTPL_BUSINESS_USER_CDS/
+            url: https://my401677-api.s4hana.cloud.sap
+            destination: DEV_Tenent_401677_BA
+          - path: /sap/opu/odata/sap/YY1_GATEPASS_ALL_DATA_CDS/
             url: https://my401677-api.s4hana.cloud.sap
             destination: DEV_Tenent_401677_BA
     - name: fiori-tools-preview

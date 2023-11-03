@@ -12,9 +12,11 @@
                 <Label id="_IDGenLabel7" text="Select I/O"/>
                 <ComboBox placeholder="Select Data" change="select_i_o" id="_IDGenComboBox1"
 				items="">
-				<core:Item id="_IDGenItem1" class="Kirua001" key="1" text="Inward" />
-				<core:Item id="_IDGenItem11" key="2" text="Outward" />
-				<core:Item id="_IDGenItem12" key="3" text="Report" />
+				<core:Item  key="1" text="Inward" />
+				<core:Item  key="2" text="Outward" />
+				<core:Item  key="3" text="Report" />
+				<core:Item  key="4" text="Vehicle I/O Tracking" />
+				<core:Item  key="5" text="Approve Process" />
 			</ComboBox>				
 				<!-- ____________________________________________________ -->
 

@@ -1,53 +1,73 @@
-<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:fb="sap.ui.comp.filterbar"
- xmlns:svm="sap.ui.comp.smartvariants" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:k="sap.ui.table"
-  xmlns:vm="sap.ui.fl.variants" controllerName="gatepass.controller.inword.general_purchase.dis_general_purchase" height="100%">
-    <Page id="page" titleAlignment="Center" title="Edit General Purchase">
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:fb="sap.ui.comp.filterbar" 
+xmlns:svm="sap.ui.comp.smartvariants" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:k="sap.ui.table"
+xmlns:UIX="sap.uxap" 
+xmlns:vm="sap.ui.fl.variants" controllerName="gatepass.controller.inword.general_purchase.general_purchase" height="100%">
+   
+ <UIX:ObjectPageLayout id="ObjectPageLayout" showAnchorBarPopover="false" upperCaseAnchorBar="false">
+		<UIX:headerTitle>
+			<UIX:ObjectPageDynamicHeaderTitle>
+				<UIX:heading>
+					<Title textAlign="Center" text="General Purchase"/>
+				</UIX:heading>
 
-      <VBox id="_IDGenVBox1" class="sapUiSmallMargin">
+				<UIX:snappedTitleOnMobile>
+					<Title text="General Purchase" />
+				</UIX:snappedTitleOnMobile>
+
+				<UIX:actions>
+				<Button id="Final_Save_Button" enabled="false" tooltip="Click to Save Document" type="Accept" icon="sap-icon://save" text="" press="OnSubmit"/>
+                <Button id="Final_Cancel_Button" visible="false" enabled="false" type="Reject" text="Cancel" press="OnCancel"/>
+                <Button id="Final_Edit_Button" tooltip="Change to Edit Mode" enabled="true" type="Default" icon="sap-icon://edit" text="" press="OnEditPage"/>
+                <Button id="Final_Display_Button" tooltip="Change to Display Mode" icon="sap-icon://display" enabled="true" type="Default" text="" press="OnDisplayPage"/>
+                <Button id="Final_Back_Button" enabled="true" type="Default" text="Back" press="OnBack"/>
+                <Button text=""/>
+				</UIX:actions>
+			</UIX:ObjectPageDynamicHeaderTitle>
+		</UIX:headerTitle>
+
+		<UIX:headerContent>
+            <!-- <VBox id="_IDGenVBox1"> -->
 		<f:SimpleForm class="simform" id="SimpleFormChangeColumn_twoGroups234" editable="true" layout="ColumnLayout" columnsM="2" columnsL="3" columnsXL="4">
 			<f:content>
+
+            <!-- ____________________________________________________ -->
+
+                <Label  id="IdLabel" text="General Purchase Doc No"/>
+				<Input enabled="false" id="Id" placeholder="Id" value=""/>
 				
-				<!-- _____________General Purchase Document No_______________ -->			
-
-                <Label text="General Purchase Document No"/>
-				<Input id="General_Purchase_Document_H" placeholder="General Purchase Document No" valueHelpOnly="true" valueHelpRequest="OnGenPurDocNoFrag" showValueHelp="true"/>
-				<!-- ____________________________________________________ -->
-
-                <Label text="SAP UUID"/>
-				<Input id="SAP_UUID_H" visible="false" placeholder="SAP_UUID" value=""/>
 				<!-- ____________________________________________________ -->
 
                 <Label id="_IDGenLabel7" text="Gate Pass Type"/>
-                <ComboBox placeholder="Select GatePass Type" enabled="false" change="select_i_o" id="GatePass_Type_H" items="">
+                <ComboBox required="true" placeholder="Select GatePass Type" change="select_i_o" id="GatePass_Type_H" items=""
+                selectedItem="_IDGenItem1">
 				<core:Item id="_IDGenItem1" key="1" text="RGP"/>
 				<core:Item id="_IDGenItem11" key="2" text="NRGP"/>
-			    </ComboBox>	
-
-				<!-- ____________________________________________________ -->	
-                		
+			    </ComboBox>				
+				<!-- ____________________________________________________ -->
 
                 <Label id="_IDGenLabel8" text="Plant"/>
 				<Input id="Plant_H" enabled="false" class="InputBackclr" placeholder="Plant" value=""/>
 				<!-- ____________________________________________________ -->			
 
                 <Label id="_IDGenLabel9" text="Purchasing Document"/>
-				<Input enabled="false" id="Purchasing_Document_H" placeholder="Purchasing Document"/>
+				<Input id="Purchasing_Document_H" required="true" placeholder="Purchasing Document" valueHelpOnly="true" valueHelpRequest="OnPoDocFragOpen" showValueHelp="true"/>
 				<!-- ____________________________________________________ -->			
 
                 <Label id="_IDGenLabel10" text="Vendor"/>
 				<Input id="Vendor_H" enabled="false" placeholder="Vendor" value=""/>
-				<!-- ____________________________________________________ -->			
+                <Input id="Vendor_Name_H" enabled="false" placeholder="Vendor Name" value=""/>
+				<!-- ____________________________________________________			 -->
 
-                <Label id="_IDGenLabel11" text="Vendor Name"/>
-				<Input id="Vendor_Name_H" enabled="false" placeholder="Vendor Name" value=""/>
+                <!-- <Label id="_IDGenLabel11" text="Vendor Name"/>
+				<Input id="Vendor_Name_H" enabled="false" placeholder="Vendor Name" value=""/> -->
 				<!-- ____________________________________________________ -->			
 
                 <Label id="_IDGenLabel129" text="Invoice No"/>
-				<Input id="Invoice_No_H" placeholder="Invoice No" required="true" value=""/>
+				<Input id="Invoice_No_H" change="OnInvoiceNoChange" placeholder="Invoice No" required="false" value=""/>
 				<!-- ____________________________________________________ -->			
 
                 <Label id="_IDGenLabel139" text="No of Packages"/>
-				<Input id="No_Of_Package" liveChange="OnNoOfPackageEnter" maxLength="3" placeholder="No of Packages" value=""/>
+				<Input id="No_Of_Package" maxLength="3" liveChange="OnNoOfPackageEnter" placeholder="No of Packages" value=""/>
 				<!-- ____________________________________________________ -->			
 
                 <Label id="_IDGenLabel149" text="Vehicle No"/>
@@ -55,24 +75,19 @@
 				<!-- ____________________________________________________ -->			
 
                 <Label id="_IDGenLabel159" text="Bins (Yes/No)"/>
-				<!-- <Input id="_IDGenInput8" placeholder="Bins Yes/No" value=""/> -->
                 <ComboBox placeholder="Select Bins Yes/No" id="Bin_Select_H" change="On_Bin_Select" items="">
 				<core:Item id="_IDGenItem101" key="1" text="Yes"/>
 				<core:Item id="_IDGenItem1101" key="2" text="No"/>
 			    </ComboBox>
+                <Input enabled="false" maxLength="3" liveChange="On_Bin_Enter" id="No_Of_Bins" placeholder="No of Bins" value=""/>
 				<!-- ____________________________________________________ -->			
 
-                <Label id="_IDGenLabel196" text="No of Bins"/>
-				<Input enabled="false" maxLength="3" liveChange="On_Bin_Enter" id="No_Of_Bins" placeholder="No of Bins" value=""/>
+                <!-- <Label id="_IDGenLabel196" text="No of Bins"/> -->
+				
 				<!-- ____________________________________________________ -->			
 
                 <Label id="_IDGenLabel197" text="Invoice Date"/>
-				<!-- <Input id="_IDGenInput10"  placeholder="Invoice Date" value=""/> -->
-                <DatePicker id="Invoice_Date_H" enabled="false" placeholder="DD-MM-YYYY" valueFormat="dd-MM-yyyy" displayFormat="dd-MM-yyyy" change="DatePress" class="sapUiSmallMarginBottom"/>
-				<!-- ____________________________________________________ -->			
-<!-- 
-                <Label text=""/>
-				<Button text="go"  class="sapUiSmallMarginTop" type="Default" width="10%" ></Button> -->
+                <DatePicker id="Invoice_Date_H" placeholder="DD-MM-YYYY" valueFormat="dd-MM-yyyy" displayFormat="dd-MM-yyyy" change="DatePress" class="sapUiSmallMarginBottom"/>
 				<!-- ____________________________________________________ -->			
 
                 <Label id="_IDGenLabel918" text="Transporter"/>
@@ -81,134 +96,139 @@
                 
                 <Label id="_IDGenLabel111" text="E Way Bill"/>
 				<Input id="E_Way_Bill" placeholder="E Way Bill" value=""/>
-				<!-- ____________________________________________________ -->	
+				<!-- ____________________________________________________ -->
 
+                <Label text="Approve Status"/>
+				<Select required="true" visible="true" selectedItemId="Yes" selectedItem="Yes" selectedKey="Yes" id="Approve_Status" forceSelection="false">
+					<core:ListItem key="Yes" text="Yes" icon="sap-icon://message-success"/>
+					<core:ListItem key="No" text="No" icon="sap-icon://sys-cancel-2"/>
+				</Select>
+				<!-- ____________________________________________________ -->		
+                
+				<!-- ____________________________________________________ -->
 			</f:content>
 			
 		</f:SimpleForm>
-		
-	</VBox>
 
+		<OverflowToolbar id="_IDGenOverflowToolbar1">		
+		<ToolbarSpacer id="_IDGenToolbarSpacer1"/>
+		<Button press="On_Go_Button" text="Go" type="Accept" id="Go_Button" ariaDescribedBy="defaultButtonDescription genericButtonDescription"/>
+		<ToolbarSpacer id="_IDGenToolbarSpacer2"/>
+	    </OverflowToolbar>
+		</UIX:headerContent>
 
-     <VBox id="_IDGenVBox2" class="sapUiSmallMargin">
+        <UIX:sections>
+        <UIX:ObjectPageSection >
+        <UIX:subSections>
+        <UIX:ObjectPageSubSection >
 
-        	<k:Table id="persoTable" visible="true" sort="onSort" enableSelectAll="false" enableColumnReordering="false" rows="{path:'JModel>/data', sorter: {path: 'JModel&gt;Field1', descending:false}}">
+        <k:Table  id="persoTable" visible="false" selectionMode="None" enableSelectAll="false" sort="onSort" enableColumnReordering="false" rows="{/YY1_Purchase_Doc_Items}">
             <k:extension>
                 <OverflowToolbar id="_IDGenOverflowToolbar2" style="Clear">
                     <Title id="title" text="Gate Pass Items"/>
                     <ToolbarSeparator id="_IDGenToolbarSeparator1"/>
                     <ToolbarSpacer id="_IDGenToolbarSeparator2"/>
                     <ToolbarSpacer id="_IDGenToolbarSpacer3"/>
-                     <Button id="_IDGenButton1" icon="sap-icon://action-settings" press="openPersoDialog"/>
-                     <Button id="Final_Delete_Button" enabled="false" icon="sap-icon://delete" type="Default" tooltip="Delete Row" press="OnTableRowRemove"/>
-                     <!-- <Button id="Final_Undelete_Button" enabled="false" icon="sap-icon://undo" type="Default" tooltip="Undo Delete Row" press="OnTableRowUnRemove"></Button> -->
+                     <Button id="_IDGenButton1" tooltip="Under Development"  icon="sap-icon://action-settings" press="openPersoDialog"/>
                 </OverflowToolbar>
             </k:extension>
             <k:columns>
 
-                <k:Column sortProperty="DeletionIndicator" width="3.1rem">
-                    <Label text=""/>
+                <k:Column id="Purchasing_Document_Item" sortProperty="Purchasing Document Item" width="11rem">
+                    <Label id="_IDGenLabel12" text="Purchasing Document Item"/>
                     <k:template>
-                        <Button id="DeleteIndicator" enabled="false" visible="{= ${JModel>Status} === 'deleted' }" icon="sap-icon://delete" type="Reject" tooltip="Deleted"/>
-                        <!-- <Button id="DeleteIndicato1r" enabled="false" visible="false" icon="sap-icon://refresh" type="Reject" tooltip="Deleted"></Button> -->
+                        <Input enabled="false" id="_IDGenInput12" value="{PurchaseOrderItem}"/>
                     </k:template>
                 </k:Column>
 
-                <k:Column sortProperty="Purchasing Document Item" width="11rem">
-                    <Label text="Purchasing Document Item"/>
+                <k:Column id="Purchasing_Document" sortProperty="Purchasing Document" width="11rem">
+                    <Label id="_IDGenLabel121" text="Purchasing Document"/>
                     <k:template>
-                        <Input enabled="false" id="Purchasing_Document_Item_I" value="{JModel>Purchasing_Document_Item}"/>
+                        <Input enabled="false" id="_IDGenInput13" value="{PurchaseOrder}"/>
                     </k:template>
                 </k:Column>
 
-                <k:Column sortProperty="Purchasing Document" width="11rem">
-                    <Label text="Purchasing Document"/>
+                <k:Column id="Quantity" sortProperty="Quantity" width="11rem">
+                    <Label id="_IDGenLabel13" text="Quantity"/>
                     <k:template>
-                        <Input enabled="false" id="Purchasing_Document_I" value="{JModel>Purchasing_Document}"/>
+                        <Input enabled="false" id="_IDGenInput14" change="QtyChange" value="{OrderQuantity}"/>
                     </k:template>
                 </k:Column>
 
-                <k:Column sortProperty="Quantity" width="11rem">
-                    <Label text="Quantity"/>
-                    <k:template>
-                        <Input enabled="false" id="Quantity_I" value="{JModel>Quantity}"/>
-                    </k:template>
-                </k:Column>
-
-                <k:Column id="Gate_Entry_Received" sortProperty="Entry Received" width="11rem">
+                <k:Column id="Gate_Entry_Received" sortProperty="Gate Entry Received" width="11rem">
                     <Label id="_IDGenLabel14" text="Gate Entry Received"/>
                     <k:template>
-                        <Input id="_IDGenInput15" enabled="false" value="{parts:[{path:'JModel>Gate_Entry_Received'},{path:'JModel&gt;Purchasing_Document_Item'},{path:'JModel>Purchasing_Document'}, {path:'JModel>Vendor_Code'}, {path:'JModel>Quantity'}, {path:'JModel>Gate_Quantity_To_Post'}], formatter:'.OnReceivedQty'}"/>
+                        <Input id="_IDGenInput15" enabled="false" value="{parts:[{path:'PurchaseOrderItem'}, {path:'OrderQuantity'},{path:'GateEntryReceived'}], formatter:'.OnReceivedQtyCal'}"/>
                     </k:template>
                 </k:Column>
 
                 <k:Column id="Received_Quantity" sortProperty="Received Quantity" width="11rem">
                     <Label id="_IDGenLabel15" text="GR Received Quantity"/>
                     <k:template>
-                        <Input id="_IDGenInput16" enabled="false" value="{JModel>GR_Received_Quantity}"/>
+                        <Input id="_IDGenInput16" enabled="false" value="{GRReceivedQuantity}"/>
                     </k:template>
                 </k:Column>
 
                 <k:Column id="Pending_Quantity" sortProperty="Pending Quantity" width="11rem">
                     <Label id="_IDGenLabel16" text="Gate Pending Quantity"/>
                     <k:template>
-                        <Input id="Pending_Quantity_Item" enabled="false" value="{parts:[{path:'JModel>Gate_Pending_Quantity'},{path:'JModel&gt;Purchasing_Document_Item'},{path:'JModel>Purchasing_Document'}, {path:'JModel>Vendor_Code'}, {path:'JModel>Quantity'}, {path:'JModel>Gate_Quantity_To_Post'}], formatter:'.OnPendingQty'}"/>
+                        <Input id="Pending_Quantity_Item" enabled="false" value="{parts:[{path:'PurchaseOrderItem'}, {path:'OrderQuantity'}, {path:'GatePendingQuantity'}], formatter:'.OnPendingQtyCal'}"/>
                     </k:template>
                 </k:Column>
 
                 <k:Column id="Quantity_to_Post" sortProperty="Quantity to Post" width="11rem">
                     <Label id="_IDGenLabel17" text="Gate Quantity to Post"/>
                     <k:template>
-                        <Input id="Quantity_to_Post_Input" enabled="{parts:[{path:'JModel>Gate_Pending_Quantity'},{path:'JModel&gt;Purchasing_Document_Item'},{path:'JModel>Purchasing_Document'}, {path:'JModel>Vendor_Code'}, {path:'JModel>Quantity'}, {path:'JModel>Gate_Quantity_To_Post'}, {path:'JModel>Status'}], formatter:'.OnGatePostEntryED'}" change="OnGateQtyToPostEnter" value="{JModel>Gate_Quantity_To_Post}"/>
+                        <Input id="Quantity_to_Post_Input" enabled="{parts:[{path:'PurchaseOrderItem'}, {path:'OrderQuantity'}], formatter:'.OnPutQtyENDB'}" change="Quantity_to_Post_InputyLine" value="{QuantityToPostInputLine}"/>
                     </k:template>
                 </k:Column>
 
                 <k:Column id="UOM" sortProperty="UOM" width="11rem">
                     <Label id="_IDGenLabel18" text="UOM"/>
                     <k:template>
-                        <Input enabled="false" id="_IDGenInput19" value="{JModel>UOM}"/>
+                        <Input enabled="false" id="_IDGenInput19" value="{PurchaseOrderQuantityUnit}"/>
                     </k:template>
                 </k:Column>
 
                 <k:Column id="HSN_Code" sortProperty="HSN Code" width="11rem">
                     <Label id="_IDGenLabel19" text="HSN Code"/>
                     <k:template>
-                        <Input id="_IDGenInput20" enabled="false" value="{JModel>HSN_Code}"/>
+                        <Input id="_IDGenInput20" enabled="false" value="{ConsumptionTaxCtrlCode}"/>
                     </k:template>
                 </k:Column>
 
                 <k:Column id="GST_Number" sortProperty="GST Number" width="11rem">
                     <Label id="_IDGenLabel20" text="GST Number"/>
                     <k:template>
-                        <Input enabled="false" id="_IDGenInput21" value="{JModel>GST_No}"/>
+                        <Input id="_IDGenInput21" value="{GST_No}"/>
                     </k:template>
                 </k:Column>
 
                 <k:Column id="Net_Price" sortProperty="Net Price" width="11rem">
                     <Label id="_IDGenLabel21" text="Net Price"/>
                     <k:template>
-                        <Input id="_IDGenInput22" enabled="false" value="{JModel>Net_Price}"/>
+                        <Input id="_IDGenInput22" enabled="false" value="{NetPriceAmount}"/>
                     </k:template>
                 </k:Column>
 
                 <k:Column id="Material" sortProperty="Material" width="11rem">
                     <Label id="_IDGenLabel22" text="Material"/>
                     <k:template>
-                        <Input id="_IDGenInput23" enabled="false" value="{JModel>Material_Code}"/>
+                        <Input id="_IDGenInput23" enabled="false" value="{Material}"/>
                     </k:template>
                 </k:Column>
 
                 <k:Column id="Material_description" sortProperty="Material description" width="11rem">
                     <Label id="_IDGenLabel23" text="Material description"/>
                     <k:template>
-                        <Input id="_IDGenInput24" enabled="false" value="{JModel>Material_Description}"/>
+                        <Input id="_IDGenInput24" enabled="false" value="{ProductName}"/>
                     </k:template>
                 </k:Column>
 
                 <k:Column id="Plant" sortProperty="Plant" width="11rem">
                     <Label id="_IDGenLabel24" text="Plant"/>
                     <k:template>
-                        <Input id="_IDGenInput25" enabled="false" value="{JModel>Plant}"/>
+                        <Input id="_IDGenInput25" enabled="false" value="{Plant}"/>
                     </k:template>
                 </k:Column>
 
@@ -222,88 +242,107 @@
                  <k:Column id="vendor" sortProperty="vendor" width="11rem">
                     <Label id="_IDGenLabel26" text="vendor"/>
                     <k:template>
-                        <Input id="_IDGenInput27" enabled="false" value="{JModel>Vendor_Code}"/>
+                        <Input id="_IDGenInput27" enabled="false" value="{path:'', formatter:'.OnVendorFetch'}"/>
                     </k:template>
                 </k:Column>
 
                 <k:Column id="Vendor_Name" sortProperty="Vendor Name" width="11rem">
                     <Label id="_IDGenLabel27" text="Vendor Name"/>
                     <k:template>
-                        <Input id="_IDGenInput28" enabled="false" value="{JModel>Vendor_Name}"/>
+                        <Input id="_IDGenInput28" enabled="false" value="{path:'', formatter:'.OnVendorNameFetch'}"/>
                     </k:template>
                 </k:Column>
 
                 <k:Column visible="false" id="No_of_Packages" sortProperty="No of Packages" width="11rem">
                     <Label id="_IDGenLabel28" text="No of Packages"/>
                     <k:template>
-                        <Input id="_IDGenInput29" enabled="false" value="{JModel>No_Of_Packages}"/>
+                        <Input id="_IDGenInput29" enabled="false" value="{path:'', formatter:'.OnNoOfPackageFetch'}"/>
                     </k:template>
                 </k:Column>
 
-                <k:Column visible="false" id="Vehicle_No" sortProperty="Vehicle No" width="11rem">
+                <k:Column  visible="false" id="Vehicle_No" sortProperty="Vehicle No" width="11rem">
                     <Label id="_IDGenLabel29" text="Vehicle No"/>
                     <k:template>
-                        <Input id="_IDGenInput30" enabled="false" value="{JModel>Vehicle_No}"/>
+                        <Input id="_IDGenInput30" enabled="false" value="{path:'', formatter:'.OnVehicleNoFetch'}"/>
                     </k:template>
                 </k:Column> 
 
                  <k:Column visible="false" id="No_of_Bins" sortProperty="No of Bins" width="11rem">
                     <Label id="_IDGenLabel30" text="No of Bins"/>
                     <k:template>
-                        <Input id="_IDGenInput31" enabled="false" value="{JModel>No_Of_Bins}"/>
+                        <Input id="_IDGenInput31" enabled="false" value="{path:'', formatter:'.OnNoOfBinsFetch'}"/>
                     </k:template>
                 </k:Column>
 
                 <k:Column visible="false" id="Bins" sortProperty="Bins" width="11rem">
                     <Label id="_IDGenLabel31" text="Bins"/>
                     <k:template>
-                        <Input id="_IDGenInput32" enabled="false" value="{JModel>Bins}"/>
+                        <Input id="_IDGenInput32" enabled="false" value="{path:'', formatter:'.OnBinsFetch'}"/>
                     </k:template>
                 </k:Column> 
 
                 <k:Column id="Partner_Document_Number" sortProperty="Partner Document Number" width="11rem">
                     <Label id="_IDGenLabel32" text="Partner Document Number"/>
                     <k:template>
-                        <Input id="_IDGenInput33" enabled="false" value="{JModel>Partner_Document_No}"/>
+                        <Input id="_IDGenInput33" enabled="false" value="{path:'', formatter:'.OnPartnerDocNoFetch'}"/>
                     </k:template>
                 </k:Column>
 
-                <k:Column visible="true" id="SAP_UUID123" width=".5rem">
-                    <Label visible="false" id="SAPUUIDLqweqwe" text="SAP UUID"/>
+                <k:Column visible="false" id="Check_In_date" sortProperty="Check In date" width="11rem">
+                    <Label id="_IDGenLabel33" text="Check In date"/>
                     <k:template>
-                        <Input visible="false" id="SAPUUID_I" enabled="false" value="{JModel>SAP_UUID}"/>
+                        <Input enabled="false" id="_IDGenInput34" value="{CreationDate}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column visible="false" id="Check_in_time" sortProperty="Check in time" width="11rem">
+                    <Label id="_IDGenLabel34" text="Check in time"/>
+                    <k:template>
+                        <Input enabled="false" id="_IDGenInput35" value=""/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column visible="false" id="Check_Out_date" sortProperty="Check_Out_date" width="11rem">
+                    <Label id="_IDGenLabel35" text="Check_Out_date"/>
+                    <k:template>
+                        <Input enabled="false" id="_IDGenInput36" value="{LastChangeDateTime}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column visible="false" id="Check_Out_time" sortProperty="Check_Out_time" width="11rem">
+                    <Label id="_IDGenLabel36" text="Check_Out_time"/>
+                    <k:template>
+                        <Input enabled="false" id="_IDGenInput37" value="{LastChangeDateTime}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column visible="false" id="Created_By" sortProperty="Created_By" width="11rem">
+                    <Label id="_IDGenLabel37" text="Created_By"/>
+                    <k:template>
+                        <Input enabled="false" id="_IDGenInput38" value="{CreatedByUser}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column visible="false" id="Created_On" sortProperty="Created_On" width="11rem">
+                    <Label id="_IDGenLabel38" text="Created_On"/>
+                    <k:template>
+                        <Input enabled="false" id="_IDGenInput39" value="{CreationDate}"/>
                     </k:template>
                 </k:Column>
                              
             </k:columns>
             
-        </k:Table>
+        </k:Table>  
 
-         <!-- <MessageStrip
-				text="{/success}"
-				type="Success"
-				enableFormattedText="true"
-				showIcon="true"
-				showCloseButton="true"
-				class="sapUiMediumMarginBottom">
-			</MessageStrip> -->
+        </UIX:ObjectPageSubSection>
+        </UIX:subSections>
+        
+        </UIX:ObjectPageSection>
+        </UIX:sections>
+	
 
-    </VBox>
+	</UIX:ObjectPageLayout>  
+    
 
-    <footer>
-            <Toolbar id="otbFooter">
 
-                <Button icon="sap-icon://alert" text="{= ${message>/}.length }" visible="false" type="Emphasized" press="onMessagePopoverPress"/>
-                <Button id="DeleteIndicId" visible="false" text="This Entire Document has been deleted" type="Reject" enabled="false" icon="sap-icon://message-error"/>
-                <ToolbarSpacer/>
-
-                <Button id="Final_Update_Button" enabled="false" type="Accept" tooltip="Update Document" text="Update" press="OnUpdate"/>
-                <Button id="Final_DeleteEntireDocument_Button" enabled="false" tooltip="Delete Entire Document" type="Default" text="Delete Entire Document" press="OnDeleteEntireDocument"/>
-                <Button id="UnFinal_DeleteEntireDocument_Button" visible="false" enabled="true" tooltip="UnDelete Entire Document" type="Default" text="Retrive" press="OnUnDeleteEntireDocument"/>
-                <Button id="Final_Cancel_Button" enabled="true" type="Default" tooltip="Reset Document Edit" text="Cancel" press="OnCancel"/>
-                <Button id="Final_Back_Button" enabled="true" type="Default" tooltip="Go Back" text="Back" press="OnBack"/>
-                <Button text=""/>
-            </Toolbar>
-        </footer>
-    </Page>
 </mvc:View>

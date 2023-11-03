@@ -1,0 +1,199 @@
+<mvc:View
+		xmlns:c="sap.ui.core"
+		controllerName="gatepass.controller.approve.head_approve"
+		xmlns:mvc="sap.ui.core.mvc"
+		xmlns:u="sap.ui.unified"
+		xmlns="sap.m"
+        xmlns:core="sap.ui.core"
+		xmlns:t="sap.ui.table"
+		xmlns:f="sap.f"
+		xmlns:layout="sap.ui.layout"
+		height="100%">
+		<f:DynamicPage id="dynamicPageId" preserveHeaderStateOnScroll="true" showFooter="true" fitContent="true">
+			<!-- DynamicPage Title -->
+			<f:title>
+				<f:DynamicPageTitle>
+					<f:heading>
+						<Title text="Gate Pass"/>
+					</f:heading>
+					<f:expandedContent>
+						<Label text="Approve Screen"/>
+					</f:expandedContent>
+					<f:snappedContent>
+						<Label text="Approve Screen"/>
+					</f:snappedContent>
+					<f:snappedTitleOnMobile>
+						<Title text="Approve Screen"/>
+					</f:snappedTitleOnMobile>
+					<f:content>
+						<OverflowToolbar>
+							<GenericTag text="Pending"
+								status="Error"
+								press="onGenericTagPress"
+								design="StatusIconHidden">
+								<ObjectNumber id="Total_Pending" text="1000"
+									
+									emphasized="false"
+									state="Error"/>
+							</GenericTag>
+						</OverflowToolbar>
+					</f:content>
+					<!-- <f:actions>
+						<ToolbarSpacer/>
+						<Button
+								text="Edit"
+								type="Emphasized"/>
+						<Button
+								text="Delete"
+								type="Transparent"/>
+						<Button
+								text="Copy"
+								type="Transparent"/>
+						<Button
+								icon="sap-icon://action"
+								type="Transparent"/>
+					</f:actions> -->
+				</f:DynamicPageTitle>
+			</f:title>
+
+			<!-- DynamicPage Header -->
+			<f:header>
+				<f:DynamicPageHeader pinnable="true">
+						<FlexBox
+								alignItems="Start"
+								justifyContent="SpaceBetween">
+							<items>
+								<Panel
+										backgroundDesign="Transparent"
+										class="sapUiNoContentPadding">
+									<content>
+										<layout:HorizontalLayout
+												allowWrapping="true">
+											<layout:VerticalLayout
+													class="sapUiTinyMarginEnd">
+												<Label class="sapUiSmallMarginBegin" text="Business User" ></Label>
+	                                             <ComboBox  class="sapUiSmallMarginBegin" change="OnUserChange" selectedKey="" selectedItem="" id="BUser_Combo"
+                                                    items="{
+                                                        path: 'YY1_CTPL_BUSINESS_USER_CDS>/YY1_CTPL_Business_User',
+                                                        sorter: { path: 'YY1_CTPL_BUSINESS_USER_CDS>UserID' }
+                                                    }">
+                                                    <core:ListItem icon="sap-icon://add-product" key="{YY1_CTPL_BUSINESS_USER_CDS>UserID}" text="{YY1_CTPL_BUSINESS_USER_CDS>PersonFullName}" />
+                                                </ComboBox>
+											</layout:VerticalLayout>
+
+											<layout:VerticalLayout
+													class="sapUiTinyMarginEnd">
+												<Label class="sapUiSmallMarginBegin" text="By Gate Pass" ></Label>
+	                                             <Select  class="sapUiSmallMarginBegin" change="OnGatePassPageChange" selectedItemId="00000" forceSelection="false" selectedKey="00000" selectedItem="All" id="GatepassPage_Combo"
+                                                    items="">
+                                                    <core:ListItem key="00000" text="All" />
+                                                    <core:ListItem key="10002" text="General Purchase" />
+                                                    <core:ListItem key="10001" text="Cash Purchase" />
+                                                    <core:ListItem key="10003" text="Sales Return" />
+                                                    <core:ListItem key="10004" text="Subcontracting Goods Receipt" />
+                                                    <core:ListItem key="10005" text="STO Returns" />
+                                                    <core:ListItem key="20005" text="Vendor Return" />
+                                                    <core:ListItem key="20004" text="Subcontracting Goods Issue" />
+                                                    <core:ListItem key="20001" text="Sales/STO" />
+                                                </Select>
+											</layout:VerticalLayout>
+
+											<layout:VerticalLayout
+													class="sapUiTinyMarginEnd">
+												<Label class="sapUiSmallMarginBegin" text="From Date" ></Label>
+	                                             <DatePicker class="sapUiSmallMarginBegin" id="from_date" placeholder="DD-MM-YYYY" valueFormat="dd-MM-yyyy" displayFormat="dd-MM-yyyy" change="DatePress" />
+											</layout:VerticalLayout>
+
+											<layout:VerticalLayout
+													class="sapUiTinyMarginEnd">
+												<Label class="sapUiSmallMarginBegin" text="To Date" ></Label>
+	                                            <DatePicker class="sapUiSmallMarginBegin" id="to_date" placeholder="DD-MM-YYYY" valueFormat="dd-MM-yyyy" displayFormat="dd-MM-yyyy" change="DatePress" />
+											</layout:VerticalLayout>
+
+											<layout:VerticalLayout
+													class="sapUiTinyMarginEnd">
+											</layout:VerticalLayout>
+										</layout:HorizontalLayout>
+									</content>
+								</Panel>
+							</items>
+						</FlexBox>
+				</f:DynamicPageHeader>
+			</f:header>
+
+			<f:content>
+				<t:Table
+						rows="{JModel>/data}" id="TableId"
+						selectionMode="MultiSelect" enableSelectAll="false"
+						rowMode="Auto">
+					<t:extension>
+						<OverflowToolbar style="Clear">
+							<Title text="Products"/>
+						</OverflowToolbar>
+					</t:extension>
+					<t:columns>
+						<t:Column width="11rem">
+							<Label text="Gate Pass No" />
+							<t:template>
+								<Text  text="{JModel>ID}" wrapping="false" />
+							</t:template>
+						</t:Column>
+
+						<t:Column width="11rem">
+							<Label text="Gate Pass Name" />
+							<t:template>
+								<ObjectStatus state="Warning" text="{JModel>GatePassName}"/>
+							</t:template>
+						</t:Column>
+						
+						<t:Column width="11rem">
+							<Label text="Plant" />
+							<t:template>
+								<Text text="{JModel>Plant}"/>
+							</t:template>
+						</t:Column>
+						<t:Column width="11rem">
+							<Label text="Status" />
+							<t:template>
+							<Button type="Reject" text="{JModel>approve_status}"/>
+								<!-- <ObjectStatus state="Error" text="{JModel>approve_person_name}"/> -->
+							</t:template>
+						</t:Column>
+						<t:Column width="11rem">
+							<Label text="Created On" />
+							<t:template>
+								<Text text="{JModel>SAP_CreatedDateTime}"/>
+							</t:template>
+						</t:Column>
+						<t:Column width="11rem">
+							<Label text="Created By" />
+							<t:template>
+								<Text text="{JModel>SAP_CreatedByUser_Text}"/>
+							</t:template>
+						</t:Column>
+						<t:Column width="4rem">
+							<Label text="" />
+							<t:template>
+								<Button press="OnFragOpen" tooltip="Click to detail view" type="Emphasized" text="Show"/>
+							</t:template>
+						</t:Column>
+										
+						
+					</t:columns>
+				</t:Table>
+			</f:content>
+			<!-- DynamicPage Footer -->
+			<f:footer>
+				<OverflowToolbar>
+					<Button icon="sap-icon://message-popup"
+							text="{/messagesLength}"
+							type="Emphasized"
+							press="onMessageButtonPress"
+							visible="{= !!${/messagesLength}}"/>
+					<ToolbarSpacer/>
+					<Button type="Accept" press="OnApprove" id="accept" text="Approve"/>
+					<Button type="Reject" press="OnReject" id="reject" text="Reject"/>
+				</OverflowToolbar>
+			</f:footer>
+		</f:DynamicPage>
+</mvc:View>

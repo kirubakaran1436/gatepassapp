@@ -1,0 +1,21 @@
+<core:FragmentDefinition
+   
+    xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:fb="sap.ui.comp.filterbar"
+ xmlns:svm="sap.ui.comp.smartvariants" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:t="sap.ui.table"
+  xmlns:vm="sap.ui.fl.variants" height="100%">
+
+    <Dialog id="Dialog_Tittle" title = "Add" >
+
+            <!-- ========================== Start General Purchase ======================================= -->
+
+
+  
+   <beginButton>
+   <Button text="Approve" id="approvefrag" type="Accept" press="OnApprove"/>
+   </beginButton>
+   <endButton>
+   <Button text="Reject" id="rejectfrag" type="Reject" press="OnReject"/>
+   </endButton>
+   
+  </Dialog>
+</core:FragmentDefinition>

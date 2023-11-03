@@ -1,0 +1,505 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_HTML5',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.HTML5.v1" Alias="HTML5"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../../sap/yy1_sales_sto_cds/$metadata">
+        <edmx:Include Namespace="YY1_SALES_STO_CDS" Alias="SAP"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema Namespace="yy1_sales_sto_cds_van.v1" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="YY1_SALES_STO_CDS.YY1_ITEM_SALES_STOType/SAP_UUID">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="YY1_SALES_STO_CDS.YY1_ITEM_SALES_STOType/SAP_PARENT_UUID">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="YY1_SALES_STO_CDS.YY1_ITEM_SALES_STOType">
+                <Annotation Term="UI.Facets">
+                    <Collection>
+                        <Record Type="UI.CollectionFacet">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_Item_NS}"/>
+                            <PropertyValue Property="ID" String="Item"/>
+                            <PropertyValue Property="Facets">
+                                <Collection>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="{@i18n&gt;SAP_FACET_HEADER_GEN_INFO}"/>
+                                        <PropertyValue Property="ID" String="ItemGeneralInformation"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#GeneralInformation"/>
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="GeneralInformation">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_Item_Id_LA}"/>
+                                    <PropertyValue Property="Value" Path="Id"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_Item_Delivery_No_Item_LA}"/>
+                                    <PropertyValue Property="Value" Path="Delivery_No_Item"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_Item_Delivery_No_LA}"/>
+                                    <PropertyValue Property="Value" Path="Delivery_No"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_Item_Material_LA}"/>
+                                    <PropertyValue Property="Value" Path="Material"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_Item_Material_Description_LA}"/>
+                                    <PropertyValue Property="Value" Path="Material_Description"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_Item_Quantity_LA}"/>
+                                    <PropertyValue Property="Value" Path="Quantity"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_Item_Received_Quantity_LA}"/>
+                                    <PropertyValue Property="Value" Path="Received_Quantity"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_Item_Pending_Quantity_LA}"/>
+                                    <PropertyValue Property="Value" Path="Pending_Quantity"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_Item_Quantity_To_Post_LA}"/>
+                                    <PropertyValue Property="Value" Path="Quantity_To_Post"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_Item_Plant_LA}"/>
+                                    <PropertyValue Property="Value" Path="Plant"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_Item_Plant_Name_LA}"/>
+                                    <PropertyValue Property="Value" Path="Plant_Name"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_Item_Customer_Code_LA}"/>
+                                    <PropertyValue Property="Value" Path="Customer_Code"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_Item_Customer_Name_LA}"/>
+                                    <PropertyValue Property="Value" Path="Customer_Name"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_Item_No_Of_Packages_LA}"/>
+                                    <PropertyValue Property="Value" Path="No_Of_Packages"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_Item_Vehicle_No_LA}"/>
+                                    <PropertyValue Property="Value" Path="Vehicle_No"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_Item_Bins_LA}"/>
+                                    <PropertyValue Property="Value" Path="Bins"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_Item_No_Of_Bins_LA}"/>
+                                    <PropertyValue Property="Value" Path="No_Of_Bins"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_Item_Transporter_LA}"/>
+                                    <PropertyValue Property="Value" Path="Transporter"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_Item_Status_LA}"/>
+                                    <PropertyValue Property="Value" Path="Status"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_Item_Status01_LA}"/>
+                                    <PropertyValue Property="Value" Path="Status01"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_Item_Field01_LA}"/>
+                                    <PropertyValue Property="Value" Path="Field01"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_Item_Field02_LA}"/>
+                                    <PropertyValue Property="Value" Path="Field02"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_Item_Field03_LA}"/>
+                                    <PropertyValue Property="Value" Path="Field03"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.HeaderInfo">
+                    <Record>
+                        <PropertyValue Property="TypeName" String="{@i18n&gt;YY1_SALES_STO_Item_NS}"/>
+                        <PropertyValue Property="TypeNamePlural" String="{@i18n&gt;YY1_SALES_STO_Item_NP}"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_Item_Id_LA}"/>
+                            <PropertyValue Property="Value" Path="Id"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_Item_Delivery_No_Item_LA}"/>
+                            <PropertyValue Property="Value" Path="Delivery_No_Item"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_Item_Delivery_No_LA}"/>
+                            <PropertyValue Property="Value" Path="Delivery_No"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_Item_Material_LA}"/>
+                            <PropertyValue Property="Value" Path="Material"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_Item_Material_Description_LA}"/>
+                            <PropertyValue Property="Value" Path="Material_Description"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_Item_Quantity_LA}"/>
+                            <PropertyValue Property="Value" Path="Quantity"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_Item_Received_Quantity_LA}"/>
+                            <PropertyValue Property="Value" Path="Received_Quantity"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_Item_Pending_Quantity_LA}"/>
+                            <PropertyValue Property="Value" Path="Pending_Quantity"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_Item_Quantity_To_Post_LA}"/>
+                            <PropertyValue Property="Value" Path="Quantity_To_Post"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_Item_Plant_LA}"/>
+                            <PropertyValue Property="Value" Path="Plant"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_Item_Plant_Name_LA}"/>
+                            <PropertyValue Property="Value" Path="Plant_Name"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_Item_Customer_Code_LA}"/>
+                            <PropertyValue Property="Value" Path="Customer_Code"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_Item_Customer_Name_LA}"/>
+                            <PropertyValue Property="Value" Path="Customer_Name"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_Item_No_Of_Packages_LA}"/>
+                            <PropertyValue Property="Value" Path="No_Of_Packages"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_Item_Vehicle_No_LA}"/>
+                            <PropertyValue Property="Value" Path="Vehicle_No"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_Item_Bins_LA}"/>
+                            <PropertyValue Property="Value" Path="Bins"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_Item_No_Of_Bins_LA}"/>
+                            <PropertyValue Property="Value" Path="No_Of_Bins"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_Item_Transporter_LA}"/>
+                            <PropertyValue Property="Value" Path="Transporter"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_Item_Status_LA}"/>
+                            <PropertyValue Property="Value" Path="Status"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_Item_Status01_LA}"/>
+                            <PropertyValue Property="Value" Path="Status01"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_Item_Field01_LA}"/>
+                            <PropertyValue Property="Value" Path="Field01"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_Item_Field02_LA}"/>
+                            <PropertyValue Property="Value" Path="Field02"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_Item_Field03_LA}"/>
+                            <PropertyValue Property="Value" Path="Field03"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="YY1_SALES_STO_CDS.YY1_SALES_STOType/SAP_UUID">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="YY1_SALES_STO_CDS.YY1_SALES_STOType/_SAPSysAdminDataChangeUser">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="YY1_SALES_STO_CDS.YY1_SALES_STOType/_SAPSysAdminDataCreateUser">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="YY1_SALES_STO_CDS.YY1_SALES_STOType/SAP_CreatedByUser">
+                <Annotation Term="Common.Text" Path="SAP_CreatedByUser_Text">
+                    <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="YY1_SALES_STO_CDS.YY1_SALES_STOType/SAP_LastChangedByUser">
+                <Annotation Term="Common.Text" Path="SAP_LastChangedByUser_Text">
+                    <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="YY1_SALES_STO_CDS.YY1_SALES_STOType">
+                <Annotation Term="UI.Facets">
+                    <Collection>
+                        <Record Type="UI.CollectionFacet">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_SALES_STO_NS}"/>
+                            <PropertyValue Property="ID" String="SALES_STO"/>
+                            <PropertyValue Property="Facets">
+                                <Collection>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="{@i18n&gt;SAP_FACET_HEADER_GEN_INFO}"/>
+                                        <PropertyValue Property="ID" String="SALES_STOGeneralInformation"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#GeneralInformation"/>
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="{@i18n&gt;SAP_FACET_HEADER_SYSADMINDATA}"/>
+                                        <PropertyValue Property="ID" String="SALES_STOSystemAdministrativeData"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#SystemAdministrativeData"/>
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_Item_NP}"/>
+                            <PropertyValue Property="ID" String="Item"/>
+                            <PropertyValue Property="Target" AnnotationPath="to_Item/@UI.LineItem"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="GeneralInformation">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_SALES_STO_Id_LA}"/>
+                                    <PropertyValue Property="Value" Path="Id"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_SALES_STO_Gate_Pass_Type_LA}"/>
+                                    <PropertyValue Property="Value" Path="Gate_Pass_Type"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_SALES_STO_Delivery_No_LA}"/>
+                                    <PropertyValue Property="Value" Path="Delivery_No"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_SALES_STO_Plant_LA}"/>
+                                    <PropertyValue Property="Value" Path="Plant"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_SALES_STO_Plant_Name_LA}"/>
+                                    <PropertyValue Property="Value" Path="Plant_Name"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_SALES_STO_Customer_Code_LA}"/>
+                                    <PropertyValue Property="Value" Path="Customer_Code"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_SALES_STO_Customer_Name_LA}"/>
+                                    <PropertyValue Property="Value" Path="Customer_Name"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_SALES_STO_No_Of_Packages_LA}"/>
+                                    <PropertyValue Property="Value" Path="No_Of_Packages"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_SALES_STO_Vehicle_No_LA}"/>
+                                    <PropertyValue Property="Value" Path="Vehicle_No"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_SALES_STO_Bins_LA}"/>
+                                    <PropertyValue Property="Value" Path="Bins"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_SALES_STO_No_Of_Bins_LA}"/>
+                                    <PropertyValue Property="Value" Path="No_Of_Bins"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_SALES_STO_Transporter_LA}"/>
+                                    <PropertyValue Property="Value" Path="Transporter"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_SALES_STO_Status_LA}"/>
+                                    <PropertyValue Property="Value" Path="Status"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_SALES_STO_Status01_LA}"/>
+                                    <PropertyValue Property="Value" Path="Status01"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_SALES_STO_Field01_LA}"/>
+                                    <PropertyValue Property="Value" Path="Field01"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_SALES_STO_Field02_LA}"/>
+                                    <PropertyValue Property="Value" Path="Field02"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_SALES_STO_Field03_LA}"/>
+                                    <PropertyValue Property="Value" Path="Field03"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="SystemAdministrativeData">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_SALES_STO_SAP_CreatedDateTime_LA}"/>
+                                    <PropertyValue Property="Value" Path="SAP_CreatedDateTime"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_SALES_STO_SAP_CreatedByUser_LA}"/>
+                                    <PropertyValue Property="Value" Path="SAP_CreatedByUser"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_SALES_STO_SAP_LastChangedDateTime_LA}"/>
+                                    <PropertyValue Property="Value" Path="SAP_LastChangedDateTime"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_SALES_STO_SAP_LastChangedByUser_LA}"/>
+                                    <PropertyValue Property="Value" Path="SAP_LastChangedByUser"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.HeaderInfo">
+                    <Record>
+                        <PropertyValue Property="TypeName" String="{@i18n&gt;YY1_SALES_STO_NS}"/>
+                        <PropertyValue Property="TypeNamePlural" String="{@i18n&gt;YY1_SALES_STO_NP}"/>
+                        <PropertyValue Property="Title">
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="Id"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_SALES_STO_Id_LA}"/>
+                            <PropertyValue Property="Value" Path="Id"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_SALES_STO_Gate_Pass_Type_LA}"/>
+                            <PropertyValue Property="Value" Path="Gate_Pass_Type"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_SALES_STO_Delivery_No_LA}"/>
+                            <PropertyValue Property="Value" Path="Delivery_No"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_SALES_STO_Plant_LA}"/>
+                            <PropertyValue Property="Value" Path="Plant"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_SALES_STO_Plant_Name_LA}"/>
+                            <PropertyValue Property="Value" Path="Plant_Name"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_SALES_STO_Customer_Code_LA}"/>
+                            <PropertyValue Property="Value" Path="Customer_Code"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_SALES_STO_Customer_Name_LA}"/>
+                            <PropertyValue Property="Value" Path="Customer_Name"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_SALES_STO_No_Of_Packages_LA}"/>
+                            <PropertyValue Property="Value" Path="No_Of_Packages"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_SALES_STO_Vehicle_No_LA}"/>
+                            <PropertyValue Property="Value" Path="Vehicle_No"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_SALES_STO_Bins_LA}"/>
+                            <PropertyValue Property="Value" Path="Bins"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_SALES_STO_No_Of_Bins_LA}"/>
+                            <PropertyValue Property="Value" Path="No_Of_Bins"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_SALES_STO_Transporter_LA}"/>
+                            <PropertyValue Property="Value" Path="Transporter"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_SALES_STO_Status_LA}"/>
+                            <PropertyValue Property="Value" Path="Status"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_SALES_STO_Status01_LA}"/>
+                            <PropertyValue Property="Value" Path="Status01"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_SALES_STO_Field01_LA}"/>
+                            <PropertyValue Property="Value" Path="Field01"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_SALES_STO_Field02_LA}"/>
+                            <PropertyValue Property="Value" Path="Field02"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_SALES_STO_Field03_LA}"/>
+                            <PropertyValue Property="Value" Path="Field03"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_SALES_STO_SAP_CreatedDateTime_LA}"/>
+                            <PropertyValue Property="Value" Path="SAP_CreatedDateTime"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_SALES_STO_SAP_CreatedByUser_LA}"/>
+                            <PropertyValue Property="Value" Path="SAP_CreatedByUser"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_SALES_STO_SAP_LastChangedDateTime_LA}"/>
+                            <PropertyValue Property="Value" Path="SAP_LastChangedDateTime"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_SALES_STO_SALES_STO_SAP_LastChangedByUser_LA}"/>
+                            <PropertyValue Property="Value" Path="SAP_LastChangedByUser"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

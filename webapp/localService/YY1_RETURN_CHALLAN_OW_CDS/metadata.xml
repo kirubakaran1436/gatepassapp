@@ -104,7 +104,7 @@
                 <Property Name="SAP_LastChangedByUser_Text" Type="Edm.String" MaxLength="80" sap:label="Description" sap:quickinfo="Description of the Technical User Account" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="PostingDate" Type="Edm.String" MaxLength="20" sap:label="Posting Date"/>
                 <Property Name="VehicleNumber" Type="Edm.String" MaxLength="20" sap:label="Vehicle Number"/>
-                <NavigationPropert/home/user/projects/gatepass/webapp/localService/YY1_PURCHASE_DOC_ITEMS_CDSy Name="to_Item" Relationship="YY1_RETURN_CHALLAN_OW_CDS.assoc_963E618DED5CB49559693856C3B8E58F" FromRole="FromRole_assoc_963E618DED5CB49559693856C3B8E58F" ToRole="ToRole_assoc_963E618DED5CB49559693856C3B8E58F"/>
+                <NavigationProperty Name="to_Item" Relationship="YY1_RETURN_CHALLAN_OW_CDS.assoc_963E618DED5CB49559693856C3B8E58F" FromRole="FromRole_assoc_963E618DED5CB49559693856C3B8E58F" ToRole="ToRole_assoc_963E618DED5CB49559693856C3B8E58F"/>
                 <NavigationProperty Name="to_SAPSysAdminDataChangeUser" Relationship="YY1_RETURN_CHALLAN_OW_CDS.assoc_DAC7E7ECF6965E3771E399EC8332024B" FromRole="FromRole_assoc_DAC7E7ECF6965E3771E399EC8332024B" ToRole="ToRole_assoc_DAC7E7ECF6965E3771E399EC8332024B"/>
                 <NavigationProperty Name="to_SAPSysAdminDataCreateUser" Relationship="YY1_RETURN_CHALLAN_OW_CDS.assoc_20408A6E7AAC99522260E418A3184053" FromRole="FromRole_assoc_20408A6E7AAC99522260E418A3184053" ToRole="ToRole_assoc_20408A6E7AAC99522260E418A3184053"/>
             </EntityType>

@@ -51,7 +51,7 @@ sap.ui.define([
             select_i_o:function(oEvent){ 
                 let Selected_Options = oEvent.oSource.getSelectedItem().getText();
                 let Selected_Options_Key = oEvent.oSource.getSelectedItem().getKey();
-                if (Selected_Options === "Inward"){
+                if (Selected_Options_Key === "1"){
 
                     var mModel = new sap.ui.model.json.JSONModel({
                         Samples : [
@@ -71,13 +71,14 @@ sap.ui.define([
                 this.getView().byId("Inword_Lebel").setText("Select Inward");
                 // this.getView().byId("Inword_combobox").setPlaceholder("Select Inward");
                 this.getView().byId("Inword_Lebel").setVisible(true);
-                this.getView().byId("Inword_combobox").setValue("");
+                this.getView().byId("Inword_combobox").setSelectedItem("");
+                this.getView().byId("Inword_combobox").setSelectedKey("");
                 this.getView().byId("Inword_combobox").setVisible(true);
                 this.getView().byId("Execute_Button").setVisible(false);
                 this.Select_Key = "";
                 }
 
-                if ( Selected_Options === "Outward"){
+                else if ( Selected_Options_Key === "2"){
 
                     var mModel = new sap.ui.model.json.JSONModel({
                         Samples : [
@@ -92,14 +93,15 @@ sap.ui.define([
                 this.getView().setModel(mModel, "mModel");
                 this.getView().byId("Inword_Lebel").setText("Select Outward");
                 // this.getView().byId("Inword_combobox").setPlaceholder("Select Outward");
-                this.getView().byId("Inword_combobox").setValue("");
+                this.getView().byId("Inword_combobox").setSelectedItem("");
+                this.getView().byId("Inword_combobox").setSelectedKey("");
                 this.getView().byId("Inword_Lebel").setVisible(true);
                 this.getView().byId("Inword_combobox").setVisible(true);
                 this.getView().byId("Execute_Button").setVisible(false);
                 this.Select_Key = "";
                 }
 
-                if ( Selected_Options === "Report"){
+                else if ( Selected_Options_Key === "3"){
 
                     var mModel = new sap.ui.model.json.JSONModel({
                         Samples : [
@@ -108,11 +110,46 @@ sap.ui.define([
                         });
                 this.getView().setModel(mModel, "mModel");
                 this.getView().byId("Inword_Lebel").setText("Select Report");
-                // this.getView().byId("Inword_combobox").setPlaceholder("Select Report");
-                this.getView().byId("Inword_combobox").setValue("");
+                this.getView().byId("Inword_combobox").setSelectedItem("");
+                this.getView().byId("Inword_combobox").setSelectedKey("");
                 this.getView().byId("Inword_Lebel").setVisible(true);
                 this.getView().byId("Inword_combobox").setVisible(true);
                 this.getView().byId("Execute_Button").setVisible(false);
+                this.Select_Key = "";
+                }
+
+                
+                else if ( Selected_Options_Key === "4"){
+
+                    var mModel = new sap.ui.model.json.JSONModel({
+                        Samples : [
+                        {},
+                        ]	
+                        });
+                this.getView().setModel(mModel, "mModel");
+                this.getView().byId("Inword_Lebel").setText("Select Report");
+                this.getView().byId("Inword_combobox").setSelectedItem("");
+                this.getView().byId("Inword_combobox").setSelectedKey("");
+                this.getView().byId("Inword_Lebel").setVisible(false);
+                this.getView().byId("Inword_combobox").setVisible(false);
+                this.getView().byId("Execute_Button").setVisible(true);
+                this.Select_Key = "";
+                }
+                
+                else if ( Selected_Options_Key === "5"){
+
+                    var mModel = new sap.ui.model.json.JSONModel({
+                        Samples : [
+                        {key:"15",text:"Gate Pass Report"},
+                        ]	
+                        });
+                this.getView().setModel(mModel, "mModel");
+                this.getView().byId("Inword_Lebel").setText("Select Report");
+                this.getView().byId("Inword_combobox").setSelectedItem("");
+                this.getView().byId("Inword_combobox").setSelectedKey("");
+                this.getView().byId("Inword_Lebel").setVisible(false);
+                this.getView().byId("Inword_combobox").setVisible(false);
+                this.getView().byId("Execute_Button").setVisible(true);
                 this.Select_Key = "";
                 }
                 
@@ -178,6 +215,11 @@ sap.ui.define([
                     else if (this.Select_Key === "11"){
                         var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
                         oRouter.navTo("Subcontracting_Vendor");
+                    }
+
+                    else if (this.getView().byId("_IDGenComboBox1").getValue() === "Approve Process"){
+                        var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+                        oRouter.navTo("head_approve");
                     }
 
                     

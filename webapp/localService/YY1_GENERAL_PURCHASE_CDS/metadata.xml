@@ -72,7 +72,11 @@
                 <Property Name="SAP_LastChangedDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Last Changed On" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="SAP_LastChangedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:text="SAP_LastChangedByUser_Text" sap:label="Last Changed By" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="SAP_LastChangedByUser_Text" Type="Edm.String" MaxLength="80" sap:label="Description" sap:quickinfo="Description of the Technical User Account" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="Posting_Date" Type="Edm.String" MaxLength="20" sap:label="Posting_Date"/>
+                <Property Name="Posting_Date" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Posting_Date"/>
+                <Property Name="approve_status" Type="Edm.String" MaxLength="20" sap:label="approve_status"/>
+                <Property Name="approve_person_name" Type="Edm.String" MaxLength="40" sap:label="approve_person_name" sap:quickinfo="assign_person"/>
+                <Property Name="approve_person_id" Type="Edm.String" MaxLength="20" sap:label="approve_person_id"/>
+                <Property Name="approve_date" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="approve_date"/>
                 <NavigationProperty Name="to_SAPSysAdminDataChangeUser" Relationship="YY1_GENERAL_PURCHASE_CDS.assoc_A580A0415DDB3F3314DD566953F5DC6A" FromRole="FromRole_assoc_A580A0415DDB3F3314DD566953F5DC6A" ToRole="ToRole_assoc_A580A0415DDB3F3314DD566953F5DC6A"/>
                 <NavigationProperty Name="to_SAPSysAdminDataCreateUser" Relationship="YY1_GENERAL_PURCHASE_CDS.assoc_71FDBBFF0F30456D9792B7C533C7DDE3" FromRole="FromRole_assoc_71FDBBFF0F30456D9792B7C533C7DDE3" ToRole="ToRole_assoc_71FDBBFF0F30456D9792B7C533C7DDE3"/>
                 <NavigationProperty Name="to_To_Item" Relationship="YY1_GENERAL_PURCHASE_CDS.assoc_C188F98426CF8B21CCC938343C759704" FromRole="FromRole_assoc_C188F98426CF8B21CCC938343C759704" ToRole="ToRole_assoc_C188F98426CF8B21CCC938343C759704"/>
@@ -118,7 +122,11 @@
                 <Property Name="Field3" Type="Edm.String" MaxLength="20" sap:label="Field3" sap:quickinfo="Field2"/>
                 <Property Name="Field4" Type="Edm.String" MaxLength="20" sap:label="Field4"/>
                 <Property Name="Field5" Type="Edm.String" MaxLength="20" sap:label="Field5"/>
-                <Property Name="Posting_Date" Type="Edm.String" MaxLength="20" sap:label="Posting_Date"/>
+                <Property Name="Posting_Date" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Posting_Date"/>
+                <Property Name="approve_status" Type="Edm.String" MaxLength="20" sap:label="approve_status"/>
+                <Property Name="approve_person_name" Type="Edm.String" MaxLength="40" sap:label="approve_person_name" sap:quickinfo="assign_person"/>
+                <Property Name="approve_person_id" Type="Edm.String" MaxLength="20" sap:label="approve_person_id"/>
+                <Property Name="approve_date" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="approve_date"/>
                 <NavigationProperty Name="to_GENERAL_PURCHASE" Relationship="YY1_GENERAL_PURCHASE_CDS.assoc_C188F98426CF8B21CCC938343C759704" FromRole="ToRole_assoc_C188F98426CF8B21CCC938343C759704" ToRole="FromRole_assoc_C188F98426CF8B21CCC938343C759704"/>
             </EntityType>
             <Association Name="assoc_71FDBBFF0F30456D9792B7C533C7DDE3" sap:content-version="1">
@@ -182,7 +190,11 @@
                     <Parameter Name="Field3" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Text of length 20"/>
                     <Parameter Name="Field4" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Text of length 20"/>
                     <Parameter Name="Field5" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Text of length 20"/>
-                    <Parameter Name="Posting_Date" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Text of length 20"/>
+                    <Parameter Name="Posting_Date" Type="Edm.DateTime" Mode="In" Precision="0" sap:label="Posting_Date" sap:display-format="Date"/>
+                    <Parameter Name="approve_status" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Text of length 20"/>
+                    <Parameter Name="approve_person_name" Type="Edm.String" Mode="In" MaxLength="40" sap:label="Text of length 40"/>
+                    <Parameter Name="approve_person_id" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Text of length 20"/>
+                    <Parameter Name="approve_date" Type="Edm.DateTime" Mode="In" Precision="0" sap:label="approve_date" sap:display-format="Date"/>
                 </FunctionImport>
             </EntityContainer>
             <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>

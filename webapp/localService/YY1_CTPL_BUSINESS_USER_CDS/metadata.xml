@@ -31,27 +31,36 @@
         <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
     </edmx:Reference>
     <edmx:DataServices m:DataServiceVersion="2.0">
-        <Schema Namespace="YY1_PURCHASE_DOC_HEADER_CDS" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
-            <EntityType Name="YY1_Purchase_Doc_HeaderType" sap:label="Purchase_Doc_Header" sap:content-version="1">
+        <Schema Namespace="YY1_CTPL_BUSINESS_USER_CDS" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="YY1_CTPL_Business_UserType" sap:label="CTPL_Business_User" sap:content-version="1">
                 <Key>
-                    <PropertyRef Name="PurchaseOrder"/>
+                    <PropertyRef Name="BusinessPartner"/>
                 </Key>
-                <Property Name="PurchaseOrder" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:required-in-filter="false" sap:label="Purchase Order" sap:quickinfo="Purchase Order Number"/>
-                <Property Name="PurchaseOrderType" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:required-in-filter="false" sap:label="Purchasing Doc. Type" sap:quickinfo="Purchasing Document Type"/>
-                <Property Name="PurchaseOrderDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:required-in-filter="false" sap:label="Purchase Order Date"/>
-                <Property Name="Supplier" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:required-in-filter="false" sap:label="Supplier"/>
-                <Property Name="SupplierName" Type="Edm.String" MaxLength="80" sap:required-in-filter="false" sap:label="Name of Supplier"/>
-                <Property Name="ReleaseCode" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:required-in-filter="false" sap:label="Release indicator" sap:quickinfo="Release Indicator: Purchasing Document"/>
+                <Property Name="BusinessPartner" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:required-in-filter="false" sap:text="PersonFullName" sap:label="Business Partner" sap:quickinfo="Business Partner Number"/>
+                <Property Name="PersonFullName" Type="Edm.String" MaxLength="80" sap:required-in-filter="false" sap:label="Description" sap:quickinfo="Description of the Technical User Account"/>
+                <Property Name="BusinessPartnerUUID" Type="Edm.Guid" sap:required-in-filter="false" sap:label="BP GUID" sap:quickinfo="Business Partner GUID"/>
+                <Property Name="LastName" Type="Edm.String" MaxLength="40" sap:required-in-filter="false" sap:label="Last Name" sap:quickinfo="Last Name of Business Partner (Person)"/>
+                <Property Name="FirstName" Type="Edm.String" MaxLength="40" sap:required-in-filter="false" sap:label="First Name" sap:quickinfo="First Name of Business Partner (Person)"/>
+                <Property Name="UserID" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:required-in-filter="false" sap:text="PersonFullName" sap:label="User ID"/>
+                <Property Name="CreatedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:required-in-filter="false" sap:label="Created By" sap:quickinfo="User who created the object"/>
+                <Property Name="CreationDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:required-in-filter="false" sap:label="Created On" sap:quickinfo="Date on which the object was created"/>
+                <Property Name="CreationTime" Type="Edm.Time" Precision="0" sap:required-in-filter="false" sap:label="Created at" sap:quickinfo="Time at which the object was created"/>
+                <Property Name="LastChangedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:required-in-filter="false" sap:label="Changed by" sap:quickinfo="Last user to change object"/>
+                <Property Name="LastChangeDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:required-in-filter="false" sap:label="Changed on" sap:quickinfo="Date when object was last changed"/>
+                <Property Name="LastChangeTime" Type="Edm.Time" Precision="0" sap:required-in-filter="false" sap:label="Changed at" sap:quickinfo="Time at which object was last changed"/>
+                <Property Name="BusinessPartnerIsBlocked" Type="Edm.Boolean" sap:required-in-filter="false" sap:label="Central Block" sap:quickinfo="Central Block for Business Partner"/>
+                <Property Name="MiddleName" Type="Edm.String" MaxLength="40" sap:required-in-filter="false" sap:label="Middle Name" sap:quickinfo="Middle Name or Second Forename of a Person"/>
+                <Property Name="AuthorizationGroup" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:required-in-filter="false" sap:label="Authorization Group"/>
             </EntityType>
-            <EntityContainer Name="YY1_PURCHASE_DOC_HEADER_CDS_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
-                <EntitySet Name="YY1_Purchase_Doc_Header" EntityType="YY1_PURCHASE_DOC_HEADER_CDS.YY1_Purchase_Doc_HeaderType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+            <EntityContainer Name="YY1_CTPL_BUSINESS_USER_CDS_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="YY1_CTPL_Business_User" EntityType="YY1_CTPL_BUSINESS_USER_CDS.YY1_CTPL_Business_UserType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
             </EntityContainer>
             <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
-            <Annotations Target="YY1_PURCHASE_DOC_HEADER_CDS.YY1_PURCHASE_DOC_HEADER_CDS_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="YY1_CTPL_BUSINESS_USER_CDS.YY1_CTPL_BUSINESS_USER_CDS_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
             </Annotations>
-            <atom:link rel="self" href="https://my401677-api.s4hana.cloud.sap/sap/opu/odata/sap/YY1_PURCHASE_DOC_HEADER_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
-            <atom:link rel="latest-version" href="https://my401677-api.s4hana.cloud.sap/sap/opu/odata/sap/YY1_PURCHASE_DOC_HEADER_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="self" href="https://my401677-api.s4hana.cloud.sap/sap/opu/odata/sap/YY1_CTPL_BUSINESS_USER_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="https://my401677-api.s4hana.cloud.sap/sap/opu/odata/sap/YY1_CTPL_BUSINESS_USER_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
         </Schema>
     </edmx:DataServices>
 </edmx:Edmx>

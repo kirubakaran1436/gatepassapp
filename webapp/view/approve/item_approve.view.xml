@@ -1,0 +1,167 @@
+<mvc:View
+		xmlns:c="sap.ui.core"
+		controllerName="gatepass.controller.approve.item_approve"
+		xmlns:mvc="sap.ui.core.mvc"
+		xmlns:u="sap.ui.unified"
+		xmlns="sap.m"
+        xmlns:core="sap.ui.core"
+		xmlns:t="sap.ui.table"
+		xmlns:f="sap.f"
+		xmlns:layout="sap.ui.layout"
+		height="100%">
+		<f:DynamicPage id="dynamicPageId" preserveHeaderStateOnScroll="true" showFooter="true" fitContent="true">
+			<!-- DynamicPage Title -->
+			<f:title>
+				<f:DynamicPageTitle>
+					<f:heading>
+						<Title text="Gate Pass"/>
+					</f:heading>
+					<f:expandedContent>
+						<Label text="Approve Screen"/>
+					</f:expandedContent>
+					<f:snappedContent>
+						<Label text="Approve Screen"/>
+					</f:snappedContent>
+					<f:snappedTitleOnMobile>
+						<Title text="Approve Screen"/>
+					</f:snappedTitleOnMobile>
+					<f:content>
+						<OverflowToolbar>
+							<GenericTag text="Pending"
+								status="Error"
+								press="onGenericTagPress"
+								design="StatusIconHidden">
+								<ObjectNumber number="1000"
+									
+									emphasized="false"
+									state="Error"/>
+							</GenericTag>
+						</OverflowToolbar>
+					</f:content>
+					<f:actions>
+						<ToolbarSpacer/>
+						<Button
+								text="Edit"
+								type="Emphasized"/>
+						<Button
+								text="Delete"
+								type="Transparent"/>
+						<Button
+								text="Copy"
+								type="Transparent"/>
+						<Button
+								icon="sap-icon://action"
+								type="Transparent"/>
+					</f:actions>
+				</f:DynamicPageTitle>
+			</f:title>
+
+			<!-- DynamicPage Header -->
+			<f:header>
+				<f:DynamicPageHeader pinnable="true">
+						<FlexBox
+								alignItems="Start"
+								justifyContent="SpaceBetween">
+							<items>
+								<Panel
+										backgroundDesign="Transparent"
+										class="sapUiNoContentPadding">
+									<content>
+										<layout:HorizontalLayout
+												allowWrapping="true">
+											<layout:VerticalLayout
+													class="sapUiTinyMarginEnd">
+												<Label class="sapUiSmallMarginBegin" text="Business User" ></Label>
+	                                             <ComboBox  class="sapUiSmallMarginBegin"
+                                                    items="{
+                                                        path: 'YY1_CTPL_BUSINESS_USER_CDS>/YY1_CTPL_Business_User',
+                                                        sorter: { path: 'YY1_CTPL_BUSINESS_USER_CDS>PersonFullName' }
+                                                    }">
+                                                    <core:ListItem icon="sap-icon://add-product" key="{YY1_CTPL_BUSINESS_USER_CDS>UserID}" text="{YY1_CTPL_BUSINESS_USER_CDS>PersonFullName}" />
+                                                </ComboBox>
+											</layout:VerticalLayout>
+											<!-- <layout:VerticalLayout>
+												<Label text="Dataa"></Label>
+	                                             <Input value=" 00 "/>
+											</layout:VerticalLayout> -->
+										</layout:HorizontalLayout>
+									</content>
+								</Panel>
+							</items>
+						</FlexBox>
+				</f:DynamicPageHeader>
+			</f:header>
+
+			<f:content>
+				<t:Table
+						rows="{YY1_CTPL_BUSINESS_USER_CDS>/YY1_CTPL_Business_User}"
+						selectionMode="MultiToggle" enableSelectAll="false"
+						rowMode="Auto">
+					<t:extension>
+						<OverflowToolbar style="Clear">
+							<Title text="Products"/>
+						</OverflowToolbar>
+					</t:extension>
+					<t:columns>
+						<t:Column width="11rem">
+							<Label text="Product Name" />
+							<t:template>
+								<Text  text="{YY1_CTPL_BUSINESS_USER_CDS>PersonFullName}" wrapping="false" />
+							</t:template>
+						</t:Column>
+						<t:Column width="11rem">
+							<Label text="Assigned By" />
+							<t:template>
+								<ObjectStatus state="Error" text="{YY1_CTPL_BUSINESS_USER_CDS>PersonFullName}"/>
+							</t:template>
+						</t:Column>
+						<t:Column width="11rem">
+							<Label text="Product Id" />
+							<t:template>
+								<Text text="{YY1_CTPL_BUSINESS_USER_CDS>PersonFullName}"/>
+							</t:template>
+						</t:Column>
+						<t:Column width="11rem">
+							<Label text="Product Id" />
+							<t:template>
+								<Text text="{YY1_CTPL_BUSINESS_USER_CDS>PersonFullName}"/>
+							</t:template>
+						</t:Column>
+						<t:Column width="11rem">
+							<Label text="Product Id" />
+							<t:template>
+								<Text text="{YY1_CTPL_BUSINESS_USER_CDS>PersonFullName}"/>
+							</t:template>
+						</t:Column>
+						<t:Column width="11rem">
+							<Label text="Product Id" />
+							<t:template>
+								<Text text="{YY1_CTPL_BUSINESS_USER_CDS>PersonFullName}"/>
+							</t:template>
+						</t:Column>
+						<t:Column width="11rem">
+							<Label text="Product Id" />
+							<t:template>
+								<Text text="{YY1_CTPL_BUSINESS_USER_CDS>PersonFullName}"/>
+							</t:template>
+						</t:Column>
+						
+						
+					</t:columns>
+				</t:Table>
+			</f:content>
+			<!-- DynamicPage Footer -->
+			<f:footer>
+				<OverflowToolbar>
+					<Button icon="sap-icon://message-popup"
+							text="{/messagesLength}"
+							type="Emphasized"
+							press="onMessageButtonPress"
+							visible="{= !!${/messagesLength}}"/>
+					<ToolbarSpacer/>
+					<Button type="Accept" text="Accept"/>
+					<Button type="Reject" text="Reject"/>
+				</OverflowToolbar>
+			</f:footer>
+		</f:DynamicPage>
+</mvc:View>

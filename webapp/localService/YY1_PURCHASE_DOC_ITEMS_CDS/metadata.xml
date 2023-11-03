@@ -56,6 +56,11 @@
                 <Property Name="PurchaseOrderDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:required-in-filter="false" sap:label="Purchase Order Date"/>
                 <Property Name="LastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:required-in-filter="false" sap:label="Last Changed" sap:quickinfo="Change Time Stamp"/>
                 <Property Name="PurchaseOrderItemCategory" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:required-in-filter="false" sap:label="Item Category" sap:quickinfo="Item category in purchasing document"/>
+                <Property Name="PurchaseOrderCategory" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:required-in-filter="false" sap:label="Purch. Doc. Category" sap:quickinfo="Purchasing Document Category"/>
+                <Property Name="PurchasingDocumentItemOrigin" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:required-in-filter="false" sap:label="Origin" sap:quickinfo="Origin of a Purchasing Document Item"/>
+                <Property Name="OverdelivTolrtdLmtRatioInPct" Type="Edm.Decimal" Precision="3" Scale="1" sap:required-in-filter="false" sap:label="Overdeliv. Tolerance" sap:quickinfo="Overdelivery Tolerance"/>
+                <Property Name="UnderdelivTolrtdLmtRatioInPct" Type="Edm.Decimal" Precision="3" Scale="1" sap:required-in-filter="false" sap:label="Underdel. Tolerance" sap:quickinfo="Underdelivery Tolerance"/>
+                <Property Name="UnlimitedOverdeliveryIsAllowed" Type="Edm.Boolean" sap:required-in-filter="false" sap:label="Unltd Overdelivery" sap:quickinfo="Unlimited Overdelivery Allowed"/>
             </EntityType>
             <EntityContainer Name="YY1_PURCHASE_DOC_ITEMS_CDS_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
                 <EntitySet Name="YY1_Purchase_Doc_Items" EntityType="YY1_PURCHASE_DOC_ITEMS_CDS.YY1_Purchase_Doc_ItemsType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>

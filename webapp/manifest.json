@@ -20,7 +20,9 @@
                 "uri": "/sap/opu/odata/sap/YY1_GATEPASSHEADERDATA_CDS/",
                 "type": "OData",
                 "settings": {
-                    "annotations": [],
+                    "annotations": [
+                        "YY1_GATEPASSHEADERDATA_CDS_Annotation"
+                    ],
                     "localUri": "localService/YY1_GATEPASSHEADERDATA_CDS/metadata.xml",
                     "odataVersion": "2.0"
                 }
@@ -146,7 +148,9 @@
                 "uri": "/sap/opu/odata/sap/YY1_SALES_STO_CDS",
                 "type": "OData",
                 "settings": {
-                    "annotations": [],
+                    "annotations": [
+                        "YY1_SALES_STO_CDS_Annotation"
+                    ],
                     "localUri": "localService/YY1_SALES_STO_CDS/metadata.xml",
                     "odataVersion": "2.0"
                 }
@@ -220,6 +224,38 @@
                 "settings": {
                     "annotations": [],
                     "localUri": "localService/YY1_INWORD_STO_CDS/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "YY1_CTPL_BUSINESS_USER_CDS": {
+                "uri": "/sap/opu/odata/sap/YY1_CTPL_BUSINESS_USER_CDS/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/YY1_CTPL_BUSINESS_USER_CDS/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "YY1_GATEPASSHEADERDATA_CDS_Annotation": {
+                "uri": "/destinations/my401677_SAML_ASSERTION/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='YY1_GATEPASSHEADERDATA_CDS_VAN',Version='0001')/$value/",
+                "type": "ODataAnnotation",
+                "settings": {
+                    "localUri": "localService/YY1_GATEPASSHEADERDATA_CDS/YY1_GATEPASSHEADERDATA_CDS_Annotation.xml"
+                }
+            },
+            "YY1_SALES_STO_CDS_Annotation": {
+                "uri": "/destinations/my401677_SAML_ASSERTION/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='YY1_SALES_STO_CDS_VAN',Version='0001')/$value/",
+                "type": "ODataAnnotation",
+                "settings": {
+                    "localUri": "localService/YY1_SALES_STO_CDS/YY1_SALES_STO_CDS_Annotation.xml"
+                }
+            },
+            "YY1_GATEPASS_ALL_DATA_CDS": {
+                "uri": "/sap/opu/odata/sap/YY1_GATEPASS_ALL_DATA_CDS/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/YY1_GATEPASS_ALL_DATA_CDS/metadata.xml",
                     "odataVersion": "2.0"
                 }
             }
@@ -556,6 +592,30 @@
                         "sap-value-list": "none"
                     }
                 }
+            },
+            "YY1_CTPL_BUSINESS_USER_CDS": {
+                "dataSource": "YY1_CTPL_BUSINESS_USER_CDS",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "YY1_GATEPASS_ALL_DATA_CDS": {
+                "dataSource": "YY1_GATEPASS_ALL_DATA_CDS",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
             }
         },
         "resources": {
@@ -697,6 +757,16 @@
                     "name": "item_gatepass_report",
                     "pattern": "item_gatepass_report/{plant}/{gate_pass_type}/{gate_pass_no}/{enter_gate_pass_No}/{from_date}/{to_date}",
                     "target": "item_gatepass_report"
+                },
+                {
+                    "name": "head_approve",
+                    "pattern": "head_approve",
+                    "target": "head_approve"
+                },
+                {
+                    "name": "item_approve",
+                    "pattern": "item_approve",
+                    "target": "item_approve"
                 }
             ],
             "targets": {
@@ -798,6 +868,14 @@
                 "item_gatepass_report": {
                     "viewType": "XML",
                     "viewName": "report/item_gatepass_report"
+                },
+                "head_approve": {
+                    "viewType": "XML",
+                    "viewName": "approve/head_approve"
+                },
+                "item_approve": {
+                    "viewType": "XML",
+                    "viewName": "approve/item_approve"
                 }
             }
         },

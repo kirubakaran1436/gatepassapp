@@ -47,6 +47,7 @@ sap.ui.define([
 			}
 			var yyyy = today.getFullYear();
             this.CurrentDate = dd + '-' + mm + '-' + yyyy;
+            this.CurrentDate01 = yyyy + '-' + mm + '-' + dd;
 			this.getView().byId("Invoice_Date_H").setValue(dd + '-' + mm + '-' + yyyy);
             // ----Start For Current Date -----
 
@@ -359,6 +360,51 @@ sap.ui.define([
                         }
 
 
+                },
+
+
+                OnApproveSelect:function(oEvent){
+                    var UserName = oEvent.oSource.getSelectedItem().getKey();
+                    if(UserName === "Yes"){
+                        if (!this._dialog001) {
+                            this._dialog001 = sap.ui.xmlfragment(this.getView().getId("BUser_dialog"), "gatepass.view.fragments.Business_User", this);
+                            this.getView().addDependent(this._dialog001);
+                        }
+                        this._dialog001.open();
+                    }
+                    
+                    if(UserName === "No"){
+                        this.getView().byId("Business_User_Name").setValue("");
+                        this.getView().byId("Business_User_ID").setValue("");
+                    }
+                    
+                },
+
+                OnBUserSearch: function (oEvent) {
+                    var sValue = oEvent.getParameter("value");
+                    var oFilter = new Filter("PersonFullName", FilterOperator.Contains, sValue);
+                    var oBinding = oEvent.getSource().getBinding("items");
+                    oBinding.filter([oFilter]);
+                },
+
+                OnBUserSelect: function (oEvent) {
+                    var oBinding = oEvent.getSource().getBinding("items");
+                    oBinding.filter([]);
+
+                    var aContexts = oEvent.getParameter("selectedContexts");
+                    console.log(aContexts)
+                    var var1, var2;
+
+                    if (aContexts && aContexts.length) {
+
+                        aContexts.map(function (oContext) {
+                            var1 = oContext.getObject().PersonFullName;
+                            var2 = oContext.getObject().UserID;
+                            return;
+                        });
+                        this.getView().byId("Business_User_Name").setValue(var1);
+                        this.getView().byId("Business_User_ID").setValue(var2);
+                    }
                 },
 
                 OnPoDocFragOpen:function(oEvent){
@@ -677,6 +723,8 @@ sap.ui.define([
                    let Invoice_Date = this.getView().byId("Invoice_Date_H").getValue();
                    let Transporter = this.getView().byId("Transporter").getValue();
                    let EWayBill = this.getView().byId("E_Way_Bill").getValue();
+                   let Business_User_Name = this.getView().byId("Business_User_Name").getValue();
+                   let Business_User_ID = this.getView().byId("Business_User_ID").getValue();
 
                 console.log(Id);
                 console.log(Gate_Pass_Type);
@@ -692,6 +740,8 @@ sap.ui.define([
                 console.log(Invoice_Date);
                 console.log(Transporter);
                 console.log(EWayBill);
+                console.log(Business_User_Name);
+                console.log(Business_User_ID);
 
 
                 var Purchasing_Document_Item = []
@@ -778,7 +828,11 @@ sap.ui.define([
                             Field3:"",
                             Field4:"",
                             Field5:"",
-                            Posting_Date:this.CurrentDate
+                            Posting_Date:null,
+                            approve_status:"pending",
+                            approve_person_name:Business_User_Name,
+                            approve_person_id:Business_User_ID,
+                            approve_date:null
 
                         });
                     }
@@ -807,7 +861,11 @@ sap.ui.define([
                             oEntry.Field3="";
                             oEntry.Field4="";
                             oEntry.Field5="";
-                            oEntry.Posting_Date=this.CurrentDate;
+                            oEntry.Posting_Date=null;
+                            oEntry.approve_status="pending";
+                            oEntry.approve_person_name=Business_User_Name;
+                            oEntry.approve_person_id=Business_User_ID;
+                            oEntry.approve_date=null;
 
                             oEntry.to_To_Item = itemData;
                             this.getView().setModel();
@@ -825,6 +883,28 @@ sap.ui.define([
                                         contentWidth: "100px",
                                     });
 
+                                    // ==================================================
+
+                                    var oEntry = {};
+                                    oEntry.ID=Id;
+                                    oEntry.Plant=Plant;
+                                    oEntry.Plant_Name="";
+                                    oEntry.approve_status="pending";
+                                    oEntry.approve_person_name=Business_User_Name;
+                                    oEntry.approve_person_id=Business_User_ID;
+                                    oEntry.approve_date=null;
+                                    oEntry.GatePassId="10002";
+                                    oEntry.GatePassName="Gerenal Purchase";
+
+                                    var oModel001 = that.getOwnerComponent().getModel("YY1_GATEPASS_ALL_DATA_CDS");
+
+                                    oModel001.create("/YY1_GATEPASS_ALL_DATA", oEntry, {
+                                        success: function (oData, oResponse) {        
+                                        }
+                                    });  
+
+                                    // ==================================================
+
                                     that.getView().byId("Id").setValue("");
                                     that.getView().byId("GatePass_Type_H").setValue("RGP");
                                     that.getView().byId("Plant_H").setValue("");
@@ -838,6 +918,10 @@ sap.ui.define([
                                     that.getView().byId("No_Of_Bins").setValue("");
                                     that.getView().byId("Transporter").setValue("");
                                     that.getView().byId("E_Way_Bill").setValue("");
+                                    that.getView().byId("Business_User_Name").setValue("");
+                                    that.getView().byId("Business_User_ID").setValue("");
+                                    that.getView().byId("Approve_Status").setSelectedKey("");
+                                    that.getView().byId("Approve_Status").setSelectedItem("");
         
                                     that.getOwnerComponent().getModel("YY1_GENERAL_PURCHASE_CDS").read("/YY1_GENERAL_PURCHASE/$count", { /* Decalure Globally in the Create table Serial Number */
                                     success: $.proxy(function (oEvent, oResponse) {

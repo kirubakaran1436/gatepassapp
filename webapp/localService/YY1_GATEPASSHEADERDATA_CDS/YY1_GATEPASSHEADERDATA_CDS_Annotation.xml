@@ -1,0 +1,473 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_HTML5',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.HTML5.v1" Alias="HTML5"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../../sap/yy1_gatepassheaderdata_cds/$metadata">
+        <edmx:Include Namespace="YY1_GATEPASSHEADERDATA_CDS" Alias="SAP"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema Namespace="yy1_gatepassheaderdata_cds_van.v1" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="YY1_GATEPASSHEADERDATA_CDS.YY1_GATEPASSHEADERDATAType/SAP_UUID">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="YY1_GATEPASSHEADERDATA_CDS.YY1_GATEPASSHEADERDATAType/_ILM_Status_Text">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="YY1_GATEPASSHEADERDATA_CDS.YY1_GATEPASSHEADERDATAType/_SAPSysAdminDataChangeUser">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="YY1_GATEPASSHEADERDATA_CDS.YY1_GATEPASSHEADERDATAType/_SAPSysAdminDataCreateUser">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="YY1_GATEPASSHEADERDATA_CDS.YY1_GATEPASSHEADERDATAType/SAP_CreatedByUser">
+                <Annotation Term="Common.Text" Path="SAP_CreatedByUser_Text">
+                    <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="YY1_GATEPASSHEADERDATA_CDS.YY1_GATEPASSHEADERDATAType/SAP_LastChangedByUser">
+                <Annotation Term="Common.Text" Path="SAP_LastChangedByUser_Text">
+                    <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="YY1_GATEPASSHEADERDATA_CDS.YY1_GATEPASSHEADERDATAType/SAP_LifecycleStatus">
+                <Annotation Term="Common.Text" Path="SAP_LifecycleStatus_Text">
+                    <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="YY1_GATEPASSHEADERDATA_CDS.YY1_GATEPASSHEADERDATAType">
+                <Annotation Term="UI.Facets">
+                    <Collection>
+                        <Record Type="UI.CollectionFacet">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GATEPASSHEADERDATA_NS}"/>
+                            <PropertyValue Property="ID" String="GATEPASSHEADERDATA"/>
+                            <PropertyValue Property="Facets">
+                                <Collection>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="{@i18n&gt;SAP_FACET_HEADER_GEN_INFO}"/>
+                                        <PropertyValue Property="ID" String="GATEPASSHEADERDATAGeneralInformation"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#GeneralInformation"/>
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="{@i18n&gt;SAP_FACET_HEADER_SYSADMINDATA}"/>
+                                        <PropertyValue Property="ID" String="GATEPASSHEADERDATASystemAdministrativeData"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#SystemAdministrativeData"/>
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GatePassItemData_NP}"/>
+                            <PropertyValue Property="ID" String="GatePassItemData"/>
+                            <PropertyValue Property="Target" AnnotationPath="to_GatePassItemData/@UI.LineItem"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="GeneralInformation">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GATEPASSHEADERDATA_SAP_Descripti}"/>
+                                    <PropertyValue Property="Value" Path="SAP_Description"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GATEPASSHEADERDATA_Gateentrytype}"/>
+                                    <PropertyValue Property="Value" Path="Gateentrytype"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GATEPASSHEADERDATA_GateEntryYear}"/>
+                                    <PropertyValue Property="Value" Path="GateEntryYear"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GATEPASSHEADERDATA_GateEntryNo_L}"/>
+                                    <PropertyValue Property="Value" Path="GateEntryNo"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GATEPASSHEADERDATA_Requester_LA}"/>
+                                    <PropertyValue Property="Value" Path="Requester"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GATEPASSHEADERDATA_Reason_LA}"/>
+                                    <PropertyValue Property="Value" Path="Reason"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GATEPASSHEADERDATA_Remarks_LA}"/>
+                                    <PropertyValue Property="Value" Path="Remarks"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GATEPASSHEADERDATA_Status_LA}"/>
+                                    <PropertyValue Property="Value" Path="Status"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GATEPASSHEADERDATA_StatusDate_LA}"/>
+                                    <PropertyValue Property="Value" Path="StatusDate"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GATEPASSHEADERDATA_PurchasingDoc}"/>
+                                    <PropertyValue Property="Value" Path="PurchasingDocument"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GATEPASSHEADERDATA_PurchaseDocIt}"/>
+                                    <PropertyValue Property="Value" Path="PurchaseDocItem"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GATEPASSHEADERDATA_CustomerNumbe}"/>
+                                    <PropertyValue Property="Value" Path="CustomerNumber"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GATEPASSHEADERDATA_VendorNumber_}"/>
+                                    <PropertyValue Property="Value" Path="VendorNumber"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GATEPASSHEADERDATA_NameVendorCus}"/>
+                                    <PropertyValue Property="Value" Path="NameVendorCustomer"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GATEPASSHEADERDATA_VehicleNo_LA}"/>
+                                    <PropertyValue Property="Value" Path="VehicleNo"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GATEPASSHEADERDATA_Carrier_LA}"/>
+                                    <PropertyValue Property="Value" Path="Carrier"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GATEPASSHEADERDATA_DeletionIndic}"/>
+                                    <PropertyValue Property="Value" Path="DeletionIndicator"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GATEPASSHEADERDATA_Plant_LA}"/>
+                                    <PropertyValue Property="Value" Path="Plant"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GATEPASSHEADERDATA_PlantDescript}"/>
+                                    <PropertyValue Property="Value" Path="PlantDescription"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GATEPASSHEADERDATA_Approvedby_LA}"/>
+                                    <PropertyValue Property="Value" Path="Approvedby"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GATEPASSHEADERDATA_SAP_Lifecycle}"/>
+                                    <PropertyValue Property="Value" Path="SAP_LifecycleStatus"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="SystemAdministrativeData">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GATEPASSHEADERDATA_SAP_CreatedDa}"/>
+                                    <PropertyValue Property="Value" Path="SAP_CreatedDateTime"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GATEPASSHEADERDATA_SAP_CreatedBy}"/>
+                                    <PropertyValue Property="Value" Path="SAP_CreatedByUser"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GATEPASSHEADERDATA_SAP_LastChan2}"/>
+                                    <PropertyValue Property="Value" Path="SAP_LastChangedDateTime"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GATEPASSHEADERDATA_SAP_LastChang}"/>
+                                    <PropertyValue Property="Value" Path="SAP_LastChangedByUser"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.HeaderInfo">
+                    <Record>
+                        <PropertyValue Property="TypeName" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_NS}"/>
+                        <PropertyValue Property="TypeNamePlural" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_NP}"/>
+                        <PropertyValue Property="Title">
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="Gateentrytype"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GATEPASSHEADERDATA_Gateentrytype}"/>
+                            <PropertyValue Property="Value" Path="Gateentrytype"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GATEPASSHEADERDATA_GateEntryYear}"/>
+                            <PropertyValue Property="Value" Path="GateEntryYear"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GATEPASSHEADERDATA_GateEntryNo_L}"/>
+                            <PropertyValue Property="Value" Path="GateEntryNo"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GATEPASSHEADERDATA_Requester_LA}"/>
+                            <PropertyValue Property="Value" Path="Requester"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GATEPASSHEADERDATA_Reason_LA}"/>
+                            <PropertyValue Property="Value" Path="Reason"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GATEPASSHEADERDATA_Remarks_LA}"/>
+                            <PropertyValue Property="Value" Path="Remarks"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GATEPASSHEADERDATA_Status_LA}"/>
+                            <PropertyValue Property="Value" Path="Status"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GATEPASSHEADERDATA_StatusDate_LA}"/>
+                            <PropertyValue Property="Value" Path="StatusDate"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GATEPASSHEADERDATA_PurchasingDoc}"/>
+                            <PropertyValue Property="Value" Path="PurchasingDocument"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GATEPASSHEADERDATA_PurchaseDocIt}"/>
+                            <PropertyValue Property="Value" Path="PurchaseDocItem"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GATEPASSHEADERDATA_CustomerNumbe}"/>
+                            <PropertyValue Property="Value" Path="CustomerNumber"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GATEPASSHEADERDATA_VendorNumber_}"/>
+                            <PropertyValue Property="Value" Path="VendorNumber"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GATEPASSHEADERDATA_NameVendorCus}"/>
+                            <PropertyValue Property="Value" Path="NameVendorCustomer"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GATEPASSHEADERDATA_VehicleNo_LA}"/>
+                            <PropertyValue Property="Value" Path="VehicleNo"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GATEPASSHEADERDATA_Carrier_LA}"/>
+                            <PropertyValue Property="Value" Path="Carrier"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GATEPASSHEADERDATA_DeletionIndic}"/>
+                            <PropertyValue Property="Value" Path="DeletionIndicator"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GATEPASSHEADERDATA_Plant_LA}"/>
+                            <PropertyValue Property="Value" Path="Plant"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GATEPASSHEADERDATA_PlantDescript}"/>
+                            <PropertyValue Property="Value" Path="PlantDescription"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GATEPASSHEADERDATA_Approvedby_LA}"/>
+                            <PropertyValue Property="Value" Path="Approvedby"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GATEPASSHEADERDATA_SAP_Descripti}"/>
+                            <PropertyValue Property="Value" Path="SAP_Description"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GATEPASSHEADERDATA_SAP_CreatedDa}"/>
+                            <PropertyValue Property="Value" Path="SAP_CreatedDateTime"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GATEPASSHEADERDATA_SAP_CreatedBy}"/>
+                            <PropertyValue Property="Value" Path="SAP_CreatedByUser"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GATEPASSHEADERDATA_SAP_LastChan2}"/>
+                            <PropertyValue Property="Value" Path="SAP_LastChangedDateTime"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GATEPASSHEADERDATA_SAP_LastChang}"/>
+                            <PropertyValue Property="Value" Path="SAP_LastChangedByUser"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GATEPASSHEADERDATA_SAP_Lifecycle}"/>
+                            <PropertyValue Property="Value" Path="SAP_LifecycleStatus"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="YY1_GATEPASSHEADERDATA_CDS.YY1_GATEPASSITEMDATA_GATEPASSHType/SAP_UUID">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="YY1_GATEPASSHEADERDATA_CDS.YY1_GATEPASSITEMDATA_GATEPASSHType/SAP_PARENT_UUID">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="YY1_GATEPASSHEADERDATA_CDS.YY1_GATEPASSITEMDATA_GATEPASSHType/_ILM_Status_Text">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="YY1_GATEPASSHEADERDATA_CDS.YY1_GATEPASSITEMDATA_GATEPASSHType/SAP_LifecycleStatus">
+                <Annotation Term="Common.Text" Path="SAP_LifecycleStatus_Text">
+                    <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="YY1_GATEPASSHEADERDATA_CDS.YY1_GATEPASSITEMDATA_GATEPASSHType">
+                <Annotation Term="UI.Facets">
+                    <Collection>
+                        <Record Type="UI.CollectionFacet">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GatePassItemData_NS}"/>
+                            <PropertyValue Property="ID" String="GatePassItemData"/>
+                            <PropertyValue Property="Facets">
+                                <Collection>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="{@i18n&gt;SAP_FACET_HEADER_GEN_INFO}"/>
+                                        <PropertyValue Property="ID" String="GatePassItemDataGeneralInformation"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#GeneralInformation"/>
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="GeneralInformation">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GatePassItemData_Plant_LA}"/>
+                                    <PropertyValue Property="Value" Path="Plant"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GatePassItemData_Gateentrytype_L}"/>
+                                    <PropertyValue Property="Value" Path="Gateentrytype"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GatePassItemData_GateEntryYear_L}"/>
+                                    <PropertyValue Property="Value" Path="GateEntryYear"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GatePassItemData_GateEntryNo_LA}"/>
+                                    <PropertyValue Property="Value" Path="GateEntryNo"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GatePassItemData_GatePassItemNO_}"/>
+                                    <PropertyValue Property="Value" Path="GatePassItemNO"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GatePassItemData_Material_LA}"/>
+                                    <PropertyValue Property="Value" Path="Material"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GatePassItemData_Description_LA}"/>
+                                    <PropertyValue Property="Value" Path="Description"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GatePassItemData_UpdateStatus_LA}"/>
+                                    <PropertyValue Property="Value" Path="UpdateStatus"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GatePassItemData_Quantity_LA}"/>
+                                    <PropertyValue Property="Value" Path="Quantity_V"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GatePassItemData_RecQuantit_LA}"/>
+                                    <PropertyValue Property="Value" Path="RecQuantit_V"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GatePassItemData_BaseUnit_LA}"/>
+                                    <PropertyValue Property="Value" Path="BaseUnit"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GatePassItemData_BaselineDate_LA}"/>
+                                    <PropertyValue Property="Value" Path="BaselineDate"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GatePassItemData_SAP_LifecycleSt}"/>
+                                    <PropertyValue Property="Value" Path="SAP_LifecycleStatus"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.HeaderInfo">
+                    <Record>
+                        <PropertyValue Property="TypeName" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GatePassItemData_NS}"/>
+                        <PropertyValue Property="TypeNamePlural" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GatePassItemData_NP}"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GatePassItemData_Plant_LA}"/>
+                            <PropertyValue Property="Value" Path="Plant"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GatePassItemData_Gateentrytype_L}"/>
+                            <PropertyValue Property="Value" Path="Gateentrytype"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GatePassItemData_GateEntryYear_L}"/>
+                            <PropertyValue Property="Value" Path="GateEntryYear"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GatePassItemData_GateEntryNo_LA}"/>
+                            <PropertyValue Property="Value" Path="GateEntryNo"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GatePassItemData_GatePassItemNO_}"/>
+                            <PropertyValue Property="Value" Path="GatePassItemNO"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GatePassItemData_Material_LA}"/>
+                            <PropertyValue Property="Value" Path="Material"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GatePassItemData_Description_LA}"/>
+                            <PropertyValue Property="Value" Path="Description"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GatePassItemData_UpdateStatus_LA}"/>
+                            <PropertyValue Property="Value" Path="UpdateStatus"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GatePassItemData_Quantity_LA}"/>
+                            <PropertyValue Property="Value" Path="Quantity_V"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GatePassItemData_RecQuantit_LA}"/>
+                            <PropertyValue Property="Value" Path="RecQuantit_V"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GatePassItemData_BaseUnit_LA}"/>
+                            <PropertyValue Property="Value" Path="BaseUnit"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GatePassItemData_BaselineDate_LA}"/>
+                            <PropertyValue Property="Value" Path="BaselineDate"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n&gt;YY1_GATEPASSHEADERDATA_GatePassItemData_SAP_LifecycleSt}"/>
+                            <PropertyValue Property="Value" Path="SAP_LifecycleStatus"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
