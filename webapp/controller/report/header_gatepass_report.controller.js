@@ -532,40 +532,40 @@ sap.ui.define([
                 
         },
 
-        // OnDelete:function(){
-        //     var model0 = this.getOwnerComponent().getModel("YY1_VENDOR_RETURN_OW_CDS");
-        //     var EntitySet = "/YY1_VENDOR_RETURN_OW";
+        OnDelete:function(){
+            var model0 = this.getOwnerComponent().getModel("YY1_GENERAL_PURCHASE_CDS");
+            var EntitySet = "/YY1_GENERAL_PURCHASE";
 
 
-        //         var that = this;
-        //         model0.read(""+EntitySet+"", {
-        //             success: function (oData, oRespons) {
-        //                 console.log(oData);
-        //                 var aItems = oData.results;
-        //                         for (var i = 0; i < aItems.length; i++) {
-        //                             // console.log(aItems[i].SAP_UUID)
-        //                             var SAP_UUID = aItems[i].SAP_UUID;
+                var that = this;
+                model0.read(""+EntitySet+"", {
+                    success: function (oData, oRespons) {
+                        console.log(oData);
+                        var aItems = oData.results;
+                                for (var i = 0; i < aItems.length; i++) {
+                                    // console.log(aItems[i].SAP_UUID)
+                                    var SAP_UUID = aItems[i].SAP_UUID;
 
-        //                             var oModel05 = that.getView().getModel("YY1_VENDOR_RETURN_OW_CDS");
-        //                             oModel05.setHeaders({
-        //                             "X-Requested-With": "X",
-        //                             "Content-Type": "application/json"
-        //                             });
+                                    var oModel05 = that.getView().getModel("YY1_GENERAL_PURCHASE_CDS");
+                                    oModel05.setHeaders({
+                                    "X-Requested-With": "X",
+                                    "Content-Type": "application/json"
+                                    });
                     
-        //                             oModel05.remove("/YY1_VENDOR_RETURN_OW(guid'" + SAP_UUID + "')", {
-        //                             success: function(data) {
-        //                                 MessageToast.show("Deleted")
-        //                             },
-        //                             error: function(error) {
-        //                                 console.error("Error updating header:", error);
-        //                                 MessageToast.show("Not Deleted")
-        //                             }
-        //                             });
-        //                         }
-        //             }
-        //         });
+                                    oModel05.remove("/YY1_GENERAL_PURCHASE(guid'" + SAP_UUID + "')", {
+                                    success: function(data) {
+                                        MessageToast.show("Deleted")
+                                    },
+                                    error: function(error) {
+                                        console.error("Error updating header:", error);
+                                        MessageToast.show("Not Deleted")
+                                    }
+                                    });
+                                }
+                    }
+                });
 
-        // },
+        },
 
 
         });

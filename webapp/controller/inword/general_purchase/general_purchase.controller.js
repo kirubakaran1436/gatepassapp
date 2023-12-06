@@ -875,7 +875,7 @@ sap.ui.define([
 
                             oModel.create("/YY1_GENERAL_PURCHASE", oEntry, {
                                 success: function (oData, oResponse) {
-                                    that._pBusyDialog.close();
+                                    9
                                     oModel.refresh(true);
                                     MessageBox.success("Document No " + Id + " Generated", {
                                         title: "General Purchase",

@@ -4,9 +4,170 @@
  xmlns:svm="sap.ui.comp.smartvariants" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:t="sap.ui.table"
   xmlns:vm="sap.ui.fl.variants" height="100%">
 
-    <Dialog id="Dialog_Tittle" title = "Add" >
+    <Dialog id="Dialog_Tittle" title = "{Title>/data}" >
+        <Input id="gatepassno" visible="false" value="{GatePassNoFrag>/data}"></Input>
 
             <!-- ========================== Start General Purchase ======================================= -->
+  				<t:Table rows="{JModelfrag>/data}" id="TableId" selectionMode="None" width="auto" rowHeight="auto"
+           enableSelectAll="false">
+					
+					<t:columns>
+						<t:Column width="11rem">
+							<Label text="Gate Pass No" />
+							<t:template>
+								<Text  text="{JModelfrag>Id}" wrapping="false" />
+							</t:template>
+						</t:Column>
+
+						<t:Column visible="{= ${GatePassNoFrag>/data} === '10002'}" width="11rem">
+							<Label text="Item No" />
+							<t:template>
+								<ObjectStatus state="Warning" text="{JModelfrag>Purchasing_Document_Item}"/>
+							</t:template>
+						</t:Column>
+
+						<t:Column visible="{= ${GatePassNoFrag>/data} === '10002'}" width="11rem">
+							<Label text="Purchase Order No" />
+							<t:template>
+								<ObjectStatus state="Warning" text="{GatePassNoFrag>/data}"/>
+							</t:template>
+						</t:Column>
+						
+						<t:Column width="11rem">
+							<Label text="Material Code" />
+							<t:template>
+								<Text text="{JModelfrag>Material_Code}"/>
+							</t:template>
+						</t:Column>
+						
+						<t:Column width="11rem">
+							<Label text="Material Description" />
+							<t:template>
+								<Text text="{JModelfrag>Material_Description}"/>
+							</t:template>
+						</t:Column>
+						
+						<t:Column width="11rem">
+							<Label text="Quantity" />
+							<t:template>
+								<Text text="{JModelfrag>Quantity}"/>
+							</t:template>
+						</t:Column>
+						
+						<t:Column width="11rem">
+							<Label text="UOM" />
+							<t:template>
+								<Text text="{JModelfrag>UOM}"/>
+							</t:template>
+						</t:Column>
+						
+						<t:Column width="11rem">
+							<Label text="Post Received Quntity" />
+							<t:template>
+								<Text text="{JModelfrag>Gate_Entry_Received}"/>
+							</t:template>
+						</t:Column>
+						
+						<t:Column width="11rem">
+							<Label text="Post Pending Quantity" />
+							<t:template>
+								<Text text="{JModelfrag>Gate_Pending_Quantity}"/>
+							</t:template>
+						</t:Column>
+						
+						<t:Column width="11rem">
+							<Label text="Quantity To Post" />
+							<t:template>
+								<Text text="{JModelfrag>Gate_Quantity_To_Post}"/>
+							</t:template>
+						</t:Column>
+						
+						<t:Column width="11rem">
+							<Label text="Plant " />
+							<t:template>
+								<Text text="{JModelfrag>Plant}"/>
+							</t:template>
+						</t:Column>
+						
+						<t:Column width="11rem">
+							<Label text="Plant Name" />
+							<t:template>
+								<Text text="{JModelfrag>Plant_Name}"/>
+							</t:template>
+						</t:Column>
+						
+						<t:Column  width="11rem">
+							<Label text="Vendor Code" />
+							<t:template>
+								<Text text="{JModelfrag>Vendor_Code}"/>
+							</t:template>
+						</t:Column>
+						
+						<t:Column width="11rem">
+							<Label text="Vendor Name" />
+							<t:template>
+								<Text text="{JModelfrag>Vendor_Name}"/>
+							</t:template>
+						</t:Column>
+						
+						<t:Column width="11rem">
+							<Label text="Customer Code" />
+							<t:template>
+								<Text text="{JModelfrag>Customer_Code}"/>
+							</t:template>
+						</t:Column>
+						
+						<t:Column width="11rem">
+							<Label text="Customer Name" />
+							<t:template>
+								<Text text="{JModelfrag>Customer_Name}"/>
+							</t:template>
+						</t:Column>
+						
+						<t:Column width="11rem">
+							<Label text="Vehicle No" />
+							<t:template>
+								<Text text="{JModelfrag>Vehicle_No}"/>
+							</t:template>
+						</t:Column>
+						
+						<t:Column width="11rem">
+							<Label text="No Of Packages" />
+							<t:template>
+								<Text text="{JModelfrag>No_Of_Packages}"/>
+							</t:template>
+						</t:Column>
+						
+						<t:Column width="11rem">
+							<Label text="Bins" />
+							<t:template>
+								<Text text="{JModelfrag>Bins}"/>
+							</t:template>
+						</t:Column>
+						
+						<t:Column width="11rem">
+							<Label text="No Of Bings" />
+							<t:template>
+								<Text text="{JModelfrag>No_Of_Bins}"/>
+							</t:template>
+						</t:Column>
+						
+						<t:Column width="11rem">
+							<Label text="Invoice no" />
+							<t:template>
+								<Text text="{JModelfrag>Partner_Document_No}"/>
+							</t:template>
+						</t:Column>
+						
+						<t:Column width="11rem">
+							<Label text="Invoice Date" />
+							<t:template>
+								<Text text="{GatePassNoFrag>/data}"/>
+							</t:template>
+						</t:Column>
+						
+					</t:columns>
+				</t:Table>
 
 
   
